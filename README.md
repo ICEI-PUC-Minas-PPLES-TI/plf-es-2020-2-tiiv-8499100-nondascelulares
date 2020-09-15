@@ -1,18 +1,26 @@
-# Nome do projeto
+# Nondas Celulares
 
-Escreva um ou dois  parágrafo resumindo o objetivo do seu projeto.
+1.2 Objetivo Geral
+
+	Desenvolver uma solução de software para o auxílio na gestão financeira e operacional do Nondas Celulares.
+  
+1.2.1 Objetivos específicos
+Desenvolver módulo de gestão de ordens de venda e serviços;
+Desenvolver módulo de gestão financeira, com relatórios de lucros e despesas;
+Desenvolver módulos de gestão de entradas e saídas do Estoque.
+
 
 ## Alunos integrantes da equipe
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Augusto Coutinho
+* Maria Eduarda Machado
+* Pedro Henrique Rodrigues Belo
+* Sunimar Junior
 
 ## Professores responsáveis
 
-* Nome completo do professor 1
-* Nome completo do professor 2
+* Soraia Lúcia Da Silva 
+* Ivre Marjorie Ribeiro Machado
 
 ## Instruções de utilização
 
