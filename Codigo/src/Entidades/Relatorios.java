@@ -1,13 +1,13 @@
 package Entidades;
 
-import DAO.ServicoDAO;
-import DAO.VendasDAO;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import DAO_Antigo.ServicoDAO;
+import DAO_Antigo.VendasDAO;
 
 public class Relatorios {
 	VendasDAO vendasDAO;

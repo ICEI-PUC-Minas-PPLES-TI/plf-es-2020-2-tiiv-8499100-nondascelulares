@@ -6,6 +6,11 @@
 package TIS_4;
 
 import com.jfoenix.controls.JFXButton;
+
+import DAO.ClienteDao;
+import DAO_Antigo.CadastroClienteDAO;
+import DAO_Antigo.ExcecaoValorDuplicado;
+import DAO_Antigo.ProdutoDAO;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -20,9 +25,6 @@ import Entidades.ExcecaoValorInvalido;
 import Entidades.Produto;
 import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
-import DAO.CadastroClienteDAO;
-import DAO.ExcecaoValorDuplicado;
-import DAO.ProdutoDAO;
 
 
 /**
@@ -32,7 +34,7 @@ import DAO.ProdutoDAO;
  */
 public class FXMLController implements Initializable { 
     
-    private static CadastroClienteDAO cliDAO;
+    private static ClienteDao cliDAO;
     private static ProdutoDAO prodDAO;
     //Array cliDAO.getAll();
     // --------- Menu ------------
@@ -96,14 +98,28 @@ public class FXMLController implements Initializable {
           @FXML public Button btnCadastrarCliente;
           
           @FXML public void cadastrarCliente(ActionEvent event) throws IOException, ExcecaoValorDuplicado{
-              cliDAO = new CadastroClienteDAO("Clientes");
+              
               Cliente novoCliente = new Cliente();
               novoCliente.setNome(cadastroCliente_nome.getText());
-              novoCliente.setCpfCnpj(Long.parseLong(cadastroCliente_Cpf.getText()));
+              novoCliente.setCpfCnpj(cadastroCliente_Cpf.getText());
               novoCliente.setEmail(cadastroCliente_Email.getText());
               novoCliente.setTelefone(cadastroCliente_Telefone.getText()); 
               
-              cliDAO.add(novoCliente);
+              cliDAO = new ClienteDao(novoCliente);
+              
+              cliDAO.add();
+              
+              cliDAO = new ClienteDao();
+              
+              for (Cliente cli : cliDAO.getAll()) {
+            	  
+            	 System.out.println( cli.toString());
+            	  
+              }
+              
+              
+              
+              
               JOptionPane.showMessageDialog(null, novoCliente.getNome() + " inserido com sucesso!");
           }
          
@@ -127,6 +143,16 @@ public class FXMLController implements Initializable {
               novoProduto.setNome(cadastroProdutoName.getText());
               
               prodDAO.add(novoProduto);
+              
+              
+              for (Produto pro : prodDAO.getAll()) {
+            	  
+            	 System.out.println( pro.toString());
+            	  
+              }
+              
+              
+              
               JOptionPane.showMessageDialog(null, novoProduto.getNome() + " inserido com sucesso!");
           }
       
