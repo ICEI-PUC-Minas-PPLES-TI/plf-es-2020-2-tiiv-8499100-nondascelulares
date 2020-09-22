@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="panelCadastrarCliente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TIS_4.FXMLController">
+   <children>
+      <AnchorPane fx:id="panelCadastrarCliente" layoutX="95.0" layoutY="95.0" prefHeight="685.0" prefWidth="1065.0" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="25.0" layoutY="25.0" prefWidth="149.0" text="Nome do Cliente:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="125.0" prefHeight="27.0" prefWidth="149.0" text="CPF/CNPJ:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="25.0" layoutY="362.0" prefHeight="27.0" prefWidth="149.0" text="Telefone:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="325.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="25.0" layoutY="236.0" prefHeight="27.0" prefWidth="176.0" text="E-mail:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="225.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnCadastrarCliente" layoutX="100.0" layoutY="463.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Cadastrar" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="452.0" layoutY="463.0" mnemonicParsing="false" onAction="#panelNovoClienteVisible" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="cadastroCliente_nome" alignment="TOP_LEFT" layoutX="25.0" layoutY="64.0" prefHeight="35.0" prefWidth="559.0" promptText="Digite o nome do Cliente" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="60.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cadastroCliente_Cpf" alignment="TOP_LEFT" layoutX="25.0" layoutY="163.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="559.0" promptText="Descreva o CPF/CNPJ do Cliente" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="160.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cadastroCliente_Email" alignment="TOP_LEFT" layoutX="25.0" layoutY="281.0" prefHeight="39.0" prefWidth="559.0" promptText="Digite o e-mail do Cliente" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="260.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cadastroCliente_Telefone" layoutX="25.0" layoutY="418.0" prefHeight="39.0" prefWidth="559.0" promptText="Digite o numero do telefone do Cliente" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="360.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="54.0" prefHeight="55.0" prefWidth="546.0" style="-fx-background-color: #03071E;" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="56.0" fitWidth="155.0" layoutX="153.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@NONDAS.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelCadastrarProduto" layoutX="86.0" layoutY="66.0" prefHeight="397.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <Label alignment="CENTER" layoutX="25.0" layoutY="25.0" prefWidth="149.0" text="Nome do Produto:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="126.0" text="Descrição do Produto:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="467.0" layoutY="236.0" text="Quantidade:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="258.0" layoutY="236.0" text="Preço de venda:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="25.0" layoutY="236.0" prefWidth="127.0" text="Preço de Custo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button id="bntIncluirProd" fx:id="bntIncluirProd" layoutX="100.0" layoutY="358.0" mnemonicParsing="false" onAction="#cadastrarProduto" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Incluir" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="cancelaProd" layoutX="420.0" layoutY="358.0" mnemonicParsing="false" onAction="#panelNovoProdutoVisible" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField id="cadastroProdutoName" fx:id="cadastroProdutoName" alignment="TOP_LEFT" layoutX="25.0" layoutY="64.0" prefHeight="35.0" prefWidth="559.0" promptText="digite o nome do produto">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="cadastroProdutoDescri" fx:id="cadastroProdutoDescri" alignment="TOP_LEFT" layoutX="25.0" layoutY="163.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="559.0" promptText="descreva o produto">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="quantidadeProd" fx:id="quantidadeProd" layoutX="467.0" layoutY="281.0" prefHeight="39.0" prefWidth="120.0" promptText="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="precoVendaProd" fx:id="precoVendaProd" layoutX="258.0" layoutY="281.0" prefHeight="35.0" prefWidth="149.0" promptText="0,00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField id="precoCusto" fx:id="precoCusto" alignment="TOP_LEFT" layoutX="25.0" layoutY="281.0" prefHeight="35.0" prefWidth="149.0" promptText="0,00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="14.0" prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #6A040F; -fx-border-radius: 5em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisible" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" />
+               </graphic>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="56.0" onAction="#menuProdutoVisible" prefHeight="31.0" prefWidth="46.0" text=" " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="60.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMenuProduto1" layoutX="3.0" layoutY="110.0" onAction="#menuProdutoVisible" text=" " AnchorPane.leftAnchor="10.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" size="30" />
+               </graphic></JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="400.0" prefWidth="155.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" text="Clientes" textFill="#fffdfd" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnNovoCliente" layoutX="5.0" layoutY="47.0" onAction="#panelNovoClienteVisible" prefHeight="39.0" prefWidth="136.0" text="Novo Cliente" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="7.0" layoutY="100.0" prefHeight="39.0" prefWidth="136.0" text="Buscar Cliente" textFill="WHITE" AnchorPane.leftAnchor="5.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="7.0" layoutY="139.0" prefHeight="39.0" prefWidth="136.0" text="Excluir Cliente" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </AnchorPane>
+      <AnchorPane fx:id="dropDown_Produto" layoutX="54.0" layoutY="7.0" prefHeight="400.0" prefWidth="155.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" text="Produto" textFill="#fffdfd" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnNovoProduto" layoutX="5.0" layoutY="47.0" onAction="#panelNovoProdutoVisible" prefHeight="39.0" prefWidth="136.0" text="Novo Produto" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="7.0" layoutY="100.0" prefHeight="39.0" prefWidth="145.0" text="Buscar Produto" textFill="WHITE" AnchorPane.leftAnchor="5.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="7.0" layoutY="139.0" prefHeight="39.0" prefWidth="145.0" text="Excluir Produto" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </AnchorPane>
+   </children>
+</AnchorPane>
