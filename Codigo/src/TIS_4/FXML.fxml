@@ -244,7 +244,7 @@
                   <Insets left="15.0" />
                </padding>
             </JFXButton>
-            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="56.0" onAction="#menuProdutoVisible" onMouseEntered="#menuProdutoVisible" prefHeight="31.0" prefWidth="46.0" text=" " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="60.0">
+            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="56.0" onMouseEntered="#menuProdutoVisible" prefHeight="31.0" prefWidth="46.0" text=" " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="60.0">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
                </graphic></JFXButton>
