@@ -200,8 +200,8 @@ public class ClienteDao implements DAO<Cliente>{
 	
 			ResultSet rs = stmtCli.executeQuery();
 			
-			if(!rs.first())
-				throw new SQLException("Falha ao buscar os clientes");
+		//	if(rs.getBoolean("nome"))
+			//	throw new SQLException("Falha ao buscar os clientes");
 	
 			
 			 while(rs.next()) {
@@ -224,9 +224,12 @@ public class ClienteDao implements DAO<Cliente>{
 			
 		} catch(SQLException e) {
 		
+			
+			e.printStackTrace();
+			
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.initStyle(StageStyle.UTILITY);
-			alert.setTitle("Falha");
+			alert.setTitle("Falha ao buscar a lista de clientes");
 			alert.setHeaderText(null);
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
