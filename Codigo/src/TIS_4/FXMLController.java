@@ -160,12 +160,13 @@ public class FXMLController implements Initializable {
 	}
 
 	@FXML
-	public void panelBuscarClienteVisible(ActionEvent event) {
+	public void panelBuscarClienteVisible(ActionEvent event) throws IOException {
 		if (panelBuscarCliente.isVisible() == true) {
 			panelBuscarCliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+                        carregarClienteTabela(event);
 			panelBuscarCliente.setVisible(true);
 		}
 	}
