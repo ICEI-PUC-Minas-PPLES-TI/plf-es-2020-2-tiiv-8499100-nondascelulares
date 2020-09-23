@@ -48,6 +48,14 @@ public class FXMLController implements Initializable {
     @FXML public JFXButton btnBuscarCliente;
     @FXML public AnchorPane panelCadastrarCliente;
     @FXML public AnchorPane panelBuscarCliente;
+    @FXML private Button btnExcluirCliente;
+    @FXML private Button btnEditarCliente;
+    @FXML public AnchorPane panelBuscarProduto;
+    @FXML private Button btnExcluirProduto;
+    @FXML private Button btnEditarProduto;
+    
+    
+    //--------- Table Buscar Cliente --------
     @FXML private TableColumn<?, ?> column_Nome;
     @FXML private TableColumn<?, ?> column_CpfCnpj;
     @FXML private TableColumn<?, ?> column_Email;
@@ -59,6 +67,14 @@ public class FXMLController implements Initializable {
     @FXML private TableColumn<?, ?> column_Estado;
     @FXML private TableView<?> table_Cliente;
     
+     //--------- Table Buscar Produto --------
+    
+    @FXML private TableView<?> table_Produto;
+    @FXML private TableColumn<?, ?> column_IdProduto;
+    @FXML private TableColumn<?, ?> column_NomeProduto;
+    @FXML private TableColumn<?, ?> column_PrecoVendaProduto;
+
+    
     
     @FXML public void fecharTodosMenus(MouseEvent event){
         dropDown_Cliente.setVisible(false);
@@ -69,6 +85,8 @@ public class FXMLController implements Initializable {
             panelCadastrarProduto.setVisible(false);
             panelCadastrarCliente.setVisible(false);
             panelBuscarCliente.setVisible(false);
+            panelBuscarCliente.setVisible(false);
+            panelBuscarProduto.setVisible(false);
            
         }
     
@@ -90,7 +108,22 @@ public class FXMLController implements Initializable {
             dropDown_Cliente.setVisible(false);
         }
     }
-        
+    
+        @FXML public void menuClienteVisibleOnClick(ActionEvent event){
+        if (dropDown_Cliente.isVisible() == true){
+        }else{
+            dropDown_Cliente.setVisible(true);
+            dropDown_Produto.setVisible(false);
+        }
+    }
+    
+        @FXML public void menuProdutoVisibleOnClick(ActionEvent event){
+        if (dropDown_Produto.isVisible() == true){
+        }else{
+            dropDown_Produto.setVisible(true);
+            dropDown_Cliente.setVisible(false);
+        }
+    }
         
         
         @FXML public void panelNovoProdutoVisible(ActionEvent event){
@@ -118,12 +151,21 @@ public class FXMLController implements Initializable {
         @FXML public void panelBuscarClienteVisible(ActionEvent event){
             if (panelBuscarCliente.isVisible() == true){
             panelBuscarCliente.setVisible(false);
-            dropDown_Cliente.setVisible(false);
+            dropDown_Produto.setVisible(false);
         }else{
             fecharTodosPanel(event);
             panelBuscarCliente.setVisible(true);
             }  
         }
+        @FXML public void panelBuscarProdutoVisible(ActionEvent event){
+            if (panelBuscarProduto.isVisible() == true){
+                panelBuscarProduto.setVisible(false);
+                dropDown_Cliente.setVisible(false);
+            }else{
+            fecharTodosPanel(event);
+            panelBuscarProduto.setVisible(true);
+                }  
+            }
           
           
           //-------- Cadastro Cliente ------------
@@ -160,6 +202,12 @@ public class FXMLController implements Initializable {
               JOptionPane.showMessageDialog(null, novoCliente.getNome() + " inserido com sucesso!");
           }
          
+            @FXML public void carregarClirenteTabela(ActionEvent event) throws IOException{
+
+ 
+              
+          }
+
           
           //-------- Cadastro Produto ------------
           
@@ -185,7 +233,7 @@ public class FXMLController implements Initializable {
               JOptionPane.showMessageDialog(null, novoProduto.getNome() + " inserido com sucesso!");
           }
       
-    
+
           
     @Override
     public void initialize(URL url, ResourceBundle rb) {
