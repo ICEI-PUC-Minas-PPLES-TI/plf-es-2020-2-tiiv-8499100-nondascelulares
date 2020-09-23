@@ -296,14 +296,10 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField precoVendaProd;
 	@FXML
-	public TextField precoCusto;
-
-	
-	
+	public TextField precoCusto;	
 	@FXML
 	public Button bntIncluirProd;
-	
-	
+
 
 	@FXML
 	public void cadastrarProduto(ActionEvent event) throws IOException, NumberFormatException, ExcecaoValorInvalido {

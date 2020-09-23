@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 import Entidades.Cliente;
 import br.BD.ConnectionFactorySqlServer;
+import javafx.scene.control.Alert;
+import javafx.stage.StageStyle;
 
 public class ClienteDao implements DAO<Cliente>{
 
@@ -189,11 +191,12 @@ public class ClienteDao implements DAO<Cliente>{
 	
 			ResultSet rs = stmtCli.executeQuery();
 			
-			if(!rs.next())
+			if(!rs.first())
 				throw new SQLException("Falha ao buscar os clientes");
-		
+	
+			
 			 while(rs.next()) {
-				 
+			
 				 Cliente newCliente = new Cliente();
 				 
 				 newCliente.setNome(rs.getString("nome"));
@@ -212,9 +215,12 @@ public class ClienteDao implements DAO<Cliente>{
 			
 		} catch(SQLException e) {
 		
-			JOptionPane.showMessageDialog(null,
-					"<html><body><p style='width: 200px;'>" + e.getMessage() + "</p></body></html>", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 			
 		}finally {
 			
