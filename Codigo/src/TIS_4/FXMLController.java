@@ -21,6 +21,9 @@ import Entidades.Cliente;
 import Entidades.ExcecaoValorInvalido;
 import Entidades.Produto;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 
 
@@ -42,9 +45,35 @@ public class FXMLController implements Initializable {
     @FXML public AnchorPane panelCadastrarProduto;
     @FXML public JFXButton btnNovoProduto;
     @FXML public JFXButton btnNovoCliente;
+    @FXML public JFXButton btnBuscarCliente;
     @FXML public AnchorPane panelCadastrarCliente;
+    @FXML public AnchorPane panelBuscarCliente;
+    @FXML private TableColumn<?, ?> column_Nome;
+    @FXML private TableColumn<?, ?> column_CpfCnpj;
+    @FXML private TableColumn<?, ?> column_Email;
+    @FXML private TableColumn<?, ?> column_Telefone;
+    @FXML private TableColumn<?, ?> column_Rua;
+    @FXML private TableColumn<?, ?> column_Numero;
+    @FXML private TableColumn<?, ?> column_Bairro;
+    @FXML private TableColumn<?, ?> column_Cidade;
+    @FXML private TableColumn<?, ?> column_Estado;
+    @FXML private TableView<?> table_Cliente;
     
-    @FXML public void menuClienteVisible(ActionEvent event){
+    
+    @FXML public void fecharTodosMenus(MouseEvent event){
+        dropDown_Cliente.setVisible(false);
+        dropDown_Produto.setVisible(false);
+    }
+    
+       @FXML public void fecharTodosPanel(ActionEvent event){
+            panelCadastrarProduto.setVisible(false);
+            panelCadastrarCliente.setVisible(false);
+            panelBuscarCliente.setVisible(false);
+           
+        }
+    
+    
+    @FXML public void menuClienteVisible(MouseEvent event){
         if (dropDown_Cliente.isVisible() == true){
             dropDown_Cliente.setVisible(false);
         }else{
@@ -53,7 +82,7 @@ public class FXMLController implements Initializable {
         }
     }
     
-        @FXML public void menuProdutoVisible(ActionEvent event){
+        @FXML public void menuProdutoVisible(MouseEvent event){
         if (dropDown_Produto.isVisible() == true){
             dropDown_Produto.setVisible(false);
         }else{
@@ -62,14 +91,15 @@ public class FXMLController implements Initializable {
         }
     }
         
+        
+        
         @FXML public void panelNovoProdutoVisible(ActionEvent event){
             if (panelCadastrarProduto.isVisible() == true){
             panelCadastrarProduto.setVisible(false);
             dropDown_Produto.setVisible(false);
         }else{
-            dropDown_Produto.setVisible(false);
+            fecharTodosPanel(event);
             panelCadastrarProduto.setVisible(true);
-            panelCadastrarCliente.setVisible(false);
             }  
         }
     
@@ -79,9 +109,19 @@ public class FXMLController implements Initializable {
             panelCadastrarCliente.setVisible(false);
             dropDown_Cliente.setVisible(false);
         }else{
-            dropDown_Cliente.setVisible(false);
+            fecharTodosPanel(event);
             panelCadastrarCliente.setVisible(true);
-            panelCadastrarProduto.setVisible(false);
+
+            }  
+        }
+        
+        @FXML public void panelBuscarClienteVisible(ActionEvent event){
+            if (panelBuscarCliente.isVisible() == true){
+            panelBuscarCliente.setVisible(false);
+            dropDown_Cliente.setVisible(false);
+        }else{
+            fecharTodosPanel(event);
+            panelBuscarCliente.setVisible(true);
             }  
         }
           

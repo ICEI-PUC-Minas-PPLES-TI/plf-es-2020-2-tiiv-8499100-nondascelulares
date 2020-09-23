@@ -25,7 +25,7 @@ public class ConnectionFactorySqlServer {
         		    JOptionPane.ERROR_MESSAGE);
             
             
-            throw new RuntimeException("Erro ao Abrir a conex„o com o Banco de Dados: " + e);
+            throw new RuntimeException("Erro ao Abrir a conex√£o com o Banco de Dados: " + e);
         }
     }
 
