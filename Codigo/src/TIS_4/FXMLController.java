@@ -8,9 +8,6 @@ package TIS_4;
 import com.jfoenix.controls.JFXButton;
 
 import DAO.ClienteDao;
-import DAO_Antigo.CadastroClienteDAO;
-import DAO_Antigo.ExcecaoValorDuplicado;
-import DAO_Antigo.ProdutoDAO;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -35,7 +32,7 @@ import javax.swing.JOptionPane;
 public class FXMLController implements Initializable { 
     
     private static ClienteDao cliDAO;
-    private static ProdutoDAO prodDAO;
+
     //Array cliDAO.getAll();
     // --------- Menu ------------
     @FXML public JFXButton btnMenuCliente;
@@ -97,7 +94,7 @@ public class FXMLController implements Initializable {
           @FXML public TextField cadastroCliente_Email;
           @FXML public Button btnCadastrarCliente;
           
-          @FXML public void cadastrarCliente(ActionEvent event) throws IOException, ExcecaoValorDuplicado{
+          @FXML public void cadastrarCliente(ActionEvent event) throws IOException{
               
               Cliente novoCliente = new Cliente();
               novoCliente.setNome(cadastroCliente_nome.getText());
@@ -134,7 +131,7 @@ public class FXMLController implements Initializable {
           @FXML public Button bntIncluirProd;
           
           @FXML public void cadastrarProduto(ActionEvent event) throws IOException, NumberFormatException, ExcecaoValorInvalido{
-        	  prodDAO = new ProdutoDAO("Produtos");
+        	 
               Produto novoProduto = new Produto();
               novoProduto.setIdProduto(456L);
                 
@@ -142,16 +139,8 @@ public class FXMLController implements Initializable {
               novoProduto.setPrecoVenda(Float.parseFloat(precoVendaProd.getText()));
               novoProduto.setNome(cadastroProdutoName.getText());
               
-              prodDAO.add(novoProduto);
-              
-              
-              for (Produto pro : prodDAO.getAll()) {
-            	  
-            	 System.out.println( pro.toString());
-            	  
-              }
-              
-              
+           
+     
               
               JOptionPane.showMessageDialog(null, novoProduto.getNome() + " inserido com sucesso!");
           }
