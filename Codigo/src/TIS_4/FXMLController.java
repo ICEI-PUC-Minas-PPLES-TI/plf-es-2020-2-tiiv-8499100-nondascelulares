@@ -20,9 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.StageStyle;
 import Entidades.Cliente;
 import Entidades.ExcecaoValorInvalido;
 import Entidades.Produto;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -224,13 +226,14 @@ public class FXMLController implements Initializable {
 
 		cliDAO = new ClienteDao();
 
-		for (Cliente cli : cliDAO.getAll()) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.setTitle("Sucesso");
+		alert.setHeaderText(null);
+		alert.setContentText("Cliente cadastrado com sucesso!");
+		alert.showAndWait();
 
-			System.out.println(cli.toString());
-
-		}
-
-		JOptionPane.showMessageDialog(null, novoCliente.getNome() + " inserido com sucesso!");
+		
 	}
 	
 
