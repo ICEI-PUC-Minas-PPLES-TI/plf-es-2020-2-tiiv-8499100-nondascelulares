@@ -193,7 +193,17 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField cadastroCliente_Email;
 	@FXML
+	public TextField cadastroCLiente_Rua;
+	@FXML
+	public TextField cadastroCliente_numRes;
+	@FXML
+	public TextField cadastroCliente_Bairro;
+	@FXML
+	public TextField cadastroCliente_Cidade;
+	
+	@FXML
 	public Button btnCadastrarCliente;
+	
 
 	@FXML
 	public void cadastrarCliente(ActionEvent event) throws IOException {
@@ -203,6 +213,10 @@ public class FXMLController implements Initializable {
 		novoCliente.setCpfCnpj(cadastroCliente_Cpf.getText());
 		novoCliente.setEmail(cadastroCliente_Email.getText());
 		novoCliente.setTelefone(cadastroCliente_Telefone.getText());
+		novoCliente.setRua(cadastroCLiente_Rua.getText());
+		novoCliente.setNumero(cadastroCliente_numRes.getText());
+		novoCliente.setBairro(cadastroCliente_Bairro.getText());
+		novoCliente.setCidade(cadastroCliente_Cidade.getText());
 
 		cliDAO = new ClienteDao(novoCliente);
 
@@ -218,6 +232,7 @@ public class FXMLController implements Initializable {
 
 		JOptionPane.showMessageDialog(null, novoCliente.getNome() + " inserido com sucesso!");
 	}
+	
 
 	// --------- Table Buscar Cliente --------
 	@FXML
@@ -238,6 +253,8 @@ public class FXMLController implements Initializable {
 	private TableColumn<Cliente, String> column_Cidade;
 	@FXML
 	private TableColumn<Cliente, String> column_Estado;
+	
+	
 	@FXML
 	private TableView<Cliente> table_Cliente;
 
@@ -277,8 +294,13 @@ public class FXMLController implements Initializable {
 	public TextField precoVendaProd;
 	@FXML
 	public TextField precoCusto;
+
+	
+	
 	@FXML
 	public Button bntIncluirProd;
+	
+	
 
 	@FXML
 	public void cadastrarProduto(ActionEvent event) throws IOException, NumberFormatException, ExcecaoValorInvalido {
