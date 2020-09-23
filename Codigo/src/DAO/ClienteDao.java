@@ -65,9 +65,12 @@ public class ClienteDao implements DAO<Cliente>{
 			
 		} catch(SQLException e) {
 		
-			JOptionPane.showMessageDialog(null,
-					"<html><body><p style='width: 200px;'>" + e.getMessage() + "</p></body></html>", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 			
 		}finally {
 			
@@ -116,9 +119,12 @@ public class ClienteDao implements DAO<Cliente>{
 			
 		} catch(SQLException e) {
 		
-			JOptionPane.showMessageDialog(null,
-					"<html><body><p style='width: 200px;'>" + e.getMessage() + "</p></body></html>", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 			
 		}finally {
 			
@@ -159,9 +165,12 @@ public class ClienteDao implements DAO<Cliente>{
 			
 		} catch(SQLException e) {
 		
-			JOptionPane.showMessageDialog(null,
-					"<html><body><p style='width: 200px;'>" + e.getMessage() + "</p></body></html>", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 			
 		}finally {
 			
