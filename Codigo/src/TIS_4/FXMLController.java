@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package TIS_4;
 
 import com.jfoenix.controls.JFXButton;
@@ -12,7 +8,6 @@ import DAO.ProdutoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,14 +18,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import Entidades.Cliente;
-import Entidades.ExcecaoValorInvalido;
 import Entidades.Produto;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -285,7 +278,7 @@ public class FXMLController implements Initializable {
 	public Button bntIncluirProd;
 
 	@FXML
-	public void cadastrarProduto(ActionEvent event) throws IOException, NumberFormatException, ExcecaoValorInvalido {
+	public void cadastrarProduto(ActionEvent event) throws IOException {
 
 		Produto novoProduto = new Produto();
 		novoProduto.setNome(cadastroProdutoName.getText());
@@ -329,9 +322,6 @@ public class FXMLController implements Initializable {
 			return FXCollections.observableArrayList(ProDao.getAll());
 		}
 
-	
-	
-	
 
 	private void GeraAlerta(String titulo, String conteudoTexto) {
 

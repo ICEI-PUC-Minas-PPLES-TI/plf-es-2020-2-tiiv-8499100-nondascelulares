@@ -214,13 +214,13 @@
               <columns>
                 <TableColumn fx:id="column_Nome" prefWidth="232.0" text="Nome" />
                 <TableColumn fx:id="column_CpfCnpj" minWidth="0.0" prefWidth="115.0" text="Cpf/Cnpj" />
-                  <TableColumn fx:id="column_Email" prefWidth="165.0" text="E-mail" />
-                  <TableColumn fx:id="column_Telefone" minWidth="0.0" prefWidth="103.0" text="Telefone" />
-                  <TableColumn fx:id="column_Rua" prefWidth="110.0" text="Rua" />
-                  <TableColumn fx:id="column_Numero" minWidth="0.0" prefWidth="64.0" text="Numero" />
-                  <TableColumn fx:id="column_Bairro" prefWidth="109.0" text="Bairro" />
-                  <TableColumn fx:id="column_Cidade" minWidth="0.0" prefWidth="141.0" text="Cidade" />
-                  <TableColumn fx:id="column_Estado" prefWidth="61.0" text="Estado" />
+                  <TableColumn fx:id="column_Email" prefWidth="173.0" text="E-mail" />
+                  <TableColumn fx:id="column_Telefone" minWidth="0.0" prefWidth="128.0" text="Telefone" />
+                  <TableColumn fx:id="column_Rua" prefWidth="77.0" text="Rua" />
+                  <TableColumn fx:id="column_Numero" minWidth="0.0" prefWidth="108.0" text="Numero" />
+                  <TableColumn fx:id="column_Bairro" prefWidth="104.0" text="Bairro" />
+                  <TableColumn fx:id="column_Cidade" minWidth="0.0" prefWidth="160.0" text="Cidade" />
+                  <TableColumn fx:id="column_Estado" prefWidth="63.0" text="Estado" />
               </columns>
             </TableView>
             <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="67.0" prefWidth="714.0">
@@ -232,12 +232,12 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnExcluirCliente" layoutX="78.0" layoutY="668.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #5A6268; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnExcluirCliente" layoutX="230.0" layoutY="668.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="946.0" layoutY="668.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+            <Button layoutX="786.0" layoutY="668.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
                <font>
                   <Font size="18.0" />
                </font>
@@ -251,7 +251,7 @@
       </AnchorPane>
       <AnchorPane fx:id="panelBuscarProduto" layoutX="70.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
          <children>
-            <TableView fx:id="table_Produto" layoutX="14.0" layoutY="99.0" prefHeight="531.0" prefWidth="1161.0">
+            <TableView fx:id="table_Produto" layoutX="100.0" layoutY="145.0" prefHeight="434.0" prefWidth="986.0">
                <columns>
                   <TableColumn fx:id="column_IdProduto" prefWidth="100.0" text="Id" />
                   <TableColumn fx:id="column_NomeProduto" minWidth="0.0" prefWidth="300.0" text="Nome" />
@@ -267,17 +267,17 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnExcluirProduto" layoutX="78.0" layoutY="668.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #5A6268; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnExcluirProduto" layoutX="241.0" layoutY="648.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="946.0" layoutY="668.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+            <Button layoutX="763.0" layoutY="648.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditarProduto" layoutX="509.0" layoutY="668.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #5A6268; -fx-border-color: #3C4145;" text="Editar Produto" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnEditarProduto" layoutX="510.0" layoutY="648.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #5A6268; -fx-border-color: #3C4145;" text="Editar Produto" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -288,7 +288,7 @@
          <children>
             <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisibleOnClick" onMouseEntered="#menuClienteVisible" prefHeight="31.0" prefWidth="51.0" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" />
                </graphic>
                <padding>
                   <Insets left="15.0" />
@@ -298,13 +298,13 @@
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
                </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuProduto1" layoutX="3.0" layoutY="110.0" onAction="#menuProdutoVisible" text=" " AnchorPane.leftAnchor="10.0">
+            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuProdutoVisible" text=" " AnchorPane.leftAnchor="10.0">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" size="30" />
                </graphic></JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="400.0" prefWidth="155.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" text="Clientes" textFill="#fffdfd" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
                <font>
@@ -340,7 +340,7 @@
             <Insets top="15.0" />
          </padding>
       </AnchorPane>
-      <AnchorPane fx:id="dropDown_Produto" layoutX="54.0" layoutY="7.0" prefHeight="400.0" prefWidth="155.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="dropDown_Produto" layoutX="54.0" layoutY="7.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" text="Produto" textFill="#fffdfd" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
                <font>
@@ -375,6 +375,126 @@
          <padding>
             <Insets top="15.0" />
          </padding>
+      </AnchorPane>
+      <AnchorPane fx:id="dropDown_Ordens" layoutX="544.0" layoutY="178.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="14.0" text="Ordens" textFill="#fffdfd" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnNovaOrdemVenda" layoutX="5.0" layoutY="47.0" prefHeight="39.0" prefWidth="160.0" text="  Ordem de venda" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBuscarOrdemVenda" layoutX="7.0" layoutY="100.0" prefHeight="39.0" prefWidth="188.0" text=" Buscar ordem venda" textFill="WHITE" AnchorPane.leftAnchor="5.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="7.0" layoutY="139.0" prefHeight="39.0" prefWidth="201.0" text=" Excluir ordem de venda" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </AnchorPane>
+      <AnchorPane fx:id="panelNovaOrdemVenda" layoutX="66.0" layoutY="62.0" prefHeight="712.0" prefWidth="1176.0" visible="false">
+         <children>
+            <TableView fx:id="table_OrdemVenda" layoutX="235.0" layoutY="199.0" prefHeight="297.0" prefWidth="670.0">
+              <columns>
+                <TableColumn fx:id="column_ID" prefWidth="148.0" text="ID" />
+                <TableColumn fx:id="column_NomeOrdemVenda" prefWidth="358.0" text="Nome" />
+                  <TableColumn fx:id="column_PrecoOrdemVenda" prefWidth="121.0" text="Preço" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnCancelarOrdemVenda" layoutX="763.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSalvarOrdemVenda" layoutX="595.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnExcluirProdutoOrdemVenda" layoutX="419.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Excluir produto" textFill="#fcf8f8" />
+            <Button fx:id="btnIncluirProdutoOrdemVenda" layoutX="244.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #002855;" text="Incluir produto" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="48.0" layoutY="30.0" text="Nova Ordem de Venda">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="235.0" layoutY="118.0" text="Código:">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codigoOrdemVenda" layoutX="323.0" layoutY="116.0" />
+            <Label layoutX="643.0" layoutY="118.0" text="Data:">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dataOrdemVenda" layoutX="713.0" layoutY="117.0" prefHeight="31.0" prefWidth="187.0" />
+            <TextField fx:id="valorTotalOrdemVenda" layoutX="821.0" layoutY="511.0" prefHeight="31.0" prefWidth="85.0" />
+            <Label layoutX="725.0" layoutY="517.0" prefHeight="21.0" prefWidth="85.0" text="Valor Total:">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="panelBuscarOrdemVenda" layoutX="62.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
+         <children>
+            <TableView fx:id="table_BuscarOrdemVenda" layoutX="100.0" layoutY="132.0" prefHeight="434.0" prefWidth="986.0">
+               <columns>
+                  <TableColumn fx:id="column_CodOrdemVenda" prefWidth="152.0" text="Código" />
+                  <TableColumn fx:id="column_DataOrdemVenda" minWidth="0.0" prefWidth="661.0" text="Data" />
+                  <TableColumn fx:id="column_ValorTotalOV" minWidth="0.0" prefWidth="171.0" resizable="false" text="Valor Total" />
+               </columns>
+            </TableView>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="67.0" prefWidth="714.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="16.0" text="Buscar Ordem de Venda">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnExcluirOrdemVenda" layoutX="220.0" layoutY="635.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Ordem" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="748.0" layoutY="635.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnEditarOrdemVenda" layoutX="492.0" layoutY="635.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #5A6268; -fx-border-color: #3C4145;" text="Editar Ordem" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
       </AnchorPane>
    </children>
 </AnchorPane>

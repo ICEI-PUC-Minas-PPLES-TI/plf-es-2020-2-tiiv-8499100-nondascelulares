@@ -54,9 +54,7 @@ public class OrdemVenda implements Serializable {
 
 	public void setValorTotal() {
 		float temp=0;
-		for(Produto prod : produtos) {
-			temp = temp + prod.getPrecoVenda();
-		}
+	
 		this.valorTotal = temp;
 	}
 
