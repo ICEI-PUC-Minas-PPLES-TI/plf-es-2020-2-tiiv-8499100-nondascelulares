@@ -67,12 +67,18 @@ public class FXMLController implements Initializable {
 	private Button btnExcluirProduto;
 	@FXML
 	private Button btnEditarProduto;
+	@FXML
+	public  AnchorPane panelNovaOrdemVenda;
+	@FXML
+	public  AnchorPane dropDown_Ordens;
+	
 
 	
 	@FXML
 	public void fecharTodosMenus(MouseEvent event) {
 		dropDown_Cliente.setVisible(false);
 		dropDown_Produto.setVisible(false);
+		dropDown_Ordens.setVisible(false);
 	}
 
 	@FXML
@@ -82,9 +88,22 @@ public class FXMLController implements Initializable {
 		panelBuscarCliente.setVisible(false);
 		panelBuscarCliente.setVisible(false);
 		panelBuscarProduto.setVisible(false);
+		panelNovaOrdemVenda.setVisible(false);
 
 	}
 
+	@FXML
+	public void menuOrdemVendaVisible(MouseEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+			
+		}
+	}
+		
 	@FXML
 	public void menuClienteVisible(MouseEvent event) {
 		if (dropDown_Cliente.isVisible() == true) {
@@ -92,9 +111,21 @@ public class FXMLController implements Initializable {
 		} else {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
+			dropDown_Ordens.setVisible(false);
 		}
 	}
-
+		
+	@FXML
+	public void menuOrdemVendaVisibleOnClick(ActionEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+		}
+	}
+	
 	@FXML
 	public void menuProdutoVisible(MouseEvent event) {
 		if (dropDown_Produto.isVisible() == true) {
@@ -102,6 +133,7 @@ public class FXMLController implements Initializable {
 		} else {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
+			dropDown_Ordens.setVisible(false);
 		}
 	}
 
@@ -111,6 +143,7 @@ public class FXMLController implements Initializable {
 		} else {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
+			dropDown_Ordens.setVisible(false);
 		}
 	}
 
@@ -120,6 +153,7 @@ public class FXMLController implements Initializable {
 		} else {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
+			dropDown_Ordens.setVisible(false);
 		}
 	}
 
@@ -134,6 +168,19 @@ public class FXMLController implements Initializable {
 		}
 	}
 
+	
+	@FXML
+	public void panelNovaOrdemVendaVisible(ActionEvent event) {
+		if (panelNovaOrdemVenda.isVisible() == true) {
+			panelNovaOrdemVenda.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelNovaOrdemVenda.setVisible(true);
+		}
+	}
+
+	
 	@FXML
 	public void panelNovoClienteVisible(ActionEvent event) {
 		if (panelCadastrarCliente.isVisible() == true) {
@@ -333,6 +380,10 @@ public class FXMLController implements Initializable {
 		alert.showAndWait();
 
 	}
+	
+	
+	
+	
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {

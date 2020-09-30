@@ -298,9 +298,9 @@
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
                </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuProdutoVisible" text=" " AnchorPane.leftAnchor="10.0">
+            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuOrdemVendaVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" text=" " AnchorPane.leftAnchor="10.0">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" size="30" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" onMouseClicked="#menuProdutoVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" size="30" />
                </graphic></JFXButton>
          </children>
       </AnchorPane>
@@ -383,7 +383,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnNovaOrdemVenda" layoutX="5.0" layoutY="47.0" prefHeight="39.0" prefWidth="160.0" text="  Ordem de venda" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
+            <JFXButton fx:id="btnNovaOrdemVenda" layoutX="5.0" layoutY="47.0" onAction="#panelNovaOrdemVendaVisible" prefHeight="39.0" prefWidth="160.0" text="  Ordem de venda" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
                </graphic>
@@ -412,7 +412,7 @@
             <Insets top="15.0" />
          </padding>
       </AnchorPane>
-      <AnchorPane fx:id="panelNovaOrdemVenda" layoutX="66.0" layoutY="62.0" prefHeight="712.0" prefWidth="1176.0" visible="false">
+      <AnchorPane fx:id="panelNovaOrdemVenda" layoutX="66.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="712.0" prefWidth="1176.0" visible="false">
          <children>
             <TableView fx:id="table_OrdemVenda" layoutX="235.0" layoutY="199.0" prefHeight="297.0" prefWidth="670.0">
               <columns>
@@ -437,7 +437,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label layoutX="48.0" layoutY="30.0" text="Nova Ordem de Venda">
+            <Label layoutX="419.0" layoutY="27.0" text="Nova Ordem de Venda">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
