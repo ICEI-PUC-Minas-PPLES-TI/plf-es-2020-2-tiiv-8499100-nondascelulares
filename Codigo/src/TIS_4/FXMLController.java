@@ -307,6 +307,7 @@ public class FXMLController implements Initializable {
 
 		Produto novoProduto = new Produto();
 <<<<<<< HEAD
+<<<<<<< HEAD
 		novoProduto.setNome(cadastroProdutoName.getText());
 		novoProduto.setDescricao(cadastroProdutoDescri.getText());
 
@@ -353,6 +354,9 @@ public class FXMLController implements Initializable {
 	
 
 	private void GeraAlerta(String titulo, String conteudoTexto) {
+=======
+		novoProduto.setIdProduto(456L);
+>>>>>>> parent of e9ec400... DAO Produtos
 =======
 		novoProduto.setIdProduto(456L);
 >>>>>>> parent of e9ec400... DAO Produtos
