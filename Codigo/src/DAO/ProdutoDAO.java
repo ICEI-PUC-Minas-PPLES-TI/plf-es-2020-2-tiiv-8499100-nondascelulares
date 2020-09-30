@@ -33,17 +33,21 @@ public class ProdutoDAO implements DAO<Produto> {
 
 		boolean result = false;
 
+		
+		
 		String sqlAdd = "insert into produtos (nome, descricao) values (?, ?)";
 
-		PreparedStatement stmtCli = null;
+		PreparedStatement stmtProd = null;
 
 		try {
 
-			stmtCli = connection.prepareStatement(sqlAdd);
+			stmtProd = connection.prepareStatement(sqlAdd);
 
-			stmtCli.setString(1, produto.getNome());
-			stmtCli.setString(2, produto.getDescricao());
-
+			stmtProd.setString(1, produto.getNome());
+			stmtProd.setString(2, produto.getDescricao());
+			
+			stmtProd.execute();
+			
 			result = true;
 
 		} catch (SQLException e) {
@@ -57,9 +61,9 @@ public class ProdutoDAO implements DAO<Produto> {
 
 		} finally {
 
-			if (stmtCli != null || connection != null)
+			if (stmtProd != null || connection != null)
 				try {
-					stmtCli.close();
+					stmtProd.close();
 					connection.close();
 
 				} catch (SQLException logOrIgnore) {
