@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import Entidades.Cliente;
 import br.BD.ConnectionFactorySqlServer;
 import javafx.scene.control.Alert;
@@ -186,7 +190,7 @@ public class ClienteDao implements DAO<Cliente>{
 	public List<Cliente> getAll() {
 		
 		String sqlGetAll = "Select * from dbo.clientes";
-		List<Cliente> clientes = new ArrayList<>();
+		List<Cliente> clientes = new ArrayList();
 		PreparedStatement stmtCli = null;
 		
 		
@@ -196,9 +200,10 @@ public class ClienteDao implements DAO<Cliente>{
 	
 			ResultSet rs = stmtCli.executeQuery();
 			
-			//if(rs.next())
-			//throw new SQLException("Falha ao buscar os clientes");
-				
+		//	if(rs.getBoolean("nome"))
+			//	throw new SQLException("Falha ao buscar os clientes");
+	
+			
 			 while(rs.next()) {
 			
 				 Cliente newCliente = new Cliente();

@@ -8,7 +8,6 @@ package TIS_4;
 import com.jfoenix.controls.JFXButton;
 
 import DAO.ClienteDao;
-import DAO.ProdutoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,7 +39,6 @@ import javax.swing.JOptionPane;
 public class FXMLController implements Initializable {
 
 	private static ClienteDao cliDAO;
-	private static ProdutoDAO prodDAO;
 
 	// Array cliDAO.getAll();
 	// --------- Menu ------------
@@ -75,7 +73,17 @@ public class FXMLController implements Initializable {
 	@FXML
 	private Button btnEditarProduto;
 
-	
+	// --------- Table Buscar Produto --------
+
+	@FXML
+	private TableView<?> table_Produto;
+	@FXML
+	private TableColumn<?, ?> column_IdProduto;
+	@FXML
+	private TableColumn<?, ?> column_NomeProduto;
+	@FXML
+	private TableColumn<?, ?> column_PrecoVendaProduto;
+
 	@FXML
 	public void fecharTodosMenus(MouseEvent event) {
 		dropDown_Cliente.setVisible(false);
@@ -160,7 +168,7 @@ public class FXMLController implements Initializable {
 			dropDown_Produto.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
-			carregarClienteTabela(event);
+                        carregarClienteTabela(event);
 			panelBuscarCliente.setVisible(true);
 		}
 	}
@@ -195,9 +203,10 @@ public class FXMLController implements Initializable {
 	public TextField cadastroCliente_Bairro;
 	@FXML
 	public TextField cadastroCliente_Cidade;
-
+	
 	@FXML
 	public Button btnCadastrarCliente;
+	
 
 	@FXML
 	public void cadastrarCliente(ActionEvent event) throws IOException {
@@ -218,9 +227,16 @@ public class FXMLController implements Initializable {
 
 		cliDAO = new ClienteDao();
 
-		GeraAlerta("Sucesso", "Cliente cadastrado com sucesso!");
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.setTitle("Sucesso");
+		alert.setHeaderText(null);
+		alert.setContentText("Cliente cadastrado com sucesso!");
+		alert.showAndWait();
 
+		
 	}
+	
 
 	// --------- Table Buscar Cliente --------
 	@FXML
@@ -241,7 +257,8 @@ public class FXMLController implements Initializable {
 	private TableColumn<Cliente, String> column_Cidade;
 	@FXML
 	private TableColumn<Cliente, String> column_Estado;
-
+	
+	
 	@FXML
 	private TableView<Cliente> table_Cliente;
 
@@ -265,7 +282,7 @@ public class FXMLController implements Initializable {
 	private ObservableList<Cliente> listaDeClientes() {
 
 		cliDAO = new ClienteDao();
-		
+
 		return FXCollections.observableArrayList(cliDAO.getAll());
 	}
 
@@ -280,14 +297,16 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField precoVendaProd;
 	@FXML
-	public TextField precoCusto;
+	public TextField precoCusto;	
 	@FXML
 	public Button bntIncluirProd;
+
 
 	@FXML
 	public void cadastrarProduto(ActionEvent event) throws IOException, NumberFormatException, ExcecaoValorInvalido {
 
 		Produto novoProduto = new Produto();
+<<<<<<< HEAD
 		novoProduto.setNome(cadastroProdutoName.getText());
 		novoProduto.setDescricao(cadastroProdutoDescri.getText());
 
@@ -334,14 +353,15 @@ public class FXMLController implements Initializable {
 	
 
 	private void GeraAlerta(String titulo, String conteudoTexto) {
+=======
+		novoProduto.setIdProduto(456L);
+>>>>>>> parent of e9ec400... DAO Produtos
 
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.initStyle(StageStyle.UTILITY);
-		alert.setTitle(titulo);
-		alert.setHeaderText(null);
-		alert.setContentText(conteudoTexto);
-		alert.showAndWait();
+		novoProduto.setPrecoCompra(Float.parseFloat(precoCusto.getText()));
+		novoProduto.setPrecoVenda(Float.parseFloat(precoVendaProd.getText()));
+		novoProduto.setNome(cadastroProdutoName.getText());
 
+		JOptionPane.showMessageDialog(null, novoProduto.getNome() + " inserido com sucesso!");
 	}
 
 	@Override

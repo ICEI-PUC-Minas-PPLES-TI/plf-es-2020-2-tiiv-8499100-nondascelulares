@@ -1,7 +1,11 @@
 package Entidades;
 
-public class Cliente  {
+import java.io.Serializable;
+import java.util.Random;
 
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cpfCnpj;
 	private String email;
@@ -12,8 +16,25 @@ public class Cliente  {
 	private String cidade;
 	private String estado;
 	
+	Random random = new Random();
 
 	public Cliente() {};
+	
+	public Cliente(String cpfCnpj, String nome, String email, String telefone,String rua, String numero, String bairro, String cidade, String estado) {
+
+		setCpfCnpj(cpfCnpj);
+		setNome(nome);
+		setEmail(email);
+		setTelefone(telefone);
+		setRua(rua);
+		setNumero(numero);
+		setBairro(bairro);
+		setCidade(cidade);
+		setEstado(estado);
+	}
+	
+	
+	
 	
 	public String getRua() {
 		return rua;
