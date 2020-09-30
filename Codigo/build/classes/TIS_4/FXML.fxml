@@ -253,9 +253,9 @@
          <children>
             <TableView fx:id="table_Produto" layoutX="14.0" layoutY="99.0" prefHeight="531.0" prefWidth="1161.0">
                <columns>
-                  <TableColumn fx:id="column_IdProduto" prefWidth="152.0" text="Id" />
-                  <TableColumn fx:id="column_NomeProduto" minWidth="0.0" prefWidth="894.0" text="Nome" />
-                  <TableColumn fx:id="column_PrecoVendaProduto" minWidth="0.0" prefWidth="114.0" resizable="false" text="Preço de Venda" />
+                  <TableColumn fx:id="column_IdProduto" prefWidth="100.0" text="Id" />
+                  <TableColumn fx:id="column_NomeProduto" minWidth="0.0" prefWidth="300.0" text="Nome" />
+                  <TableColumn fx:id="column_DescriProduto" minWidth="0.0" prefWidth="800.0" resizable="false" text="descricao" />
                </columns>
             </TableView>
             <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="67.0" prefWidth="714.0">

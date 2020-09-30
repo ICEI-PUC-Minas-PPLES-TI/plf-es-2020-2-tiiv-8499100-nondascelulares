@@ -166,12 +166,13 @@ public class FXMLController implements Initializable {
 	}
 
 	@FXML
-	public void panelBuscarProdutoVisible(ActionEvent event) {
+	public void panelBuscarProdutoVisible(ActionEvent event) throws IOException {
 		if (panelBuscarProduto.isVisible() == true) {
 			panelBuscarProduto.setVisible(false);
 			dropDown_Cliente.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			carregarProdutoTabela(event);
 			panelBuscarProduto.setVisible(true);
 		}
 	}
@@ -304,10 +305,29 @@ public class FXMLController implements Initializable {
 		@FXML
 		private TableView<Produto> table_Produto;
 		@FXML
-		private TableColumn<Produto, ?> column_IdProduto;
+		private TableColumn<Produto, Long> column_IdProduto;
 		@FXML
-		private TableColumn<Produto, ?> column_NomeProduto;
+		private TableColumn<Produto, String> column_NomeProduto;
+		@FXML
+		private TableColumn<Produto, String> column_DescriProduto;
 		
+		@FXML
+		public void carregarProdutoTabela(ActionEvent event) throws IOException {
+
+			column_IdProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+			column_NomeProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+			column_DescriProduto.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+	
+			table_Produto.setItems(listaDeProdutos());
+
+		}
+
+		private ObservableList<Produto> listaDeProdutos() {
+
+			ProdutoDAO ProDao = new ProdutoDAO();
+			
+			return FXCollections.observableArrayList(ProDao.getAll());
+		}
 
 	
 	
