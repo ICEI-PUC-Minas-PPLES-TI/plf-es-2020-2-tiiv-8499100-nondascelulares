@@ -3,7 +3,7 @@ package br.tis.app;
 
 import com.jfoenix.controls.JFXButton;
 
-import br.tis.dao.ClienteDao;
+import br.tis.dao.ClienteDAO;
 import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
 import br.tis.entidades.Produto;
@@ -66,7 +66,7 @@ public class FXMLController implements Initializable {
 
 	// --------- CLIENTE ------------
 
-	private static ClienteDao cliDAO;
+	private static ClienteDAO cliDAO;
 
 	@FXML
 	public JFXButton btnMenuCliente;
@@ -164,11 +164,11 @@ public class FXMLController implements Initializable {
 		novoCliente.setBairro(cadastroCliente_Bairro.getText());
 		novoCliente.setCidade(cadastroCliente_Cidade.getText());
 
-		cliDAO = new ClienteDao(novoCliente);
+		cliDAO = new ClienteDAO(novoCliente);
 
 		cliDAO.add();
 
-		cliDAO = new ClienteDao();
+		cliDAO = new ClienteDAO();
 
 		GeraAlerta("Sucesso", "Cliente cadastrado com sucesso!");
 
@@ -216,7 +216,7 @@ public class FXMLController implements Initializable {
 
 	private ObservableList<Cliente> listaDeClientes() {
 
-		cliDAO = new ClienteDao();
+		cliDAO = new ClienteDAO();
 
 		return FXCollections.observableArrayList(cliDAO.getAll());
 	}

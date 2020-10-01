@@ -1,14 +1,13 @@
 package br.tis.entidades;
 
-import java.io.Serializable;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OrdemServico implements Serializable{
+public class OrdemServico {
 
-	private static final long serialVersionUID = 1L;
 	private Date data;
 	private long codServ;
 	private String marca;

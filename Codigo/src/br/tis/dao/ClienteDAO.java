@@ -12,19 +12,19 @@ import br.tis.entidades.Cliente;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
-public class ClienteDao implements DAO<Cliente>{
+public class ClienteDAO implements DAO<Cliente>{
 
 	private final Connection connection;
 	long inicio, fim;
 	private Cliente cliente;
 	
-	public  ClienteDao() {
+	public  ClienteDAO() {
 		new ConnectionFactorySqlServer();
 		this.connection = ConnectionFactorySqlServer.getConnection();
 	}
 	
 
-	public  ClienteDao(Cliente cliente) {
+	public  ClienteDAO(Cliente cliente) {
 		new ConnectionFactorySqlServer();
 		this.connection = ConnectionFactorySqlServer.getConnection();
 		this.cliente = cliente;
