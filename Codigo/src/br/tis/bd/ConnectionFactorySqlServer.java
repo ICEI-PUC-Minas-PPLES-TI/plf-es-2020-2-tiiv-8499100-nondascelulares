@@ -1,4 +1,4 @@
-package br.BD;
+package br.tis.bd;
 
 import javax.swing.*;
 import java.sql.*;

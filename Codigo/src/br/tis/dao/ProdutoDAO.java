@@ -1,4 +1,4 @@
-package DAO;
+package br.tis.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Entidades.Produto;
-import br.BD.ConnectionFactorySqlServer;
+import br.tis.bd.ConnectionFactorySqlServer;
+import br.tis.entidades.Produto;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
