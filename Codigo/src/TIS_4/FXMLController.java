@@ -32,48 +32,9 @@ import javafx.scene.input.MouseEvent;
  */
 public class FXMLController implements Initializable {
 
-	private static ClienteDao cliDAO;
 	private static ProdutoDAO prodDAO;
 
-	// Array cliDAO.getAll();
-	// --------- Menu ------------
-	@FXML
-	public JFXButton btnMenuCliente;
-	@FXML
-	public AnchorPane dropDown_Cliente;
-	@FXML
-	public JFXButton btnMenuProduto;
-	@FXML
-	public AnchorPane dropDown_Produto;
-	@FXML
-	public AnchorPane panelCadastrarProduto;
-	@FXML
-	public JFXButton btnNovoProduto;
-	@FXML
-	public JFXButton btnNovoCliente;
-	@FXML
-	public JFXButton btnBuscarCliente;
-	@FXML
-	public AnchorPane panelCadastrarCliente;
-	@FXML
-	public AnchorPane panelBuscarCliente;
-	@FXML
-	private Button btnExcluirCliente;
-	@FXML
-	private Button btnEditarCliente;
-	@FXML
-	public AnchorPane panelBuscarProduto;
-	@FXML
-	private Button btnExcluirProduto;
-	@FXML
-	private Button btnEditarProduto;
-	@FXML
-	public  AnchorPane panelNovaOrdemVenda;
-	@FXML
-	public  AnchorPane dropDown_Ordens;
-	
-
-	
+	// ----------------- Metodos gerais ----------------
 	@FXML
 	public void fecharTodosMenus(MouseEvent event) {
 		dropDown_Cliente.setVisible(false);
@@ -92,18 +53,38 @@ public class FXMLController implements Initializable {
 
 	}
 
-	@FXML
-	public void menuOrdemVendaVisible(MouseEvent event) {
-		if (dropDown_Ordens.isVisible() == true) {
-			dropDown_Ordens.setVisible(false);
-		} else {
-			dropDown_Ordens.setVisible(true);
-			dropDown_Cliente.setVisible(false);
-			dropDown_Produto.setVisible(false);
-			
-		}
+	private void GeraAlerta(String titulo, String conteudoTexto) {
+
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.setTitle(titulo);
+		alert.setHeaderText(null);
+		alert.setContentText(conteudoTexto);
+		alert.showAndWait();
+
 	}
-		
+
+	// --------- CLIENTE ------------
+
+	private static ClienteDao cliDAO;
+
+	@FXML
+	public JFXButton btnMenuCliente;
+	@FXML
+	public AnchorPane dropDown_Cliente;
+	@FXML
+	public JFXButton btnNovoCliente;
+	@FXML
+	public JFXButton btnBuscarCliente;
+	@FXML
+	public AnchorPane panelCadastrarCliente;
+	@FXML
+	public AnchorPane panelBuscarCliente;
+	@FXML
+	private Button btnExcluirCliente;
+	@FXML
+	private Button btnEditarCliente;
+
 	@FXML
 	public void menuClienteVisible(MouseEvent event) {
 		if (dropDown_Cliente.isVisible() == true) {
@@ -111,28 +92,6 @@ public class FXMLController implements Initializable {
 		} else {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
-			dropDown_Ordens.setVisible(false);
-		}
-	}
-		
-	@FXML
-	public void menuOrdemVendaVisibleOnClick(ActionEvent event) {
-		if (dropDown_Ordens.isVisible() == true) {
-			dropDown_Ordens.setVisible(false);
-		} else {
-			dropDown_Ordens.setVisible(true);
-			dropDown_Cliente.setVisible(false);
-			dropDown_Produto.setVisible(false);
-		}
-	}
-	
-	@FXML
-	public void menuProdutoVisible(MouseEvent event) {
-		if (dropDown_Produto.isVisible() == true) {
-			dropDown_Produto.setVisible(false);
-		} else {
-			dropDown_Produto.setVisible(true);
-			dropDown_Cliente.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		}
 	}
@@ -147,40 +106,6 @@ public class FXMLController implements Initializable {
 		}
 	}
 
-	@FXML
-	public void menuProdutoVisibleOnClick(ActionEvent event) {
-		if (dropDown_Produto.isVisible() == true) {
-		} else {
-			dropDown_Produto.setVisible(true);
-			dropDown_Cliente.setVisible(false);
-			dropDown_Ordens.setVisible(false);
-		}
-	}
-
-	@FXML
-	public void panelNovoProdutoVisible(ActionEvent event) {
-		if (panelCadastrarProduto.isVisible() == true) {
-			panelCadastrarProduto.setVisible(false);
-			dropDown_Produto.setVisible(false);
-		} else {
-			fecharTodosPanel(event);
-			panelCadastrarProduto.setVisible(true);
-		}
-	}
-
-	
-	@FXML
-	public void panelNovaOrdemVendaVisible(ActionEvent event) {
-		if (panelNovaOrdemVenda.isVisible() == true) {
-			panelNovaOrdemVenda.setVisible(false);
-			dropDown_Ordens.setVisible(false);
-		} else {
-			fecharTodosPanel(event);
-			panelNovaOrdemVenda.setVisible(true);
-		}
-	}
-
-	
 	@FXML
 	public void panelNovoClienteVisible(ActionEvent event) {
 		if (panelCadastrarCliente.isVisible() == true) {
@@ -205,20 +130,7 @@ public class FXMLController implements Initializable {
 		}
 	}
 
-	@FXML
-	public void panelBuscarProdutoVisible(ActionEvent event) throws IOException {
-		if (panelBuscarProduto.isVisible() == true) {
-			panelBuscarProduto.setVisible(false);
-			dropDown_Cliente.setVisible(false);
-		} else {
-			fecharTodosPanel(event);
-			carregarProdutoTabela(event);
-			panelBuscarProduto.setVisible(true);
-		}
-	}
-
-	// -------- Cadastro Cliente ------------
-
+	// --------- Atributos Cadastro Clientes --------
 	@FXML
 	public TextField cadastroCliente_nome;
 	@FXML
@@ -305,22 +217,83 @@ public class FXMLController implements Initializable {
 	private ObservableList<Cliente> listaDeClientes() {
 
 		cliDAO = new ClienteDao();
-		
+
 		return FXCollections.observableArrayList(cliDAO.getAll());
 	}
 
-	// -------- Cadastro Produto ------------
+	// --------- FIM MÉTODOS CLIENTE ------------
+
+	// ---------- PRODUTOS ---------------------
+
+	@FXML
+	public JFXButton btnMenuProduto;
+	@FXML
+	public AnchorPane dropDown_Produto;
+	@FXML
+	public AnchorPane panelCadastrarProduto;
+	@FXML
+	public JFXButton btnNovoProduto;
+	@FXML
+	public AnchorPane panelBuscarProduto;
+	@FXML
+	private Button btnExcluirProduto;
+	@FXML
+	private Button btnEditarProduto;
+	@FXML
+	public AnchorPane panelNovaOrdemVenda;
+	@FXML
+	public AnchorPane dropDown_Ordens;
+
+	@FXML
+	public void menuProdutoVisible(MouseEvent event) {
+		if (dropDown_Produto.isVisible() == true) {
+			dropDown_Produto.setVisible(false);
+		} else {
+			dropDown_Produto.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		}
+	}
+
+	@FXML
+	public void menuProdutoVisibleOnClick(ActionEvent event) {
+		if (dropDown_Produto.isVisible() == true) {
+		} else {
+			dropDown_Produto.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		}
+	}
+
+	@FXML
+	public void panelNovoProdutoVisible(ActionEvent event) {
+		if (panelCadastrarProduto.isVisible() == true) {
+			panelCadastrarProduto.setVisible(false);
+			dropDown_Produto.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelCadastrarProduto.setVisible(true);
+		}
+	}
+
+	@FXML
+	public void panelBuscarProdutoVisible(ActionEvent event) throws IOException {
+		if (panelBuscarProduto.isVisible() == true) {
+			panelBuscarProduto.setVisible(false);
+			dropDown_Cliente.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			carregarProdutoTabela(event);
+			panelBuscarProduto.setVisible(true);
+		}
+	}
+
+	// -------- Atributos cadastro Produto ------------
 
 	@FXML
 	public TextField cadastroProdutoName;
 	@FXML
 	public TextField cadastroProdutoDescri;
-	@FXML
-	public TextField quantidadeProd;
-	@FXML
-	public TextField precoVendaProd;
-	@FXML
-	public TextField precoCusto;
 	@FXML
 	public Button bntIncluirProd;
 
@@ -338,49 +311,74 @@ public class FXMLController implements Initializable {
 		GeraAlerta("Sucesso", "Produto cadastrado com sucesso!");
 
 	}
-	
-	
+
 	// --------- Table Buscar Produto --------
 
-		@FXML
-		private TableView<Produto> table_Produto;
-		@FXML
-		private TableColumn<Produto, Long> column_IdProduto;
-		@FXML
-		private TableColumn<Produto, String> column_NomeProduto;
-		@FXML
-		private TableColumn<Produto, String> column_DescriProduto;
-		
-		@FXML
-		public void carregarProdutoTabela(ActionEvent event) throws IOException {
+	@FXML
+	private TableView<Produto> table_Produto;
+	@FXML
+	private TableColumn<Produto, Long> column_IdProduto;
+	@FXML
+	private TableColumn<Produto, String> column_NomeProduto;
+	@FXML
+	private TableColumn<Produto, String> column_DescriProduto;
 
-			column_IdProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-			column_NomeProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
-			column_DescriProduto.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-	
-			table_Produto.setItems(listaDeProdutos());
+	@FXML
+	public void carregarProdutoTabela(ActionEvent event) throws IOException {
 
-		}
+		column_IdProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		column_NomeProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		column_DescriProduto.setCellValueFactory(new PropertyValueFactory<>("descricao"));
 
-		private ObservableList<Produto> listaDeProdutos() {
-
-			ProdutoDAO ProDao = new ProdutoDAO();
-			
-			return FXCollections.observableArrayList(ProDao.getAll());
-		}
-
-
-	private void GeraAlerta(String titulo, String conteudoTexto) {
-
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.initStyle(StageStyle.UTILITY);
-		alert.setTitle(titulo);
-		alert.setHeaderText(null);
-		alert.setContentText(conteudoTexto);
-		alert.showAndWait();
+		table_Produto.setItems(listaDeProdutos());
 
 	}
-	
+
+	private ObservableList<Produto> listaDeProdutos() {
+
+		ProdutoDAO ProDao = new ProdutoDAO();
+
+		return FXCollections.observableArrayList(ProDao.getAll());
+	}
+
+	// --------- FIM MÉTODOS PRODUTOS ------------
+
+	// --------- ORDEM DE VENDA ------------------
+
+	@FXML
+	public void menuOrdemVendaVisible(MouseEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+
+		}
+	}
+
+	@FXML
+	public void menuOrdemVendaVisibleOnClick(ActionEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+		}
+	}
+
+	@FXML
+	public void panelNovaOrdemVendaVisible(ActionEvent event) {
+		if (panelNovaOrdemVenda.isVisible() == true) {
+			panelNovaOrdemVenda.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelNovaOrdemVenda.setVisible(true);
+		}
+	}
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
