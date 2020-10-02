@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class Estoque {
 
-	private Date dataCompra;
+	private TipoLancamento tipoLancamento;
+	private Date dataLancamento;
 	private Produto produto;
 	private double custoUnitario;
 	private double precoVendaUnitario;
 	private int quantidade;
-	private double custoMedio;
-	private int quantTotalDisponivel;
+	private String documento; 
 
 	public Produto getProduto() {
 		return produto;
@@ -44,28 +44,28 @@ public class Estoque {
 		this.quantidade = quantidade;
 	}
 
-	public double getCustoMedio() {
-		return custoMedio;
+	public Date getDataLancamento() {
+		return dataLancamento;
 	}
 
-	public void setCustoMedio(double custoMedio) {
-		this.custoMedio = custoMedio;
+	public void setDataLancamento(Date dataCompra) {
+		this.dataLancamento = dataCompra;
 	}
 
-	public Date getDataCompra() {
-		return dataCompra;
+	public TipoLancamento getTipoLancamento() {
+		return tipoLancamento;
 	}
 
-	public void setDataCompra(Date dataCompra) {
-		this.dataCompra = dataCompra;
+	public void setTipoLancamento(TipoLancamento tipoLancamento) {
+		this.tipoLancamento = tipoLancamento;
 	}
 
-	public int getQuantTotalProduto() {
-		return quantTotalDisponivel;
+	public String getDocumento() {
+		return documento;
 	}
 
-	public void setQuantTotalProduto(int quantTotalProduto) {
-		this.quantTotalDisponivel = quantTotalProduto;
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 }
