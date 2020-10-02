@@ -17,20 +17,20 @@ public class MainTeste {
 		
 		lancamento.setTipoLancamento(TipoLancamento.valueOf("SAIDA"));
 		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
-		lancamento.setDocumento("84564");
+		lancamento.setDocumento("ddffd");
 		lancamento.setIdproduto(100L);
 		lancamento.setNomeProduto("Peliculas Note 8");
 		lancamento.setCustoUnitario(0);
-		lancamento.setPrecoVendaUnitario(25);
-		lancamento.setQuantidade(50);
+		lancamento.setPrecoVendaUnitario(15);
+		lancamento.setQuantidade(5);
 		
 		EstoqueDAO estoqueDao = new EstoqueDAO(lancamento);
 		
-		estoqueDao.addLancamento();
+		estoqueDao.add();
 		
 		estoqueDao = new EstoqueDAO();
 		
-		System.out.println(estoqueDao.getQuantidadeDisponivel(100L));
+		System.out.println(estoqueDao.getPrecoVendaMedio(100L));
 	
 		
 	}

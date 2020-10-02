@@ -28,7 +28,7 @@ public class EstoqueDAO {
 		this.estoque = estoque;
 	}
 
-	public boolean addLancamento() {
+	public boolean add() {
 		boolean result = false;
 
 		String sqlAdd = "insert into estoque (dataLancamento, idProduto, nomeProduto, custoUnitario, precoVendaUnitario, quantidade, tipoLancamento, documento) values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -56,12 +56,7 @@ public class EstoqueDAO {
 
 			e.printStackTrace();
 
-			// Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			// alert.initStyle(StageStyle.UTILITY);
-			// alert.setTitle("Falha");
-			// alert.setHeaderText(null);
-			// alert.setContentText(e.getMessage());
-			// alert.showAndWait();
+			geraAlerta("Falha ao registrar lancamento", e.getMessage());
 
 		} finally {
 
@@ -78,7 +73,7 @@ public class EstoqueDAO {
 
 	}
 
-	public boolean removeLancamento(long idEstoque) {
+	public boolean remove(long idEstoque) {
 		boolean result = false;
 
 		String sqlDelete = "DELETE from dbo.estoque where idEstoque = ?";
@@ -100,12 +95,7 @@ public class EstoqueDAO {
 
 			e.printStackTrace();
 
-			// Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			// alert.initStyle(StageStyle.UTILITY);
-			// alert.setTitle("Falha");
-			// alert.setHeaderText(null);
-			// alert.setContentText(e.getMessage());
-			// alert.showAndWait();
+			geraAlerta("Falha ao excluir Lancamento", e.getMessage());
 
 		} finally {
 
@@ -133,10 +123,6 @@ public class EstoqueDAO {
 
 			ResultSet rs = stmtLanc.executeQuery();
 
-			// if(rs.next())
-
-			// throw new SQLException("Falha ao buscar os clientes");
-
 			while (rs.next()) {
 
 				Estoque lancamentos = new Estoque();
@@ -159,12 +145,7 @@ public class EstoqueDAO {
 
 			e.printStackTrace();
 
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.initStyle(StageStyle.UTILITY);
-			alert.setTitle("Falha ao buscar a lista de clientes");
-			alert.setHeaderText(null);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			geraAlerta("Falha ao obter o estoque", e.getMessage());
 
 		} finally {
 
@@ -202,12 +183,7 @@ public class EstoqueDAO {
 
 			e.printStackTrace();
 
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.initStyle(StageStyle.UTILITY);
-			alert.setTitle("Falha ao buscar a lista de clientes");
-			alert.setHeaderText(null);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			geraAlerta("Falha no Custo Medio", e.getMessage());
 
 		} finally {
 
@@ -228,7 +204,7 @@ public class EstoqueDAO {
 
 		int quantDisp = 0;
 
-		String sqlEntrada = "	SELECT TOP (1)((SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'ENTRADA' and idProduto = ?) -	(SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'SAIDA' and idProduto = ?))from [dbo].[estoque] ";
+		String sqlEntrada = "SELECT TOP (1)((SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'ENTRADA' and idProduto = ?) -	(SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'SAIDA' and idProduto = ?))from [dbo].[estoque] ";
 
 		PreparedStatement stmtQuantDispEntrada = null;
 
@@ -248,6 +224,8 @@ public class EstoqueDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+			
+			geraAlerta("Falha Quantidade Disponível", e.getMessage());
 
 		} finally {
 
@@ -264,10 +242,55 @@ public class EstoqueDAO {
 		return quantDisp;
 	}
 
-	public int getPrecoVendaMedio(long idProduto) {
-		int quantidade = 0;
+	public double getPrecoVendaMedio(long idProduto) {
+		double precoMedio = 0;
 
-		return quantidade;
+		String sqlPreco = "SELECT AVG(precoVendaUnitario) AS 'Preco Medio' FROM [dbo].[estoque] where tipoLancamento = 'SAIDA' and idProduto = ?";
+		PreparedStatement stmtPrecoMedio = null;
+
+		try {
+
+			stmtPrecoMedio = connection.prepareStatement(sqlPreco);
+
+			stmtPrecoMedio.setLong(1, idProduto);
+
+			ResultSet rs = stmtPrecoMedio.executeQuery();
+
+			rs.next();
+
+			precoMedio = rs.getDouble("Preco Medio");
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			geraAlerta("Falha no Preco Medio", e.getMessage());
+
+
+		} finally {
+
+			if (stmtPrecoMedio != null || connection != null)
+				try {
+					stmtPrecoMedio.close();
+					connection.close();
+
+				} catch (SQLException logOrIgnore) {
+
+				}
+		}
+
+		return precoMedio;
 	}
+	
+	private void geraAlerta(String titulo, String descricao) {
+		
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.initStyle(StageStyle.UTILITY);
+		alert.setTitle(titulo);
+		alert.setHeaderText(null);
+		alert.setContentText(descricao);
+		alert.showAndWait();
+	}
+	
 
 }
