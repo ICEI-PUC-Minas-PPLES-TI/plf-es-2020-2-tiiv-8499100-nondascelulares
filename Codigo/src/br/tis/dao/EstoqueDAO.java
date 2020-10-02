@@ -60,10 +60,9 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtEstoque != null || connection != null)
+			if (stmtEstoque != null )
 				try {
 					stmtEstoque.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -99,11 +98,10 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtLanc != null || connection != null)
+			if (stmtLanc != null)
 				try {
 					stmtLanc.close();
-					connection.close();
-
+					
 				} catch (SQLException logOrIgnore) {
 
 				}
@@ -149,10 +147,9 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtLanc != null || connection != null)
+			if (stmtLanc != null )
 				try {
 					stmtLanc.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -187,10 +184,9 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtCustoMedio != null || connection != null)
+			if (stmtCustoMedio != null )
 				try {
 					stmtCustoMedio.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -229,10 +225,9 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtQuantDispEntrada != null || connection != null)
+			if (stmtQuantDispEntrada != null )
 				try {
 					stmtQuantDispEntrada.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -269,10 +264,9 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtPrecoMedio != null || connection != null)
+			if (stmtPrecoMedio != null)
 				try {
 					stmtPrecoMedio.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -292,5 +286,16 @@ public class EstoqueDAO {
 		alert.showAndWait();
 	}
 	
+	public void CloseConnetion() {
+		
+		if ( connection != null)
+			try {
+				connection.close();
+
+			} catch (SQLException logOrIgnore) {
+
+			}
+		
+	}
 
 }

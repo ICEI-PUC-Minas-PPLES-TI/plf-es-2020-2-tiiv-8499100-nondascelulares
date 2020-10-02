@@ -15,12 +15,12 @@ public class MainTeste {
 
 		Estoque lancamento = new Estoque();
 		
-		lancamento.setTipoLancamento(TipoLancamento.valueOf("SAIDA"));
+		lancamento.setTipoLancamento(TipoLancamento.valueOf("ENTRADA"));
 		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
-		lancamento.setDocumento("ddffd");
-		lancamento.setIdproduto(100L);
-		lancamento.setNomeProduto("Peliculas Note 8");
-		lancamento.setCustoUnitario(0);
+		lancamento.setDocumento("546546");
+		lancamento.setIdproduto(200L);
+		lancamento.setNomeProduto("Peliculas Iphone");
+		lancamento.setCustoUnitario(50);
 		lancamento.setPrecoVendaUnitario(15);
 		lancamento.setQuantidade(5);
 		
@@ -28,10 +28,13 @@ public class MainTeste {
 		
 		estoqueDao.add();
 		
-		estoqueDao = new EstoqueDAO();
+	//	estoqueDao = new EstoqueDAO();
 		
-		System.out.println(estoqueDao.getPrecoVendaMedio(100L));
+		System.out.println("Custo Médio: " + estoqueDao.getCustoMedio(200L));
+		
+		System.out.println("Preco venda Médio: " + estoqueDao.getPrecoVendaMedio(100L));
 	
+		estoqueDao.CloseConnetion();
 		
 	}
 

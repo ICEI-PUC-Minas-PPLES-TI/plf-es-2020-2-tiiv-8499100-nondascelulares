@@ -147,7 +147,6 @@ public class FXMLController implements Initializable {
 	public TextField cadastroCliente_Bairro;
 	@FXML
 	public TextField cadastroCliente_Cidade;
-
 	@FXML
 	public Button btnCadastrarCliente;
 
@@ -239,10 +238,7 @@ public class FXMLController implements Initializable {
 	private Button btnExcluirProduto;
 	@FXML
 	private Button btnEditarProduto;
-	@FXML
-	public AnchorPane panelNovaOrdemVenda;
-	@FXML
-	public AnchorPane dropDown_Ordens;
+	
 
 	@FXML
 	public void menuProdutoVisible(MouseEvent event) {
@@ -344,6 +340,11 @@ public class FXMLController implements Initializable {
 	// --------- FIM MÉTODOS PRODUTOS ------------
 
 	// --------- ORDEM DE VENDA ------------------
+
+	@FXML
+	public AnchorPane panelNovaOrdemVenda;
+	@FXML
+	public AnchorPane dropDown_Ordens;
 
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
