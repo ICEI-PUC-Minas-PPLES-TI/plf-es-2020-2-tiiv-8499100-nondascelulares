@@ -4,21 +4,15 @@ import java.sql.Date;
 
 public class Estoque {
 
+	private long idEstoque;
 	private TipoLancamento tipoLancamento;
 	private Date dataLancamento;
-	private Produto produto;
+	private long idproduto;
+	private String nomeProduto;
 	private double custoUnitario;
 	private double precoVendaUnitario;
 	private int quantidade;
 	private String documento; 
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 
 	public double getCustoUnitario() {
 		return custoUnitario;
@@ -66,6 +60,30 @@ public class Estoque {
 
 	public void setDocumento(String documento) {
 		this.documento = documento;
+	}
+
+	public long getIdEstoque() {
+		return idEstoque;
+	}
+
+	public void setIdEstoque(long idEstoque) {
+		this.idEstoque = idEstoque;
+	}
+
+	public long getIdproduto() {
+		return idproduto;
+	}
+
+	public void setIdproduto(long idproduto) {
+		this.idproduto = idproduto;
+	}
+
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
 }
