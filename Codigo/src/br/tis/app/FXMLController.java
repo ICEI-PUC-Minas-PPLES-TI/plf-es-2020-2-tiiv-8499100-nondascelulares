@@ -220,7 +220,7 @@ public class FXMLController implements Initializable {
 		return FXCollections.observableArrayList(cliDAO.getAll());
 	}
 
-	// --------- FIM MÉTODOS CLIENTE ------------
+	// --------- FIM METODOS CLIENTE ------------
 
 	// ---------- PRODUTOS ---------------------
 
@@ -337,7 +337,7 @@ public class FXMLController implements Initializable {
 		return FXCollections.observableArrayList(ProDao.getAll());
 	}
 
-	// --------- FIM MÉTODOS PRODUTOS ------------
+	// --------- FIM METODOS PRODUTOS ------------
 
 	// --------- ORDEM DE VENDA ------------------
 

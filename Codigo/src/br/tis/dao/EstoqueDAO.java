@@ -161,7 +161,7 @@ public class EstoqueDAO {
 	public double getCustoMedio(long idProduto) {
 		double custoMedio = 0;
 
-		String sqlCusto = "SELECT AVG(custoUnitario) AS 'Custo Médio' FROM [dbo].[estoque] where tipoLancamento = 'ENTRADA' and idProduto = ?";
+		String sqlCusto = "SELECT AVG(custoUnitario) AS 'Custo Medio' FROM [dbo].[estoque] where tipoLancamento = 'ENTRADA' and idProduto = ?";
 		PreparedStatement stmtCustoMedio = null;
 
 		try {
@@ -174,7 +174,7 @@ public class EstoqueDAO {
 
 			rs.next();
 
-			custoMedio = rs.getDouble("Custo Médio");
+			custoMedio = rs.getDouble("Custo Medio");
 
 		} catch (SQLException e) {
 
@@ -221,7 +221,7 @@ public class EstoqueDAO {
 
 			e.printStackTrace();
 			
-			geraAlerta("Falha Quantidade Disponível", e.getMessage());
+			geraAlerta("Falha Quantidade Disponivel", e.getMessage());
 
 		} finally {
 

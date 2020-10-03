@@ -30,9 +30,9 @@ public class MainTeste {
 		
 	//	estoqueDao = new EstoqueDAO();
 		
-		System.out.println("Custo Médio: " + estoqueDao.getCustoMedio(200L));
+		System.out.println("Custo Medio: " + estoqueDao.getCustoMedio(200L));
 		
-		System.out.println("Preco venda Médio: " + estoqueDao.getPrecoVendaMedio(100L));
+		System.out.println("Preco venda Medio: " + estoqueDao.getPrecoVendaMedio(100L));
 	
 		estoqueDao.CloseConnetion();
 		
