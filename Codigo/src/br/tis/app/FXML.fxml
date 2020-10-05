@@ -232,7 +232,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnExcluirCliente" layoutX="378.0" layoutY="668.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnExcluirCliente" layoutX="378.0" layoutY="668.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -262,7 +262,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnExcluirProduto" layoutX="332.0" layoutY="648.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnExcluirProduto" layoutX="332.0" layoutY="648.0" mnemonicParsing="false" onAction="#excluirProduto" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Produto" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>

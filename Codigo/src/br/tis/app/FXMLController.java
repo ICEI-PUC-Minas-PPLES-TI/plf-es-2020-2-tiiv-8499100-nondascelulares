@@ -292,6 +292,24 @@ public class FXMLController implements Initializable {
 			panelBuscarProduto.setVisible(true);
 		}
 	}
+        
+        @FXML
+	public void excluirCliente(ActionEvent event) throws IOException {
+            if (table_Cliente.getSelectionModel().getSelectedItem()!= null ){
+            String nomeClienteExcluir;
+            nomeClienteExcluir = table_Cliente.getSelectionModel().getSelectedItem().getNome();
+            
+            cliDAO = new ClienteDAO();
+            cliDAO.remove(nomeClienteExcluir);
+            GeraAlerta("Excluido com sucesso!", "Cliente excluido com sucesso!");
+            panelBuscarClienteVisible(event);
+            panelBuscarClienteVisible(event);
+            }
+            else{
+                GeraAlerta("Selecione um cliente!", "Nenhum cliente selecionado!");
+            }
+            
+        }
 
 	// -------- Atributos cadastro Produto ------------
 
@@ -345,7 +363,24 @@ public class FXMLController implements Initializable {
 
 		return FXCollections.observableArrayList(ProDao.getAll());
 	}
-
+        
+                @FXML
+	public void excluirProduto(ActionEvent event) throws IOException {
+            if (table_Produto.getSelectionModel().getSelectedItem()!= null ){
+            int idProdutoExcluir;
+            idProdutoExcluir = table_Produto.getSelectionModel().getSelectedItem().getIdProduto().intValue();
+            
+            prodDAO = new ProdutoDAO();
+            prodDAO.remove(idProdutoExcluir);
+            GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
+            panelBuscarProdutoVisible(event);
+            panelBuscarProdutoVisible(event);
+            }
+            else{
+                GeraAlerta("Selecione um Produto!", "Nenhum Produto selecionado!");
+            }
+            
+        }
 	// --------- FIM METODOS PRODUTOS ------------
 
 	// --------- ORDEM DE VENDA ------------------
