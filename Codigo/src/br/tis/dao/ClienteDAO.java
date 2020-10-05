@@ -12,7 +12,7 @@ import br.tis.entidades.Cliente;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
-public class ClienteDAO implements DAO<Cliente>{
+public class ClienteDAO implements DAO<Cliente,String>{
 
 	private final Connection connection;
 	long inicio, fim;
@@ -139,7 +139,7 @@ public class ClienteDAO implements DAO<Cliente>{
 	}
 
 	@Override
-	public boolean remove() {
+	public boolean remove(String nome) {
 		
 	boolean result = false; 
 		
@@ -152,7 +152,7 @@ public class ClienteDAO implements DAO<Cliente>{
 			
 			stmtCli = connection.prepareStatement(sqlDelete);
 			
-			stmtCli.setString(1, cliente.getNome());
+			stmtCli.setString(1, nome);
 		
 			
 			if(stmtCli.executeUpdate() == 0)

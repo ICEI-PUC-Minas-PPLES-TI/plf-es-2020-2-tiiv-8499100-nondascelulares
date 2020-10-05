@@ -12,7 +12,7 @@ import br.tis.entidades.Produto;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
-public class ProdutoDAO implements DAO<Produto> {
+public class ProdutoDAO implements DAO<Produto, Integer> {
 
 	private final Connection connection;
 	private Produto produto;
@@ -121,7 +121,7 @@ public class ProdutoDAO implements DAO<Produto> {
 	}
 
 	@Override
-	public boolean remove() {
+	public boolean remove(Integer idProduto) {
 		boolean result = false;
 
 		String sqlDelete = "DELETE from dbo.produtos where idProduto = ?";
@@ -132,7 +132,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
 			stmtCli = connection.prepareStatement(sqlDelete);
 
-			stmtCli.setLong(1, produto.getIdProduto());
+			stmtCli.setLong(1, idProduto);
 
 			if (stmtCli.executeUpdate() == 0)
 				throw new SQLException("Falha ao excluir o cliente");
