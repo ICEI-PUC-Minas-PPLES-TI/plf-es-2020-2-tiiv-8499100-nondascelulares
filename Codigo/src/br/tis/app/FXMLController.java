@@ -9,12 +9,15 @@ import br.tis.entidades.Cliente;
 import br.tis.entidades.Estoque;
 import br.tis.entidades.OrdemVenda;
 import br.tis.entidades.Produto;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -244,8 +247,7 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelBuscarProduto;
 	@FXML
 	private Button btnExcluirProduto;
-	
-	
+        
 
 	@FXML
 	public void menuProdutoVisible(MouseEvent event) {
@@ -307,9 +309,51 @@ public class FXMLController implements Initializable {
             }
             else{
                 GeraAlerta("Selecione um cliente!", "Nenhum cliente selecionado!");
-            }
-            
+            }  
         }
+        
+        // ----- Search Bar Cliente -----------
+        
+        @FXML
+        private TextField filterFieldCliente;
+        private final ObservableList<Cliente> dataListCliente = FXCollections.observableArrayList();
+        
+         FilteredList<Cliente> filteredDataCliente = new FilteredList<>(dataListCliente, b -> true);
+         
+        /* filterFieldCliente.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredDataCliente.setPredicate(cliente -> {
+				// If filter text is empty, display all persons.
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (cliente.getFirstName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (cliente.getDepartment().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+				}
+				else if (String.valueOf(employee.getSalary()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+         
+            // 3. Wrap the FilteredList in a SortedList. 
+		SortedList<Cliente> sortedDataCliente = new SortedList<>(dataListCliente);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedDataCliente.comparatorProperty().bind(tableview.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		table_Cliente.setItems(sortedData);
+        
+        */
 
 	// -------- Atributos cadastro Produto ------------
 

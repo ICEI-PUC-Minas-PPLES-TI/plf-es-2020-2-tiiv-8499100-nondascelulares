@@ -208,7 +208,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panelBuscarCliente" layoutX="70.0" layoutY="69.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
+      <AnchorPane fx:id="panelBuscarCliente" layoutX="66.0" layoutY="69.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1176.0">
          <children>
             <TableView fx:id="table_Cliente" layoutX="14.0" layoutY="99.0" prefHeight="531.0" prefWidth="1161.0">
               <columns>
@@ -223,7 +223,7 @@
                   <TableColumn fx:id="column_Estado" prefWidth="63.0" text="Estado" />
               </columns>
             </TableView>
-            <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="67.0" prefWidth="714.0">
+            <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="67.0" prefWidth="268.0">
                <children>
                   <Label layoutX="20.0" layoutY="16.0" text="Buscar Cliente">
                      <font>
@@ -242,6 +242,8 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="352.0" layoutY="51.0" size="25" wrappingWidth="25.999999046325684" />
+            <TextField fx:id="filterFieldCliente" layoutX="396.0" layoutY="35.0" prefHeight="25.0" prefWidth="329.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelBuscarProduto" layoutX="70.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
