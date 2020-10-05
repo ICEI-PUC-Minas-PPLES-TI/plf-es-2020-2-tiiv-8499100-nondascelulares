@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import br.tis.dao.ClienteDAO;
 import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
+import br.tis.entidades.Estoque;
+import br.tis.entidades.OrdemVenda;
 import br.tis.entidades.Produto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +42,7 @@ public class FXMLController implements Initializable {
 		dropDown_Cliente.setVisible(false);
 		dropDown_Produto.setVisible(false);
 		dropDown_Ordens.setVisible(false);
+                dropDown_Estoque.setVisible(false);
 	}
 
 	@FXML
@@ -50,6 +53,10 @@ public class FXMLController implements Initializable {
 		panelBuscarCliente.setVisible(false);
 		panelBuscarProduto.setVisible(false);
 		panelNovaOrdemVenda.setVisible(false);
+                panelBuscarOrdemVenda.setVisible(false);
+                panelLancamentoEstoque.setVisible(false);
+                panelConsultaEstoque.setVisible(false);
+                
 
 	}
 
@@ -82,8 +89,7 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelBuscarCliente;
 	@FXML
 	private Button btnExcluirCliente;
-	@FXML
-	private Button btnEditarCliente;
+	
 
 	@FXML
 	public void menuClienteVisible(MouseEvent event) {
@@ -93,6 +99,7 @@ public class FXMLController implements Initializable {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -103,6 +110,7 @@ public class FXMLController implements Initializable {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -236,8 +244,7 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelBuscarProduto;
 	@FXML
 	private Button btnExcluirProduto;
-	@FXML
-	private Button btnEditarProduto;
+	
 	
 
 	@FXML
@@ -248,6 +255,7 @@ public class FXMLController implements Initializable {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Ordens.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -258,6 +266,7 @@ public class FXMLController implements Initializable {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Ordens.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -343,9 +352,48 @@ public class FXMLController implements Initializable {
 
 	@FXML
 	public AnchorPane panelNovaOrdemVenda;
+        @FXML
+	public AnchorPane panelBuscarOrdemVenda;
 	@FXML
 	public AnchorPane dropDown_Ordens;
-
+        @FXML
+        public JFXButton btnMenuOrdens;
+        @FXML 
+        public JFXButton btnNovaOrdemVenda;
+        @FXML
+        public JFXButton btnBuscarOrdemVenda;
+        @FXML
+        public Button btnCancelarOrdemVenda;
+         @FXML
+        public Button btnSalvarOrdemVenda;
+         @FXML
+        public Button btnExcluirProdutoOrdemVenda;
+         @FXML
+        public Button btnIncluirProdutoOrdemVenda;
+         
+         
+ 
+       // ----------- TABLE ORDEM DE VENDA -------------
+        
+        @FXML
+        private TableView<OrdemVenda> table_OrdemVenda;
+        @FXML 
+        private TableColumn<OrdemVenda, Long> column_IdOrdemVenda;
+        @FXML 
+        private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
+        @FXML 
+        private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
+        
+        //-------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
+        
+        @FXML
+        public TextField codigoOrdemVenda;
+        @FXML
+        public TextField dataOrdemVenda; 
+        @FXML
+        public TextField valorTotalOrdemVenda; 
+     
+        
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -354,6 +402,7 @@ public class FXMLController implements Initializable {
 			dropDown_Ordens.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 
 		}
 	}
@@ -366,6 +415,7 @@ public class FXMLController implements Initializable {
 			dropDown_Ordens.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
+                        dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -379,7 +429,111 @@ public class FXMLController implements Initializable {
 			panelNovaOrdemVenda.setVisible(true);
 		}
 	}
-
+        
+        @FXML
+	public void panelBuscarOrdemVendaVisible(ActionEvent event) {
+		if (panelBuscarOrdemVenda.isVisible() == true) {
+			panelBuscarOrdemVenda.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelBuscarOrdemVenda.setVisible(true);
+		}
+	}
+        //----------------- FIM MÉTODOS ORDEM DE VENDA  ----------
+        
+        //--------------------- ESTOQUE --------------------------
+        
+        @FXML
+        public AnchorPane panelLancamentoEstoque;
+        @FXML
+        public AnchorPane panelConsultaEstoque;
+        @FXML 
+        public AnchorPane dropDown_Estoque;
+        @FXML
+        public JFXButton btnMenuEstoque;
+        @FXML
+        public JFXButton btnLancamentoEstoque;
+        @FXML
+        public JFXButton btnConsultaEstoque;
+        @FXML
+        public Button btnIncluirProd_estoque;
+        
+        //----------- ATRIBUTOS DO ESTOQUE ----------------
+        
+        @FXML
+        private TextField documento_estoque;
+        @FXML
+        private TextField idProduto_estoque;
+        @FXML
+        private TextField precoCusto_estoque;
+        @FXML
+        private TextField precoVenda_estoque;
+        @FXML
+        private TextField quantidade_estoque;
+        
+        //----------- TABLE CONSULTA ESTOQUE -------------- 
+        @FXML
+        private TableView<Estoque> table_ConsultaEstoque;
+        @FXML
+        private TableColumn<Estoque,Long> column_documentoEstoque;
+        @FXML
+        private TableColumn<Estoque,Long> column_idProdutoEstoque;
+        @FXML
+        private TableColumn<Estoque,String> column_NomeProdEstoque;
+        @FXML
+        private TableColumn<Estoque,Long> column_custoUniEstoque;
+        @FXML
+        private TableColumn<Estoque,Long> column_preoVendaUnEstoque;
+        @FXML
+        private TableColumn<Estoque,Long> column_quantidadeEstoque;
+        
+        @FXML
+	public void menuEstoqueVisible(MouseEvent event) {
+		if (dropDown_Estoque.isVisible() == true) {
+			dropDown_Estoque.setVisible(false);
+		} else {
+                        dropDown_Estoque.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		}
+	}
+        
+        @FXML
+	public void menuEstoqueVisibleOnClick(ActionEvent event) {
+		if (dropDown_Estoque.isVisible() == true) {
+			dropDown_Estoque.setVisible(false);
+		} else {
+			dropDown_Estoque.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+                        dropDown_Ordens.setVisible(false);
+		}
+	}
+        
+        	@FXML
+	public void panelEstoqueVisible(ActionEvent event) {
+		if (panelLancamentoEstoque.isVisible() == true) {
+			panelLancamentoEstoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelLancamentoEstoque.setVisible(true);
+		}
+	}
+        
+        public void panelConsultaEstoqueVisible(ActionEvent event) {
+		if (panelConsultaEstoque.isVisible() == true) {
+			panelConsultaEstoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelConsultaEstoque.setVisible(true);
+		}
+	}
+        
+       
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
