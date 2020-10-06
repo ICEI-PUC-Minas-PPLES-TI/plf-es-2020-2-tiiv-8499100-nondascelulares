@@ -33,8 +33,6 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 		boolean result = false;
 
-		
-		
 		String sqlAdd = "insert into produtos (nome, descricao, precoVenda) values (?, ?, ?)";
 
 		PreparedStatement stmtProd = null;
@@ -46,9 +44,9 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 			stmtProd.setString(1, produto.getNome());
 			stmtProd.setString(2, produto.getDescricao());
 			stmtProd.setDouble(3, produto.getPrecoVenda());
-			
+
 			stmtProd.execute();
-			
+
 			result = true;
 
 		} catch (SQLException e) {
@@ -62,10 +60,9 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 		} finally {
 
-			if (stmtProd != null || connection != null)
+			if (stmtProd != null)
 				try {
 					stmtProd.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -109,10 +106,9 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 		} finally {
 
-			if (stmtCli != null || connection != null)
+			if (stmtCli != null)
 				try {
 					stmtCli.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -152,10 +148,9 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 		} finally {
 
-			if (stmtCli != null || connection != null)
+			if (stmtCli != null)
 				try {
 					stmtCli.close();
-					connection.close();
 
 				} catch (SQLException logOrIgnore) {
 
@@ -167,62 +162,115 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 	@Override
 	public List<Produto> getAll() {
-		
+
 		String sqlGetAll = "Select * from dbo.produtos";
 		List<Produto> produtos = new ArrayList<>();
 		PreparedStatement stmtCli = null;
-		
-		
+
 		try {
-			
+
 			stmtCli = connection.prepareStatement(sqlGetAll);
-	
+
 			ResultSet rs = stmtCli.executeQuery();
-			
-			//if(rs.next())
-			//throw new SQLException("Falha ao buscar os clientes");
-				
-			 while(rs.next()) {
-			
-				 Produto newProduto = new Produto();
-				 
-				 newProduto.setIdProduto(rs.getLong("idProduto"));
-				 newProduto.setNome(rs.getString("nome"));
-				 newProduto.setDescricao(rs.getString("descricao"));
-				 newProduto.setPrecoVenda(rs.getDouble("precoVenda"));
-				 
-				 produtos.add(newProduto);
-				 
-			 }
-			
-		} catch(SQLException e) {
-		
-			
+
+			// if(rs.next())
+			// throw new SQLException("Falha ao buscar os clientes");
+
+			while (rs.next()) {
+
+				Produto newProduto = new Produto();
+
+				newProduto.setIdProduto(rs.getLong("idProduto"));
+				newProduto.setNome(rs.getString("nome"));
+				newProduto.setDescricao(rs.getString("descricao"));
+				newProduto.setPrecoVenda(rs.getDouble("precoVenda"));
+
+				produtos.add(newProduto);
+
+			}
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
-			
+
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.initStyle(StageStyle.UTILITY);
 			alert.setTitle("Falha ao buscar a lista de clientes");
 			alert.setHeaderText(null);
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
-			
-		}finally {
-			
-			if (stmtCli != null || connection != null)
+
+		} finally {
+
+			if (stmtCli != null)
 				try {
 					stmtCli.close();
-					connection.close();
-					
+
 				} catch (SQLException logOrIgnore) {
-					
+
 				}
 		}
 		return produtos;
 
-		
-		
-		
+	}
+
+	public Produto get(long idProduto) {
+
+		String sqlGetAll = "Select * from dbo.produtos where idProduto = ?";
+		PreparedStatement stmtCli = null;
+		Produto newProduto = new Produto();
+
+		try {
+
+			stmtCli = connection.prepareStatement(sqlGetAll);
+
+			stmtCli.setLong(1, idProduto);
+
+			ResultSet rs = stmtCli.executeQuery();
+
+			while (rs.next()) {
+
+				newProduto.setIdProduto(rs.getLong("idProduto"));
+				newProduto.setNome(rs.getString("nome"));
+				newProduto.setDescricao(rs.getString("descricao"));
+				newProduto.setPrecoVenda(rs.getDouble("precoVenda"));
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha ao buscar a lista de clientes");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+
+		} finally {
+
+			if (stmtCli != null)
+				try {
+					stmtCli.close();
+
+				} catch (SQLException logOrIgnore) {
+
+				}
+		}
+		return newProduto;
+	}
+
+	public void CloseConnetion() {
+
+		if (connection != null)
+			try {
+				connection.close();
+
+			} catch (SQLException logOrIgnore) {
+
+			}
+
 	}
 
 }

@@ -2,13 +2,12 @@ package br.tis.app;
 
 
 
-import java.sql.Date;
-import java.time.LocalDate;
+
 
 import br.tis.dao.EstoqueDAO;
-import br.tis.entidades.Estoque;
+
 import br.tis.entidades.ListaAgregada;
-import br.tis.entidades.TipoLancamento;
+
 
 public class MainTeste {
 

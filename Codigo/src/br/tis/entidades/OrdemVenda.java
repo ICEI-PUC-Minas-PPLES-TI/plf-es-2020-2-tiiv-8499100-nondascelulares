@@ -3,10 +3,8 @@ package br.tis.entidades;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-//import java.util.Date;
 import java.util.List;
 import java.sql.Date;
-import java.time.LocalDate;
 import br.tis.dao.EstoqueDAO;
 
 public class OrdemVenda {
@@ -18,7 +16,6 @@ public class OrdemVenda {
 	private Estoque lancamento = new Estoque();
 	private EstoqueDAO estoqueDao = new EstoqueDAO(lancamento);
 
-	@SuppressWarnings("deprecation")
 	public OrdemVenda() {
 		data = new Date(0, 0, 0);
 		codVenda = 0;

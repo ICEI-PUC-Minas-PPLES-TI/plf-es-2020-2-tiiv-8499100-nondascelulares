@@ -33,5 +33,11 @@ public class ListaAgregada {
 		this.nomeProduto = nomeProduto;
 	}
 	
+	@Override 
+	public String toString() {
+		return getIdProduto() + " - " + getNomeProduto();
+		
+	}
+	
 	
 }

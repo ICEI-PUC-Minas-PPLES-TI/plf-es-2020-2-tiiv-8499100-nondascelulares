@@ -2,22 +2,31 @@
 package br.tis.app;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 
 import br.tis.dao.ClienteDAO;
+import br.tis.dao.EstoqueDAO;
 import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
 import br.tis.entidades.Estoque;
+import br.tis.entidades.ListaAgregada;
 import br.tis.entidades.OrdemVenda;
 import br.tis.entidades.Produto;
-import com.jfoenix.controls.JFXTextField;
+import br.tis.entidades.TipoLancamento;
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -26,6 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -414,7 +424,7 @@ public class FXMLController implements Initializable {
 		return FXCollections.observableArrayList(ProDao.getAll());
 	}
         
-                @FXML
+    @FXML
 	public void excluirProduto(ActionEvent event) throws IOException {
             if (table_Produto.getSelectionModel().getSelectedItem()!= null ){
             int idProdutoExcluir;
@@ -529,6 +539,8 @@ public class FXMLController implements Initializable {
         
         //--------------------- ESTOQUE --------------------------
         
+
+        
         @FXML
         public AnchorPane panelLancamentoEstoque;
         @FXML
@@ -545,7 +557,6 @@ public class FXMLController implements Initializable {
         public Button btnIncluirProd_estoque;
         
         //----------- ATRIBUTOS DO ESTOQUE ----------------
-        
         @FXML
         private TextField documento_estoque;
         @FXML
@@ -553,9 +564,9 @@ public class FXMLController implements Initializable {
         @FXML
         private TextField precoCusto_estoque;
         @FXML
-        private TextField precoVenda_estoque;
-        @FXML
         private TextField quantidade_estoque;
+      
+        
         
         //----------- TABLE CONSULTA ESTOQUE -------------- 
         @FXML
@@ -567,16 +578,60 @@ public class FXMLController implements Initializable {
         @FXML
         private TableColumn<Estoque,String> column_NomeProdEstoque;
         @FXML
-        private TableColumn<Estoque,Long> column_custoUniEstoque;
+        private TableColumn<Estoque,Double> column_custoUniEstoque;
         @FXML
-        private TableColumn<Estoque,Long> column_preoVendaUnEstoque;
+        private TableColumn<Estoque,Double> column_preoVendaUnEstoque;
         @FXML
-        private TableColumn<Estoque,Long> column_quantidadeEstoque;
+        private TableColumn<Estoque,Integer> column_quantidadeEstoque;
         
         @FXML
+        private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
+        
+        @FXML
+        public void carregarLista(ActionEvent event) {
+        	
+        	EstoqueDAO agregado = new EstoqueDAO();
+        	
+            ObservableList<ListaAgregada> obsListaAgregada;
+
+            obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
+            
+            comboBoxIdProdutos.setItems(obsListaAgregada);
+
+            System.out.println("Passei por aqui");
+            
+        }
+        
+    	@FXML
+    	public void cadastrarEstoque(ActionEvent event) throws IOException {
+
+    		//ProdutoDAO produto = new ProdutoDAO();
+    		//lancamento.setIdproduto(Long.parseLong(idProduto_estoque.getText()));
+    		//lancamento.setNomeProduto(produto.get(Long.parseLong(idProduto_estoque.getText())).getNome());
+    		
+    		Estoque lancamento = new Estoque();
+    		lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
+    		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
+    		lancamento.setIdproduto(comboBoxIdProdutos.getValue().getIdProduto());
+    		
+    		lancamento.setNomeProduto(comboBoxIdProdutos.getValue().getNomeProduto());
+    		
+    		lancamento.setCustoUnitario(Double.parseDouble(precoCusto_estoque.getText()));
+    		lancamento.setQuantidade(Integer.parseInt(quantidade_estoque.getText()));
+    		lancamento.setDocumento(documento_estoque.getText());
+    		
+    		EstoqueDAO estoque = new EstoqueDAO(lancamento);
+    		estoque.add();
+    		
+    		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
+
+    	}   
+        
+    @FXML
 	public void menuEstoqueVisible(MouseEvent event) {
 		if (dropDown_Estoque.isVisible() == true) {
 			dropDown_Estoque.setVisible(false);
+			
 		} else {
                         dropDown_Estoque.setVisible(true);
 			dropDown_Cliente.setVisible(false);
@@ -602,9 +657,11 @@ public class FXMLController implements Initializable {
 		if (panelLancamentoEstoque.isVisible() == true) {
 			panelLancamentoEstoque.setVisible(false);
 			dropDown_Estoque.setVisible(false);
+			
 		} else {
 			fecharTodosPanel(event);
 			panelLancamentoEstoque.setVisible(true);
+			carregarLista(event);
 		}
 	}
         
@@ -621,7 +678,7 @@ public class FXMLController implements Initializable {
        
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+		
 	}
 
 }

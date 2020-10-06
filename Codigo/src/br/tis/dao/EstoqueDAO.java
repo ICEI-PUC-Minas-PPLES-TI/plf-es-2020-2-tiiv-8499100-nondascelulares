@@ -17,7 +17,6 @@ public class EstoqueDAO {
 
 	private final Connection connection;
 	private Estoque estoque;
-	private ListaAgregada listaAgregada;
 
 	public EstoqueDAO() {
 		new ConnectionFactorySqlServer();
