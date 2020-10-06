@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import br.tis.bd.ConnectionFactorySqlServer;
 import br.tis.entidades.Estoque;
+import br.tis.entidades.ListaAgregada;
 import br.tis.entidades.TipoLancamento;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
@@ -16,6 +17,7 @@ public class EstoqueDAO {
 
 	private final Connection connection;
 	private Estoque estoque;
+	private ListaAgregada listaAgregada;
 
 	public EstoqueDAO() {
 		new ConnectionFactorySqlServer();
@@ -200,7 +202,7 @@ public class EstoqueDAO {
 
 		int quantDisp = 0;
 
-		String sqlEntrada = "SELECT TOP (1)((SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'ENTRADA' and idProduto = ?) -	(SELECT SUM(quantidade) FROM [dbo].[estoque] where tipoLancamento = 'SAIDA' and idProduto = ?))from [dbo].[estoque] ";
+		String sqlEntrada = "SELECT SUM(quantidade) AS 'quantidade' FROM [dbo].[estoque] WHere idProduto = ?";
 
 		PreparedStatement stmtQuantDispEntrada = null;
 
@@ -284,6 +286,50 @@ public class EstoqueDAO {
 		alert.setHeaderText(null);
 		alert.setContentText(descricao);
 		alert.showAndWait();
+	}
+	
+	public List<ListaAgregada> getEstoqueAgregado(){
+		
+		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda' FROM [dbo].[estoque] AS C join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda";
+		List<ListaAgregada> estoqueAgregado = new ArrayList<>();
+		PreparedStatement stmtLanc = null;
+
+		try {
+
+			stmtLanc = connection.prepareStatement(sqlGetAll);
+
+			ResultSet rs = stmtLanc.executeQuery();
+
+			while (rs.next()) {
+
+				ListaAgregada resumoEstoque = new ListaAgregada();
+
+				resumoEstoque.setIdProduto(rs.getLong("idProduto"));
+				resumoEstoque.setNomeProduto(rs.getString("nomeProduto"));
+				resumoEstoque.setPrecoVenda(rs.getInt("precoVenda"));
+				resumoEstoque.setQuantidadeDisp(rs.getInt("quantidadeDisp"));
+		
+				estoqueAgregado.add(resumoEstoque);
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			geraAlerta("Falha ao obter o estoque resumido", e.getMessage());
+
+		} finally {
+
+			if (stmtLanc != null )
+				try {
+					stmtLanc.close();
+
+				} catch (SQLException logOrIgnore) {
+
+				}
+		}
+		return estoqueAgregado;
 	}
 	
 	public void CloseConnetion() {
