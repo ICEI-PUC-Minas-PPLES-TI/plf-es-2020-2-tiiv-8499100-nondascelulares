@@ -362,6 +362,8 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField cadastroProdutoDescri;
 	@FXML
+	public TextField precoVendaProd;
+	@FXML
 	public Button bntIncluirProd;
 
 	@FXML
@@ -370,6 +372,7 @@ public class FXMLController implements Initializable {
 		Produto novoProduto = new Produto();
 		novoProduto.setNome(cadastroProdutoName.getText());
 		novoProduto.setDescricao(cadastroProdutoDescri.getText());
+		novoProduto.setPrecoVenda(Double.parseDouble(precoVendaProd.getText()));
 
 		prodDAO = new ProdutoDAO(novoProduto);
 
@@ -389,13 +392,16 @@ public class FXMLController implements Initializable {
 	private TableColumn<Produto, String> column_NomeProduto;
 	@FXML
 	private TableColumn<Produto, String> column_DescriProduto;
-
+	@FXML
+	private TableColumn<Produto, Integer> column_precoVenda;
+	
 	@FXML
 	public void carregarProdutoTabela(ActionEvent event) throws IOException {
 
 		column_IdProduto.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
 		column_NomeProduto.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		column_DescriProduto.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+		column_precoVenda.setCellValueFactory(new PropertyValueFactory<>("precoVenda"));
 
 		table_Produto.setItems(listaDeProdutos());
 
@@ -555,7 +561,7 @@ public class FXMLController implements Initializable {
         @FXML
         private TableView<Estoque> table_ConsultaEstoque;
         @FXML
-        private TableColumn<Estoque,Long> column_documentoEstoque;
+        private TableColumn<Estoque,String> column_documentoEstoque;
         @FXML
         private TableColumn<Estoque,Long> column_idProdutoEstoque;
         @FXML

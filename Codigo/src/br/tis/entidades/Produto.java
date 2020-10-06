@@ -5,6 +5,7 @@ public class Produto {
 	private Long idProduto;
 	private String nome;
 	private String descricao;
+	private double precoVenda;
 	
 	public Produto(){}
 
@@ -35,6 +36,14 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public double getPrecoVenda() {
+		return precoVenda;
+	}
+
+	public void setPrecoVenda(double precoVenda) {
+		this.precoVenda = precoVenda;
 	}
 
 }//class
