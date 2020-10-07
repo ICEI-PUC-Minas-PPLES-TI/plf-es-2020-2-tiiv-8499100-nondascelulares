@@ -459,12 +459,25 @@ public class FXMLController implements Initializable {
 	@FXML
 	private TableView<OrdemVenda> table_OrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, Long> column_IdOrdemVenda;
+	private TableColumn<OrdemVenda, Long> column_IdProdutoOrdemVenda;
 	@FXML
 	private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
 	@FXML
 	private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
-
+        @FXML
+	private TableColumn<OrdemVenda, Double> column_quantidadeSelecionada;
+        
+        //---------------- TABLE BUSCA ORDEM DE VENDA --------------------
+        
+        @FXML
+        private TableView <OrdemVenda> table_BuscarOrdemVenda;
+        @FXML
+        private TableColumn<OrdemVenda, Long> column_CpfCnpjCliente;
+        @FXML
+        private TableColumn<OrdemVenda, Long> column_ValorTotalOV;
+        @FXML
+        private TableColumn<OrdemVenda, String> column_observacao;
+        
 	// -------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
 
 	@FXML
@@ -473,7 +486,9 @@ public class FXMLController implements Initializable {
 	public TextField dataOrdemVenda;
 	@FXML
 	public TextField valorTotalOrdemVenda;
-
+        @FXML
+	public TextField observacao_ordemVenda;   
+        
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -520,6 +535,37 @@ public class FXMLController implements Initializable {
 			panelBuscarOrdemVenda.setVisible(true);
 		}
 	}
+        
+     
+        //---------------- TELA DE INSERIR PRODUTO ---------------
+        
+        @FXML
+        public AnchorPane panelIncluirProduto;
+        @FXML
+	public Button btnSelecionarProduto;
+        @FXML
+	public Button btnVoltar;
+        
+        //---------------- ATRIBUTOS DA TELA DE INSERÇÃO -----------
+        
+        @FXML
+	private TextField quantidadeDesejada_inserir;
+        
+        //---- TABLE DA EXIBIÇÃO DOS PRODUTOS A SEREM INSERIDOS ----
+        
+        @FXML
+        private TableView <ListaAgregada> table_selecaoProdutos;
+        @FXML
+        private TableColumn<ListaAgregada, Long> column_idProdListaAgregada;
+        @FXML
+        private TableColumn<ListaAgregada, Integer> column_qtdDispListaAgregada;
+        @FXML
+        private TableColumn<ListaAgregada, String> column_nomeProdListaAgregada;
+        @FXML
+        private TableColumn<ListaAgregada, Double> column_precoVendaListaAgregada;
+        // ---------------------------------------------------------------------
+        
+        
 	// ----------------- FIM MÉTODOS ORDEM DE VENDA ----------
 
 	// --------------------- ESTOQUE --------------------------
@@ -538,6 +584,7 @@ public class FXMLController implements Initializable {
 	public JFXButton btnConsultaEstoque;
 	@FXML
 	public Button btnIncluirProd_estoque;
+        
 
 	// ----------- ATRIBUTOS DO ESTOQUE ----------------
 	@FXML
@@ -600,7 +647,7 @@ public class FXMLController implements Initializable {
 		EstoqueDAO estoque = new EstoqueDAO(lancamento);
 		estoque.add();
 
-		GeraAlerta("Sucesso", "Lan�amento Efetuado com sucesso!");
+		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
 
 	}
 
@@ -681,6 +728,8 @@ public class FXMLController implements Initializable {
 			panelConsultaEstoque.setVisible(true);
 		}
 	}
+        
+        
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
