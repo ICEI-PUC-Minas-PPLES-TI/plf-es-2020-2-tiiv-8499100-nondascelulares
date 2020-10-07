@@ -102,19 +102,19 @@ public class OrdemVenda {
 			aux.setNome(p.getNomeProduto());
 			addEstoque(aux);
 		}
-
+		
 	}
 
 	public void addEstoque(Produto prod) {
 
 		lancamento.setTipoLancamento(TipoLancamento.valueOf("SAIDA"));
 		lancamento.setDataLancamento(this.data);
-		lancamento.setDocumento("546546");
+		lancamento.setDocumento("");
 		lancamento.setIdproduto(prod.getIdProduto());
 		lancamento.setNomeProduto(prod.getDescricao());
-		lancamento.setCustoUnitario(50);
-		lancamento.setPrecoVendaUnitario(15);
-		lancamento.setQuantidade(5);
+		lancamento.setCustoUnitario(0);
+		lancamento.setPrecoVendaUnitario(prod.getPrecoVenda());
+		lancamento.setQuantidade(-1);
 
 		estoqueDao.add();
 	}
