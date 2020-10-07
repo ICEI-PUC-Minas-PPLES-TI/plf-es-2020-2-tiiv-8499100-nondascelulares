@@ -5,7 +5,7 @@ public class ListaAgregada {
 	private long idProduto; 
 	private String nomeProduto;
 	private int quantidadeDisp;
-	private double precoVenda;
+	private float precoVenda;
 	
 	
 	public long getIdProduto() {
@@ -20,10 +20,10 @@ public class ListaAgregada {
 	public void setQuantidadeDisp(int quantidadeDisp) {
 		this.quantidadeDisp = quantidadeDisp;
 	}
-	public double getPrecoVenda() {
+	public float getPrecoVenda() {
 		return precoVenda;
 	}
-	public void setPrecoVenda(double precoVenda) {
+	public void setPrecoVenda(float precoVenda) {
 		this.precoVenda = precoVenda;
 	}
 	public String getNomeProduto() {
