@@ -770,6 +770,7 @@ public class FXMLController implements Initializable {
                        
                        int qntSelecionada = Integer.parseInt(quantidadeDesejada_inserir.getText());
                        long idProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem().getIdProduto();
+                       String nomeProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem().getNomeProduto();
                        fecharTodosPanel(event);
                        panelNovaOrdemVenda.setVisible(true);
                 }else {
