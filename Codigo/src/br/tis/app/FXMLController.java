@@ -68,7 +68,7 @@ public class FXMLController implements Initializable {
 		panelBuscarOrdemVenda.setVisible(false);
 		panelLancamentoEstoque.setVisible(false);
 		panelConsultaEstoque.setVisible(false);
-                panelIncluirProduto.setVisible(false);
+		panelIncluirProduto.setVisible(false);
 
 	}
 
@@ -465,20 +465,20 @@ public class FXMLController implements Initializable {
 	private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
 	@FXML
 	private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
-        @FXML
+	@FXML
 	private TableColumn<OrdemVenda, Double> column_quantidadeSelecionada;
-        
-        //---------------- TABLE BUSCA ORDEM DE VENDA --------------------
-        
-        @FXML
-        private TableView <OrdemVenda> table_BuscarOrdemVenda;
-        @FXML
-        private TableColumn<OrdemVenda, Long> column_CpfCnpjCliente;
-        @FXML
-        private TableColumn<OrdemVenda, Long> column_ValorTotalOV;
-        @FXML
-        private TableColumn<OrdemVenda, String> column_observacao;
-        
+
+	// ---------------- TABLE BUSCA ORDEM DE VENDA --------------------
+
+	@FXML
+	private TableView<OrdemVenda> table_BuscarOrdemVenda;
+	@FXML
+	private TableColumn<OrdemVenda, Long> column_CpfCnpjCliente;
+	@FXML
+	private TableColumn<OrdemVenda, Long> column_ValorTotalOV;
+	@FXML
+	private TableColumn<OrdemVenda, String> column_observacao;
+
 	// -------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
 
 	@FXML
@@ -487,9 +487,9 @@ public class FXMLController implements Initializable {
 	public TextField dataOrdemVenda;
 	@FXML
 	public TextField valorTotalOrdemVenda;
-        @FXML
-	public TextField observacao_ordemVenda;   
-        
+	@FXML
+	public TextField observacao_ordemVenda;
+
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -536,14 +536,9 @@ public class FXMLController implements Initializable {
 			panelBuscarOrdemVenda.setVisible(true);
 		}
 	}
-        
-     
 
-        
+	// ---------------------------------------------------------------------
 
-        // ---------------------------------------------------------------------
-        
-        
 	// ----------------- FIM MÉTODOS ORDEM DE VENDA ----------
 
 	// --------------------- ESTOQUE --------------------------
@@ -562,7 +557,6 @@ public class FXMLController implements Initializable {
 	public JFXButton btnConsultaEstoque;
 	@FXML
 	public Button btnIncluirProd_estoque;
-        
 
 	// ----------- ATRIBUTOS DO ESTOQUE ----------------
 	@FXML
@@ -610,7 +604,7 @@ public class FXMLController implements Initializable {
 
 	@FXML
 	public void cadastrarEstoque(ActionEvent event) throws IOException {
-		
+
 		Estoque lancamento = new Estoque();
 		lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
 		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
@@ -649,12 +643,9 @@ public class FXMLController implements Initializable {
 		EstoqueDAO lancamentos = new EstoqueDAO();
 
 		ObservableList<Estoque> teste;
-		
-		
+
 		teste = FXCollections.observableArrayList(lancamentos.getAll());
-		
-		System.out.println(teste.get(0).getNomeProduto());
-		
+
 		return teste;
 	}
 
@@ -706,54 +697,71 @@ public class FXMLController implements Initializable {
 			panelConsultaEstoque.setVisible(true);
 		}
 	}
-        
-        
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 	}
 
-        
-        
-                //---------------- ATRIBUTOS DA TELA DE INSERÇÃO -----------
-        
-        @FXML
-	private TextField quantidadeDesejada_inserir;
-        
-        //---- TABLE DA EXIBIÇÃO DOS PRODUTOS A SEREM INSERIDOS ----
-        
-        @FXML
-        private TableView <ListaAgregada> table_selecaoProdutos;
-        @FXML
-        private TableColumn<ListaAgregada, Long> column_idProdListaAgregada;
-        @FXML
-        private TableColumn<ListaAgregada, Integer> column_qtdDispListaAgregada;
-        @FXML
-        private TableColumn<ListaAgregada, String> column_nomeProdListaAgregada;
-        @FXML
-        private TableColumn<ListaAgregada, Double> column_precoVendaListaAgregada;
-        
+	// ---------------- ATRIBUTOS DA TELA DE INSERÇÃO -----------
 
-                //---------------- TELA DE INSERIR PRODUTO ---------------
-        
-        @FXML
-        public AnchorPane panelIncluirProduto;
-        @FXML
+	@FXML
+	private TextField quantidadeDesejada_inserir;
+
+	// ---- TABLE DA EXIBIÇÃO DOS PRODUTOS A SEREM INSERIDOS ----
+
+	@FXML
+	private TableView<ListaAgregada> table_selecaoProdutos;
+	@FXML
+	private TableColumn<ListaAgregada, Long> column_idProdListaAgregada;
+	@FXML
+	private TableColumn<ListaAgregada, Integer> column_qtdDispListaAgregada;
+	@FXML
+	private TableColumn<ListaAgregada, String> column_nomeProdListaAgregada;
+	@FXML
+	private TableColumn<ListaAgregada, Double> column_precoVendaListaAgregada;
+
+	@FXML
+	public void carregarProdutosSelecao(ActionEvent event) throws IOException {
+
+		column_idProdListaAgregada.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		column_nomeProdListaAgregada.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+		column_qtdDispListaAgregada.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisp"));
+		column_precoVendaListaAgregada.setCellValueFactory(new PropertyValueFactory<>("precoVenda"));
+
+		table_selecaoProdutos.setItems(ListaAgregadaOV());
+
+	}
+
+	private ObservableList<ListaAgregada> ListaAgregadaOV() {
+
+		EstoqueDAO lancamentos = new EstoqueDAO();
+
+		return FXCollections.observableArrayList(lancamentos.getEstoqueAgregado());
+	}
+
+	// ---------------- TELA DE INSERIR PRODUTO ---------------
+
+	@FXML
+	public AnchorPane panelIncluirProduto;
+	@FXML
 	public Button btnSelecionarProduto;
-        @FXML
+	@FXML
 	public Button btnVoltar;
-        public void btnIncluirProduto(ActionEvent event) throws IOException {
-            
-            		if (panelIncluirProduto.isVisible() == true) {
+
+	public void btnIncluirProduto(ActionEvent event) throws IOException {
+
+		if (panelIncluirProduto.isVisible() == true) {
 			panelIncluirProduto.setVisible(false);
 			dropDown_Estoque.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			
 			panelIncluirProduto.setVisible(true);
+			carregarProdutosSelecao(event);
 
 		}
-            
-        }
-        
+
+	}
+
 }
