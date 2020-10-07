@@ -11,41 +11,46 @@ public class OrdemVenda {
 
 	private Date data;
 	private long codVenda;
-	public List<Produto> produtos;
+	public List<ListaAgregada> produtos;
+	public List<ListaAgregada> estoque;
 	private float valorTotal;
 	private Estoque lancamento = new Estoque();
 	private EstoqueDAO estoqueDao = new EstoqueDAO(lancamento);
 
+	@SuppressWarnings("deprecation")
 	public OrdemVenda() {
-		data = new Date(0, 0, 0);
+		//data = new Date(0, 0, 0);
+		data = data.valueOf(LocalDate.now());
 		codVenda = 0;
-		produtos = new ArrayList<Produto>();
+		produtos = new ArrayList<ListaAgregada>();
+		estoque = new ArrayList<ListaAgregada>();
 		valorTotal = 0;
 	}
 
-	public Date getData() {
-		return data;
+	public String getData() {
+		return data.toString();
 	}
 
 	public void setData(Date data) {
 		this.data = data;
 	}
 
-	public List<Produto> getProdutos() {
+	public List<ListaAgregada> getProdutos() {
 		return this.produtos;
 	}
-	
-	public List<Produto> getEstoque(){
-		List<Produto> estoque = null;
-		
-		//chamar metodo do estoque
-		
+
+
+	public List<ListaAgregada> getEstoque(){
+		List<ListaAgregada> estoque = null;
+
+		estoque = estoqueDao.getEstoqueAgregado();
+
 		return estoque;
 	}
 
 	public boolean produtoExiste(long id) {
 
-		for(Produto i : this.produtos) {
+		for(ListaAgregada i : this.produtos) {
 			if(i.getIdProduto() == id) {
 				return true;
 			}
@@ -53,18 +58,20 @@ public class OrdemVenda {
 		return false;
 	}
 
-	public void setProduto(Produto prod) {
+	public void setProduto(ListaAgregada prod) {
 		this.produtos.add(prod);
 	}
 
 	public float getValorTotal() {
+
 		return this.valorTotal;
 	}
 
 	public void setValorTotal() {
-		float temp=0;
 
-		this.valorTotal = temp;
+		for(ListaAgregada list : produtos) {
+			this.valorTotal = this.valorTotal + list.getPrecoVenda();
+		}	
 	}
 
 	public long getCodVenda() {
@@ -81,17 +88,20 @@ public class OrdemVenda {
 	}
 
 	public void carrinhoEstoque() {
-		
-		for(Produto p: produtos) {
-			addEstoque(p);
+		Produto aux = new Produto();
+
+		for(ListaAgregada p: produtos) {
+			aux.setIdProduto(p.getIdProduto());
+			aux.setNome(p.getNomeProduto());
+			addEstoque(aux);
 		}
-		
+
 	}
 
 	public void addEstoque(Produto prod) {
-		
+
 		lancamento.setTipoLancamento(TipoLancamento.valueOf("SAIDA"));
-		lancamento.setDataLancamento(data.valueOf(LocalDate.now()));//mexer na data
+		lancamento.setDataLancamento(this.data);
 		lancamento.setDocumento("546546");
 		lancamento.setIdproduto(prod.getIdProduto());
 		lancamento.setNomeProduto(prod.getDescricao());
