@@ -44,7 +44,7 @@ public class OrdemVenda {
 		this.idOrdemVenda = idOrdemVenda;
 	}
 
-	public void geraNumOrdemVenda() {
+	public long geraNumOrdemVenda() {
 
 		Random ramdom;
 		Long resultado = 0L;
@@ -57,6 +57,7 @@ public class OrdemVenda {
 			e.printStackTrace();
 		}
 		this.idOrdemVenda = resultado;
+		return resultado;
 	}
 
 	public String getCpfCnpjCliente() {

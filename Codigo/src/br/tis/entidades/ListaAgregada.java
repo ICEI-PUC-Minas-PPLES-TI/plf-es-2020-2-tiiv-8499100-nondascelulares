@@ -6,6 +6,7 @@ public class ListaAgregada {
 	private String nomeProduto;
 	private int quantidadeDisp;
 	private float precoVenda;
+	private double total;
 	
 	
 	public long getIdProduto() {
@@ -38,6 +39,9 @@ public class ListaAgregada {
 		return getIdProduto() + " - " + getNomeProduto();
 		
 	}
-	
+	public double getTotal() {
+		return total = getQuantidadeDisp()*getPrecoVenda();
+	}
+
 	
 }

@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXComboBox;
 
 import br.tis.dao.ClienteDAO;
 import br.tis.dao.EstoqueDAO;
+import br.tis.dao.OrdemVendaDAO;
 import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
 import br.tis.entidades.Estoque;
@@ -458,15 +459,15 @@ public class FXMLController implements Initializable {
 	// ----------- TABLE ORDEM DE VENDA -------------
 
 	@FXML
-	private TableView<OrdemVenda> table_OrdemVenda;
+	private TableView<ListaAgregada> table_OrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, Long> column_IdProdutoOrdemVenda;
+	private TableColumn<ListaAgregada, Long> column_IdProdutoOrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
+	private TableColumn<ListaAgregada, String> column_NomeOrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
+	private TableColumn<ListaAgregada, Double> column_PrecoOrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, Double> column_quantidadeSelecionada;
+	private TableColumn<ListaAgregada, Double> column_quantidadeSelecionada;
 
 	// ---------------- TABLE BUSCA ORDEM DE VENDA --------------------
 
@@ -490,6 +491,58 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField observacao_ordemVenda;
 
+	@FXML
+	public void cadastrarOrdemVenda(ActionEvent event) throws IOException {
+
+		Estoque est = new Estoque();
+		List<Estoque> lancamentos = new ArrayList<>();
+		OrdemVenda ov = new OrdemVenda();
+		ov.setIdOrdemVenda(Long.valueOf(codigoOrdemVenda.getText()));
+		ov.setData(Date.valueOf(LocalDate.now()));
+		ov.setObservacao(observacao_ordemVenda.getText());
+		ov.setValorTotal(Float.valueOf(valorTotalOrdemVenda.getText()));
+		
+		for (ListaAgregada agre : listaProSelecionado) {
+			
+			est.setTipoLancamento(TipoLancamento.SAIDA);
+			est.setDataLancamento(ov.getData());
+			est.setIdproduto(agre.getIdProduto());
+
+			est.setNomeProduto(agre.getNomeProduto());
+			est.setQuantidade(agre.getQuantidadeDisp());
+			est.setDocumento(String.valueOf(ov.getIdOrdemVenda()));
+			lancamentos.add(est);
+		}
+		
+		
+		OrdemVendaDAO ordemV = new OrdemVendaDAO(ov);
+		ordemV.add();
+		
+		EstoqueDAO estoque = new EstoqueDAO();
+		
+		estoque.addAll(lancamentos);
+
+		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
+
+	}
+	
+	@FXML
+	public void carregarProdutosOV(ActionEvent event) throws IOException {
+
+		column_IdProdutoOrdemVenda.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		column_NomeOrdemVenda.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+		column_quantidadeSelecionada.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisp"));
+		column_PrecoOrdemVenda.setCellValueFactory(new PropertyValueFactory<>("precoVenda"));
+
+		table_OrdemVenda.setItems(ListProdutosOV());
+
+	}
+
+	private ObservableList<ListaAgregada> ListProdutosOV() {
+		return FXCollections.observableArrayList(listaProSelecionado);
+	}
+	
+	
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -516,12 +569,18 @@ public class FXMLController implements Initializable {
 	}
 
 	@FXML
-	public void panelNovaOrdemVendaVisible(ActionEvent event) {
+	public void panelNovaOrdemVendaVisible(ActionEvent event) throws IOException {
 		if (panelNovaOrdemVenda.isVisible() == true) {
 			panelNovaOrdemVenda.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			carregarProdutosOV(event);
+			OrdemVenda ov = new OrdemVenda();
+			long numOV = ov.geraNumOrdemVenda();
+			codigoOrdemVenda.setText(String.valueOf(numOV));
+			
+			
 			panelNovaOrdemVenda.setVisible(true);
 		}
 	}
@@ -707,6 +766,8 @@ public class FXMLController implements Initializable {
 
 	@FXML
 	private TextField quantidadeDesejada_inserir;
+	
+	
 
 	// ---- TABLE DA EXIBIÇÃO DOS PRODUTOS A SEREM INSERIDOS ----
 
@@ -733,6 +794,8 @@ public class FXMLController implements Initializable {
 
 	}
 
+	private List<ListaAgregada> listaProSelecionado = new ArrayList<>();
+
 	private ObservableList<ListaAgregada> ListaAgregadaOV() {
 
 		EstoqueDAO lancamentos = new EstoqueDAO();
@@ -756,27 +819,55 @@ public class FXMLController implements Initializable {
 			dropDown_Estoque.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
-			
+
 			panelIncluirProduto.setVisible(true);
 			carregarProdutosSelecao(event);
 
 		}
 
 	}
-        
-        	public void btnSelecionarProduto(ActionEvent event) throws IOException {
 
-                   if (table_selecaoProdutos.getSelectionModel().getSelectedItem() != null && !quantidadeDesejada_inserir.getText().isEmpty()){
-                       
-                       int qntSelecionada = Integer.parseInt(quantidadeDesejada_inserir.getText());
-                       long idProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem().getIdProduto();
-                       fecharTodosPanel(event);
-                       panelNovaOrdemVenda.setVisible(true);
-                }else {
+
+	public void btnSelecionarProduto(ActionEvent event) throws IOException {
+
+		ListaAgregada list = new ListaAgregada();
+
+		if (table_selecaoProdutos.getSelectionModel().getSelectedItem() != null
+				&& !quantidadeDesejada_inserir.getText().isEmpty()) {
+
+			int qntSelecionada = Integer.parseInt(quantidadeDesejada_inserir.getText());
+			long idProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem().getIdProduto();
+			String nomeProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem()
+					.getNomeProduto();
+			float valorProduto = table_selecaoProdutos.getSelectionModel().getSelectedItem().getPrecoVenda();
+			
+			list.setIdProduto(idProdutoSelecionado);
+			list.setQuantidadeDisp(qntSelecionada);
+			list.setNomeProduto(nomeProdutoSelecionado);
+			list.setPrecoVenda(valorProduto);
+
+			listaProSelecionado.add(list);
+
+			fecharTodosPanel(event);
+
+			carregarProdutosOV(event);
+			
+			panelNovaOrdemVenda.setVisible(true);
+			
+			double total = 0; 
+			
+			for (ListaAgregada tot : listaProSelecionado ) {
+				
+				total += tot.getTotal();
+			}
+			
+			valorTotalOrdemVenda.setText(String.valueOf(total));
+
+		} else {
+
 			GeraAlerta("Selecione um produto!", "Nenhum produto ou quantidade selecionado!");
 		}
 
 	}
-        
 
 }

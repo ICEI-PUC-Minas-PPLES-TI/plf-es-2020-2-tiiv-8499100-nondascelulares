@@ -293,7 +293,7 @@
                      </font>
                   </Button>
                   <Button fx:id="btnExcluirProdutoOrdemVenda" layoutX="385.0" layoutY="566.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Excluir produto" textFill="#fcf8f8" />
-                  <Button fx:id="btnSalvarOrdemVenda" layoutX="571.0" layoutY="566.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
+                  <Button fx:id="btnSalvarOrdemVenda" layoutX="571.0" layoutY="566.0" mnemonicParsing="false" onAction="#cadastrarOrdemVenda" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
