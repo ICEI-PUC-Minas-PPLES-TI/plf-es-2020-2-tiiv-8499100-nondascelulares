@@ -356,7 +356,7 @@ public class EstoqueDAO {
 			stmtEstoque = connection.prepareStatement(sqlAdd);
 
 			for (Estoque est : lancamentos) {
-				
+
 				stmtEstoque.setDate(1, est.getDataLancamento());
 				stmtEstoque.setLong(2, est.getIdproduto());
 				stmtEstoque.setString(3, est.getNomeProduto());
@@ -367,13 +367,12 @@ public class EstoqueDAO {
 				stmtEstoque.setString(8, est.getDocumento());
 
 				stmtEstoque.addBatch();
-				System.out.println(stmtEstoque.execute());
 			}
 
 			stmtEstoque.executeBatch();
 
 			connection.commit();
-		
+
 			result = true;
 
 		} catch (SQLException e) {

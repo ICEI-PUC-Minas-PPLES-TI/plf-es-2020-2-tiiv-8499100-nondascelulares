@@ -3,7 +3,6 @@ package br.tis.entidades;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +13,7 @@ public class OrdemVenda {
 	private String cpfCnpjCliente;
 	private String observacao;
 	private float valorTotal;
-	private List<Estoque> lancamentosSaida = new ArrayList<Estoque>();
+	private List<Estoque> lancamentosSaida;
 
 	public OrdemVenda() {
 	}
