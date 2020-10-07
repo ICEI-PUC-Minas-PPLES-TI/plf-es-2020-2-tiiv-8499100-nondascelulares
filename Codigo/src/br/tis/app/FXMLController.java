@@ -14,7 +14,6 @@ import br.tis.entidades.OrdemVenda;
 import br.tis.entidades.Produto;
 import br.tis.entidades.TipoLancamento;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,7 +54,7 @@ public class FXMLController implements Initializable {
 		dropDown_Cliente.setVisible(false);
 		dropDown_Produto.setVisible(false);
 		dropDown_Ordens.setVisible(false);
-                dropDown_Estoque.setVisible(false);
+		dropDown_Estoque.setVisible(false);
 	}
 
 	@FXML
@@ -66,10 +65,9 @@ public class FXMLController implements Initializable {
 		panelBuscarCliente.setVisible(false);
 		panelBuscarProduto.setVisible(false);
 		panelNovaOrdemVenda.setVisible(false);
-                panelBuscarOrdemVenda.setVisible(false);
-                panelLancamentoEstoque.setVisible(false);
-                panelConsultaEstoque.setVisible(false);
-                
+		panelBuscarOrdemVenda.setVisible(false);
+		panelLancamentoEstoque.setVisible(false);
+		panelConsultaEstoque.setVisible(false);
 
 	}
 
@@ -102,7 +100,6 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelBuscarCliente;
 	@FXML
 	private Button btnExcluirCliente;
-	
 
 	@FXML
 	public void menuClienteVisible(MouseEvent event) {
@@ -112,7 +109,7 @@ public class FXMLController implements Initializable {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -123,7 +120,7 @@ public class FXMLController implements Initializable {
 			dropDown_Cliente.setVisible(true);
 			dropDown_Produto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -257,7 +254,6 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelBuscarProduto;
 	@FXML
 	private Button btnExcluirProduto;
-        
 
 	@FXML
 	public void menuProdutoVisible(MouseEvent event) {
@@ -267,7 +263,7 @@ public class FXMLController implements Initializable {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Ordens.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -278,7 +274,7 @@ public class FXMLController implements Initializable {
 			dropDown_Produto.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Ordens.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -304,66 +300,59 @@ public class FXMLController implements Initializable {
 			panelBuscarProduto.setVisible(true);
 		}
 	}
-        
-        @FXML
+
+	@FXML
 	public void excluirCliente(ActionEvent event) throws IOException {
-            if (table_Cliente.getSelectionModel().getSelectedItem()!= null ){
-            String nomeClienteExcluir;
-            nomeClienteExcluir = table_Cliente.getSelectionModel().getSelectedItem().getNome();
-            
-            cliDAO = new ClienteDAO();
-            cliDAO.remove(nomeClienteExcluir);
-            GeraAlerta("Excluido com sucesso!", "Cliente excluido com sucesso!");
-            panelBuscarClienteVisible(event);
-            panelBuscarClienteVisible(event);
-            }
-            else{
-                GeraAlerta("Selecione um cliente!", "Nenhum cliente selecionado!");
-            }  
-        }
-        
-        // ----- Search Bar Cliente -----------
-        
-        @FXML
-        private TextField filterFieldCliente;
-        private final ObservableList<Cliente> dataListCliente = FXCollections.observableArrayList();
-        
-         FilteredList<Cliente> filteredDataCliente = new FilteredList<>(dataListCliente, b -> true);
-         
-        /* filterFieldCliente.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredDataCliente.setPredicate(cliente -> {
-				// If filter text is empty, display all persons.
-								
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				
-				if (cliente.getFirstName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (cliente.getDepartment().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-					return true; // Filter matches last name.
-				}
-				else if (String.valueOf(employee.getSalary()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
-				     else  
-				    	 return false; // Does not match.
-			});
-		});
-         
-            // 3. Wrap the FilteredList in a SortedList. 
-		SortedList<Cliente> sortedDataCliente = new SortedList<>(dataListCliente);
-		
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		// 	  Otherwise, sorting the TableView would have no effect.
-		sortedDataCliente.comparatorProperty().bind(tableview.comparatorProperty());
-		
-		// 5. Add sorted (and filtered) data to the table.
-		table_Cliente.setItems(sortedData);
-        
-        */
+		if (table_Cliente.getSelectionModel().getSelectedItem() != null) {
+			String nomeClienteExcluir;
+			nomeClienteExcluir = table_Cliente.getSelectionModel().getSelectedItem().getNome();
+
+			cliDAO = new ClienteDAO();
+			cliDAO.remove(nomeClienteExcluir);
+			GeraAlerta("Excluido com sucesso!", "Cliente excluido com sucesso!");
+			panelBuscarClienteVisible(event);
+			panelBuscarClienteVisible(event);
+		} else {
+			GeraAlerta("Selecione um cliente!", "Nenhum cliente selecionado!");
+		}
+	}
+
+	// ----- Search Bar Cliente -----------
+
+	@FXML
+	private TextField filterFieldCliente;
+	private final ObservableList<Cliente> dataListCliente = FXCollections.observableArrayList();
+
+	FilteredList<Cliente> filteredDataCliente = new FilteredList<>(dataListCliente, b -> true);
+
+	/*
+	 * filterFieldCliente.textProperty().addListener((observable, oldValue,
+	 * newValue) -> { filteredDataCliente.setPredicate(cliente -> { // If filter
+	 * text is empty, display all persons.
+	 * 
+	 * if (newValue == null || newValue.isEmpty()) { return true; }
+	 * 
+	 * // Compare first name and last name of every person with filter text. String
+	 * lowerCaseFilter = newValue.toLowerCase();
+	 * 
+	 * if (cliente.getFirstName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+	 * return true; // Filter matches first name. } else if
+	 * (cliente.getDepartment().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+	 * return true; // Filter matches last name. } else if
+	 * (String.valueOf(employee.getSalary()).indexOf(lowerCaseFilter)!=-1) return
+	 * true; else return false; // Does not match. }); });
+	 * 
+	 * // 3. Wrap the FilteredList in a SortedList. SortedList<Cliente>
+	 * sortedDataCliente = new SortedList<>(dataListCliente);
+	 * 
+	 * // 4. Bind the SortedList comparator to the TableView comparator. //
+	 * Otherwise, sorting the TableView would have no effect.
+	 * sortedDataCliente.comparatorProperty().bind(tableview.comparatorProperty());
+	 * 
+	 * // 5. Add sorted (and filtered) data to the table.
+	 * table_Cliente.setItems(sortedData);
+	 * 
+	 */
 
 	// -------- Atributos cadastro Produto ------------
 
@@ -404,7 +393,7 @@ public class FXMLController implements Initializable {
 	private TableColumn<Produto, String> column_DescriProduto;
 	@FXML
 	private TableColumn<Produto, Integer> column_precoVenda;
-	
+
 	@FXML
 	public void carregarProdutoTabela(ActionEvent event) throws IOException {
 
@@ -423,72 +412,68 @@ public class FXMLController implements Initializable {
 
 		return FXCollections.observableArrayList(ProDao.getAll());
 	}
-        
-    @FXML
+
+	@FXML
 	public void excluirProduto(ActionEvent event) throws IOException {
-            if (table_Produto.getSelectionModel().getSelectedItem()!= null ){
-            int idProdutoExcluir;
-            idProdutoExcluir = table_Produto.getSelectionModel().getSelectedItem().getIdProduto().intValue();
-            
-            prodDAO = new ProdutoDAO();
-            prodDAO.remove(idProdutoExcluir);
-            GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
-            panelBuscarProdutoVisible(event);
-            panelBuscarProdutoVisible(event);
-            }
-            else{
-                GeraAlerta("Selecione um Produto!", "Nenhum Produto selecionado!");
-            }
-            
-        }
+		if (table_Produto.getSelectionModel().getSelectedItem() != null) {
+			int idProdutoExcluir;
+			idProdutoExcluir = table_Produto.getSelectionModel().getSelectedItem().getIdProduto().intValue();
+
+			prodDAO = new ProdutoDAO();
+			prodDAO.remove(idProdutoExcluir);
+			GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
+			panelBuscarProdutoVisible(event);
+			panelBuscarProdutoVisible(event);
+		} else {
+			GeraAlerta("Selecione um Produto!", "Nenhum Produto selecionado!");
+		}
+
+	}
 	// --------- FIM METODOS PRODUTOS ------------
 
 	// --------- ORDEM DE VENDA ------------------
 
 	@FXML
 	public AnchorPane panelNovaOrdemVenda;
-        @FXML
+	@FXML
 	public AnchorPane panelBuscarOrdemVenda;
 	@FXML
 	public AnchorPane dropDown_Ordens;
-        @FXML
-        public JFXButton btnMenuOrdens;
-        @FXML 
-        public JFXButton btnNovaOrdemVenda;
-        @FXML
-        public JFXButton btnBuscarOrdemVenda;
-        @FXML
-        public Button btnCancelarOrdemVenda;
-         @FXML
-        public Button btnSalvarOrdemVenda;
-         @FXML
-        public Button btnExcluirProdutoOrdemVenda;
-         @FXML
-        public Button btnIncluirProdutoOrdemVenda;
-         
-         
- 
-       // ----------- TABLE ORDEM DE VENDA -------------
-        
-        @FXML
-        private TableView<OrdemVenda> table_OrdemVenda;
-        @FXML 
-        private TableColumn<OrdemVenda, Long> column_IdOrdemVenda;
-        @FXML 
-        private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
-        @FXML 
-        private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
-        
-        //-------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
-        
-        @FXML
-        public TextField codigoOrdemVenda;
-        @FXML
-        public TextField dataOrdemVenda; 
-        @FXML
-        public TextField valorTotalOrdemVenda; 
-     
-        
+	@FXML
+	public JFXButton btnMenuOrdens;
+	@FXML
+	public JFXButton btnNovaOrdemVenda;
+	@FXML
+	public JFXButton btnBuscarOrdemVenda;
+	@FXML
+	public Button btnCancelarOrdemVenda;
+	@FXML
+	public Button btnSalvarOrdemVenda;
+	@FXML
+	public Button btnExcluirProdutoOrdemVenda;
+	@FXML
+	public Button btnIncluirProdutoOrdemVenda;
+
+	// ----------- TABLE ORDEM DE VENDA -------------
+
+	@FXML
+	private TableView<OrdemVenda> table_OrdemVenda;
+	@FXML
+	private TableColumn<OrdemVenda, Long> column_IdOrdemVenda;
+	@FXML
+	private TableColumn<OrdemVenda, String> column_NomeOrdemVenda;
+	@FXML
+	private TableColumn<OrdemVenda, Double> column_PrecoOrdemVenda;
+
+	// -------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
+
+	@FXML
+	public TextField codigoOrdemVenda;
+	@FXML
+	public TextField dataOrdemVenda;
+	@FXML
+	public TextField valorTotalOrdemVenda;
+
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -497,7 +482,7 @@ public class FXMLController implements Initializable {
 			dropDown_Ordens.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 
 		}
 	}
@@ -510,7 +495,7 @@ public class FXMLController implements Initializable {
 			dropDown_Ordens.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
-                        dropDown_Estoque.setVisible(false);
+			dropDown_Estoque.setVisible(false);
 		}
 	}
 
@@ -524,8 +509,8 @@ public class FXMLController implements Initializable {
 			panelNovaOrdemVenda.setVisible(true);
 		}
 	}
-        
-        @FXML
+
+	@FXML
 	public void panelBuscarOrdemVendaVisible(ActionEvent event) {
 		if (panelBuscarOrdemVenda.isVisible() == true) {
 			panelBuscarOrdemVenda.setVisible(false);
@@ -535,112 +520,126 @@ public class FXMLController implements Initializable {
 			panelBuscarOrdemVenda.setVisible(true);
 		}
 	}
-        //----------------- FIM MÃ‰TODOS ORDEM DE VENDA  ----------
-        
-        //--------------------- ESTOQUE --------------------------
-        
+	// ----------------- FIM MÃ‰TODOS ORDEM DE VENDA ----------
 
-        
-        @FXML
-        public AnchorPane panelLancamentoEstoque;
-        @FXML
-        public AnchorPane panelConsultaEstoque;
-        @FXML 
-        public AnchorPane dropDown_Estoque;
-        @FXML
-        public JFXButton btnMenuEstoque;
-        @FXML
-        public JFXButton btnLancamentoEstoque;
-        @FXML
-        public JFXButton btnConsultaEstoque;
-        @FXML
-        public Button btnIncluirProd_estoque;
-        
-        //----------- ATRIBUTOS DO ESTOQUE ----------------
-        @FXML
-        private TextField documento_estoque;
-        @FXML
-        private TextField idProduto_estoque;
-        @FXML
-        private TextField precoCusto_estoque;
-        @FXML
-        private TextField quantidade_estoque;
-      
-        
-        
-        //----------- TABLE CONSULTA ESTOQUE -------------- 
-        @FXML
-        private TableView<Estoque> table_ConsultaEstoque;
-        @FXML
-        private TableColumn<Estoque,String> column_documentoEstoque;
-        @FXML
-        private TableColumn<Estoque,Long> column_idProdutoEstoque;
-        @FXML
-        private TableColumn<Estoque,String> column_NomeProdEstoque;
-        @FXML
-        private TableColumn<Estoque,Double> column_custoUniEstoque;
-        @FXML
-        private TableColumn<Estoque,Double> column_preoVendaUnEstoque;
-        @FXML
-        private TableColumn<Estoque,Integer> column_quantidadeEstoque;
-        
-        @FXML
-        private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
-        
-        @FXML
-        public void carregarLista(ActionEvent event) {
-        	
-        	EstoqueDAO agregado = new EstoqueDAO();
-        	
-            ObservableList<ListaAgregada> obsListaAgregada;
+	// --------------------- ESTOQUE --------------------------
 
-            obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
-            
-            comboBoxIdProdutos.setItems(obsListaAgregada);
+	@FXML
+	public AnchorPane panelLancamentoEstoque;
+	@FXML
+	public AnchorPane panelConsultaEstoque;
+	@FXML
+	public AnchorPane dropDown_Estoque;
+	@FXML
+	public JFXButton btnMenuEstoque;
+	@FXML
+	public JFXButton btnLancamentoEstoque;
+	@FXML
+	public JFXButton btnConsultaEstoque;
+	@FXML
+	public Button btnIncluirProd_estoque;
 
-            System.out.println("Passei por aqui");
-            
-        }
-        
-    	@FXML
-    	public void cadastrarEstoque(ActionEvent event) throws IOException {
+	// ----------- ATRIBUTOS DO ESTOQUE ----------------
+	@FXML
+	private TextField documento_estoque;
+	@FXML
+	private TextField idProduto_estoque;
+	@FXML
+	private TextField precoCusto_estoque;
+	@FXML
+	private TextField quantidade_estoque;
 
-    		//ProdutoDAO produto = new ProdutoDAO();
-    		//lancamento.setIdproduto(Long.parseLong(idProduto_estoque.getText()));
-    		//lancamento.setNomeProduto(produto.get(Long.parseLong(idProduto_estoque.getText())).getNome());
-    		
-    		Estoque lancamento = new Estoque();
-    		lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
-    		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
-    		lancamento.setIdproduto(comboBoxIdProdutos.getValue().getIdProduto());
-    		
-    		lancamento.setNomeProduto(comboBoxIdProdutos.getValue().getNomeProduto());
-    		
-    		lancamento.setCustoUnitario(Double.parseDouble(precoCusto_estoque.getText()));
-    		lancamento.setQuantidade(Integer.parseInt(quantidade_estoque.getText()));
-    		lancamento.setDocumento(documento_estoque.getText());
-    		
-    		EstoqueDAO estoque = new EstoqueDAO(lancamento);
-    		estoque.add();
-    		
-    		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
+	// ----------- TABLE CONSULTA ESTOQUE --------------
+	@FXML
+	private TableView<Estoque> table_ConsultaEstoque;
+	@FXML
+	private TableColumn<Estoque, String> column_TipoLancamento;
+	@FXML
+	private TableColumn<Estoque, String> column_documentoEstoque;
+	@FXML
+	private TableColumn<Estoque, Long> column_idProdutoEstoque;
+	@FXML
+	private TableColumn<Estoque, String> column_NomeProdEstoque;
+	@FXML
+	private TableColumn<Estoque, Double> column_custoUniEstoque;
+	@FXML
+	private TableColumn<Estoque, Date> column_DataLancamentoEstoque;
+	@FXML
+	private TableColumn<Estoque, Integer> column_quantidadeEstoque;
 
-    	}   
-        
-    @FXML
+	@FXML
+	private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
+
+	@FXML
+	public void carregarLista(ActionEvent event) {
+
+		EstoqueDAO agregado = new EstoqueDAO();
+
+		ObservableList<ListaAgregada> obsListaAgregada;
+
+		obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
+
+		comboBoxIdProdutos.setItems(obsListaAgregada);
+
+	}
+
+	@FXML
+	public void cadastrarEstoque(ActionEvent event) throws IOException {
+		
+		Estoque lancamento = new Estoque();
+		lancamento.setTipoLancamento(TipoLancamento.ENTRADA);
+		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
+		lancamento.setIdproduto(comboBoxIdProdutos.getValue().getIdProduto());
+
+		lancamento.setNomeProduto(comboBoxIdProdutos.getValue().getNomeProduto());
+
+		lancamento.setCustoUnitario(Double.parseDouble(precoCusto_estoque.getText()));
+		lancamento.setQuantidade(Integer.parseInt(quantidade_estoque.getText()));
+		lancamento.setDocumento(documento_estoque.getText());
+
+		EstoqueDAO estoque = new EstoqueDAO(lancamento);
+		estoque.add();
+
+		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
+
+	}
+
+	@FXML
+	public void carregarEstoqueTabela(ActionEvent event) throws IOException {
+
+		column_TipoLancamento.setCellValueFactory(new PropertyValueFactory<>("TipoLancamento"));
+		column_DataLancamentoEstoque.setCellValueFactory(new PropertyValueFactory<>("DataLancamento"));
+		column_documentoEstoque.setCellValueFactory(new PropertyValueFactory<>("Documento"));
+		column_idProdutoEstoque.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		//column_NomeProdEstoque.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+		column_custoUniEstoque.setCellValueFactory(new PropertyValueFactory<>("custoUnitario"));
+		column_quantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
+
+		table_ConsultaEstoque.setItems(listaDeEstoque());
+
+	}
+
+	private ObservableList<Estoque> listaDeEstoque() {
+
+		EstoqueDAO lancamentos = new EstoqueDAO();
+
+		return FXCollections.observableArrayList(lancamentos.getAll());
+	}
+
+	@FXML
 	public void menuEstoqueVisible(MouseEvent event) {
 		if (dropDown_Estoque.isVisible() == true) {
 			dropDown_Estoque.setVisible(false);
-			
+
 		} else {
-                        dropDown_Estoque.setVisible(true);
+			dropDown_Estoque.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		}
 	}
-        
-        @FXML
+
+	@FXML
 	public void menuEstoqueVisibleOnClick(ActionEvent event) {
 		if (dropDown_Estoque.isVisible() == true) {
 			dropDown_Estoque.setVisible(false);
@@ -648,37 +647,37 @@ public class FXMLController implements Initializable {
 			dropDown_Estoque.setVisible(true);
 			dropDown_Cliente.setVisible(false);
 			dropDown_Produto.setVisible(false);
-                        dropDown_Ordens.setVisible(false);
+			dropDown_Ordens.setVisible(false);
 		}
 	}
-        
-        	@FXML
+
+	@FXML
 	public void panelEstoqueVisible(ActionEvent event) {
 		if (panelLancamentoEstoque.isVisible() == true) {
 			panelLancamentoEstoque.setVisible(false);
 			dropDown_Estoque.setVisible(false);
-			
+
 		} else {
 			fecharTodosPanel(event);
 			panelLancamentoEstoque.setVisible(true);
 			carregarLista(event);
 		}
 	}
-        
-        public void panelConsultaEstoqueVisible(ActionEvent event) {
+
+	public void panelConsultaEstoqueVisible(ActionEvent event) throws IOException {
 		if (panelConsultaEstoque.isVisible() == true) {
 			panelConsultaEstoque.setVisible(false);
 			dropDown_Estoque.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			carregarEstoqueTabela(event);
 			panelConsultaEstoque.setVisible(true);
 		}
 	}
-        
-       
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
 	}
 
 }
