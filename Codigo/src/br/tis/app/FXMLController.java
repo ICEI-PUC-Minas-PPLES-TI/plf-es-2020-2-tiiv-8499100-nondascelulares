@@ -756,14 +756,4 @@ public class FXMLController implements Initializable {
             
         }
         
-        	public void carregarInculirProdutoTabela(ActionEvent event) throws IOException {
-
-		column_idProdListaAgregada.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-		column_nomeProdListaAgregada.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
-		column_precoVendaListaAgregada.setCellValueFactory(new PropertyValueFactory<>("custoUnitario"));
-		column_qtdDispListaAgregada.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
-
-		//table_selecaoProdutos.setItems(listaDeEstoque());
-
-	}
 }
