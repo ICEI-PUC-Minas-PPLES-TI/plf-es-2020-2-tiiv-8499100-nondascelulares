@@ -61,7 +61,7 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtEstoque != null )
+			if (stmtEstoque != null)
 				try {
 					stmtEstoque.close();
 
@@ -102,7 +102,7 @@ public class EstoqueDAO {
 			if (stmtLanc != null)
 				try {
 					stmtLanc.close();
-					
+
 				} catch (SQLException logOrIgnore) {
 
 				}
@@ -148,7 +148,7 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtLanc != null )
+			if (stmtLanc != null)
 				try {
 					stmtLanc.close();
 
@@ -185,7 +185,7 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtCustoMedio != null )
+			if (stmtCustoMedio != null)
 				try {
 					stmtCustoMedio.close();
 
@@ -221,12 +221,12 @@ public class EstoqueDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-			
+
 			geraAlerta("Falha Quantidade Disponivel", e.getMessage());
 
 		} finally {
 
-			if (stmtQuantDispEntrada != null )
+			if (stmtQuantDispEntrada != null)
 				try {
 					stmtQuantDispEntrada.close();
 
@@ -262,7 +262,6 @@ public class EstoqueDAO {
 
 			geraAlerta("Falha no Preco Medio", e.getMessage());
 
-
 		} finally {
 
 			if (stmtPrecoMedio != null)
@@ -276,9 +275,9 @@ public class EstoqueDAO {
 
 		return precoMedio;
 	}
-	
+
 	private void geraAlerta(String titulo, String descricao) {
-		
+
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.initStyle(StageStyle.UTILITY);
 		alert.setTitle(titulo);
@@ -286,9 +285,9 @@ public class EstoqueDAO {
 		alert.setContentText(descricao);
 		alert.showAndWait();
 	}
-	
-	public List<ListaAgregada> getEstoqueAgregado(){
-		
+
+	public List<ListaAgregada> getEstoqueAgregado() {
+
 		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda' FROM [dbo].[estoque] AS C join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda";
 		List<ListaAgregada> estoqueAgregado = new ArrayList<>();
 		PreparedStatement stmtLanc = null;
@@ -307,7 +306,7 @@ public class EstoqueDAO {
 				resumoEstoque.setNomeProduto(rs.getString("nomeProduto"));
 				resumoEstoque.setPrecoVenda(rs.getInt("precoVenda"));
 				resumoEstoque.setQuantidadeDisp(rs.getInt("quantidadeDisp"));
-		
+
 				estoqueAgregado.add(resumoEstoque);
 
 			}
@@ -320,7 +319,7 @@ public class EstoqueDAO {
 
 		} finally {
 
-			if (stmtLanc != null )
+			if (stmtLanc != null)
 				try {
 					stmtLanc.close();
 
@@ -330,17 +329,71 @@ public class EstoqueDAO {
 		}
 		return estoqueAgregado;
 	}
-	
+
 	public void CloseConnetion() {
-		
-		if ( connection != null)
+
+		if (connection != null)
 			try {
 				connection.close();
 
 			} catch (SQLException logOrIgnore) {
 
 			}
+
+	}
+
+	public boolean addAll(List<Estoque> lancamentos) {
+		boolean result = false;
+
+		String sqlAdd = "insert into estoque (dataLancamento, idProduto, nomeProduto, custoUnitario, precoVendaUnitario, quantidade, tipoLancamento, documento) values (?, ?, ?, ?, ?, ?, ?, ?)";
+
+		PreparedStatement stmtEstoque = null;
+
+		try {
+
+			connection.setAutoCommit(false);
+
+			stmtEstoque = connection.prepareStatement(sqlAdd);
+
+			for (Estoque est : lancamentos) {
+				
+				stmtEstoque.setDate(1, est.getDataLancamento());
+				stmtEstoque.setLong(2, est.getIdproduto());
+				stmtEstoque.setString(3, est.getNomeProduto());
+				stmtEstoque.setDouble(4, est.getCustoUnitario());
+				stmtEstoque.setDouble(5, est.getPrecoVendaUnitario());
+				stmtEstoque.setInt(6, est.getQuantidade());
+				stmtEstoque.setString(7, String.valueOf(est.getTipoLancamento()));
+				stmtEstoque.setString(8, est.getDocumento());
+
+				stmtEstoque.addBatch();
+				System.out.println(stmtEstoque.execute());
+			}
+
+			stmtEstoque.executeBatch();
+
+			connection.commit();
 		
+			result = true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			geraAlerta("Falha ao registrar lancamentos", e.getMessage());
+
+		} finally {
+
+			if (stmtEstoque != null)
+				try {
+					stmtEstoque.close();
+
+				} catch (SQLException logOrIgnore) {
+
+				}
+		}
+		return result;
+
 	}
 
 }

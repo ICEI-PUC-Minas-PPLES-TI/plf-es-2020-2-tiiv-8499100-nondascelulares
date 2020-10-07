@@ -1,68 +1,30 @@
 package br.tis.entidades;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
-import br.tis.dao.EstoqueDAO;
+import java.util.Random;
 
 public class OrdemVenda {
 
-	private Date data;
-	private long codVenda;
+	private Date dataVenda;
+	private long idOrdemVenda;
 	private String cpfCnpjCliente;
 	private String observacao;
-	public List<ListaAgregada> produtos;
-	public List<ListaAgregada> estoque;
 	private float valorTotal;
-	
-
-	private Estoque lancamento = new Estoque();
-	private EstoqueDAO estoqueDao = new EstoqueDAO(lancamento);
-
+	private List<Estoque> lancamentosSaida = new ArrayList<Estoque>();
 
 	public OrdemVenda() {
-		data = Date.valueOf(LocalDate.now());
-		codVenda = 0;
-		produtos = new ArrayList<ListaAgregada>();
-		estoque = new ArrayList<ListaAgregada>();
-		valorTotal = 0;
 	}
 
-	public String getData() {
-		return data.toString();
+	public Date getData() {
+		return dataVenda;
 	}
 
 	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public List<ListaAgregada> getProdutos() {
-		return this.produtos;
-	}
-
-
-	public List<ListaAgregada> getEstoque(){
-		List<ListaAgregada> estoque = null;
-
-		estoque = estoqueDao.getEstoqueAgregado();
-
-		return estoque;
-	}
-
-	public boolean produtoExiste(long id) {
-
-		for(ListaAgregada i : this.produtos) {
-			if(i.getIdProduto() == id) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public void setProduto(ListaAgregada prod) {
-		this.produtos.add(prod);
+		this.dataVenda = data;
 	}
 
 	public float getValorTotal() {
@@ -70,53 +32,32 @@ public class OrdemVenda {
 		return this.valorTotal;
 	}
 
-	public void setValorTotalALTERAR() {
-
-		for(ListaAgregada list : produtos) {
-			this.valorTotal = this.valorTotal + list.getPrecoVenda();
-		}	
-	}
-	
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	public long getCodVenda() {
-		return codVenda;
+
+	public long getIdOrdemVenda() {
+		return idOrdemVenda;
 	}
 
-	public void setCodVenda(long codVenda) {
-		this.codVenda = codVenda;
+	public void setIdOrdemVenda(Long idOrdemVenda) {
+
+		this.idOrdemVenda = idOrdemVenda;
 	}
 
-	public String toString() {
-		String tmp = new SimpleDateFormat("EEE, dd 'de' MMM 'de' yyyy, HH:mm").format(this.data);
-		return tmp + ";" + "'" + this.codVenda + ";" +  this.valorTotal;
-	}
+	public void geraNumOrdemVenda() {
 
-	public void carrinhoEstoque() {
-		Produto aux = new Produto();
-
-		for(ListaAgregada p: produtos) {
-			aux.setIdProduto(p.getIdProduto());
-			aux.setNome(p.getNomeProduto());
-			addEstoque(aux);
+		Random ramdom;
+		Long resultado = 0L;
+		try {
+			ramdom = SecureRandom.getInstanceStrong();
+			resultado = Long.valueOf(ramdom.nextInt(999999));
+			
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
 		}
-		
-	}
-
-	public void addEstoque(Produto prod) {
-
-		lancamento.setTipoLancamento(TipoLancamento.valueOf("SAIDA"));
-		lancamento.setDataLancamento(this.data);
-		lancamento.setDocumento("");
-		lancamento.setIdproduto(prod.getIdProduto());
-		lancamento.setNomeProduto(prod.getDescricao());
-		lancamento.setCustoUnitario(0);
-		lancamento.setPrecoVendaUnitario(prod.getPrecoVenda());
-		lancamento.setQuantidade(-1);
-
-		estoqueDao.add();
+		this.idOrdemVenda = resultado;
 	}
 
 	public String getCpfCnpjCliente() {
@@ -135,4 +76,11 @@ public class OrdemVenda {
 		this.observacao = observacao;
 	}
 
+	public List<Estoque> getLancamentosSaida() {
+		return lancamentosSaida;
+	}
+
+	public void setLancamentosSaida(List<Estoque> lancamentosSaida) {
+		this.lancamentosSaida = lancamentosSaida;
+	}
 }

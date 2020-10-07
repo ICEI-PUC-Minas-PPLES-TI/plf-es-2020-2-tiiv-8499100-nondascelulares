@@ -46,7 +46,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 			stmtProd.setDouble(3, produto.getPrecoVenda());
 
 			stmtProd.execute();
-
+			
 			result = true;
 
 		} catch (SQLException e) {

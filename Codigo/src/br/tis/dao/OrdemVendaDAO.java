@@ -1,6 +1,7 @@
 package br.tis.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,6 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 		this.connection = ConnectionFactorySqlServer.getConnection();
 	}
 	
-
 	public  OrdemVendaDAO(OrdemVenda ordemVenda) {
 		new ConnectionFactorySqlServer();
 		this.connection = ConnectionFactorySqlServer.getConnection();
@@ -34,7 +34,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 		
 		boolean result = false; 
 		
-		String sqlAdd = "insert into ordemVenda (valorTotal, cpfCnpjCliente, observacao) values (?, ?, ?)";
+		String sqlAdd = "insert into ordemVendas (idOrdemVenda, valorTotal, cpfCnpjCliente, observacao, dataVenda) values (?, ?, ?, ?, ?)";
 		
 		PreparedStatement stmtCli = null;
 		
@@ -43,9 +43,11 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 			
 			stmtCli = connection.prepareStatement(sqlAdd);
 			
-			stmtCli.setFloat(1, ordemVenda.getValorTotal());
-			stmtCli.setString(2, ordemVenda.getCpfCnpjCliente());
-			stmtCli.setString(3, ordemVenda.getObservacao());
+			stmtCli.setFloat(1, ordemVenda.getIdOrdemVenda());
+			stmtCli.setFloat(2, ordemVenda.getValorTotal());
+			stmtCli.setString(3, ordemVenda.getCpfCnpjCliente());
+			stmtCli.setString(4, ordemVenda.getObservacao());
+			stmtCli.setDate(5,ordemVenda.getData());
 			
 			stmtCli.execute();
 
@@ -53,6 +55,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 			
 		} catch(SQLException e) {
 		
+			e.printStackTrace();
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.initStyle(StageStyle.UTILITY);
 			alert.setTitle("Falha");
@@ -79,7 +82,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 		
 		boolean result = false; 
 		
-	String sqlUpdate = "Update ordemVenda SET (valorTotal = ?, cpfCnpjCliente = ?, observacao = ?) where idOrdemVenda = ?";
+	String sqlUpdate = "Update ordemVendas SET (valorTotal = ?, cpfCnpjCliente = ?, observacao = ?) where idOrdemVenda = ?";
 		
 		PreparedStatement stmtCli = null;
 		
@@ -90,7 +93,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 			stmtCli.setFloat(1, ordemVenda.getValorTotal());
 			stmtCli.setString(2, ordemVenda.getCpfCnpjCliente());
 			stmtCli.setString(3, ordemVenda.getObservacao());
-			stmtCli.setLong(4, ordemVenda.getCodVenda());
+			stmtCli.setLong(4, ordemVenda.getIdOrdemVenda());
 		
 			int updateCount = stmtCli.executeUpdate(sqlUpdate);
 
@@ -169,7 +172,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 	@Override
 	public List<OrdemVenda> getAll() {
 		
-		String sqlGetAll = "Select * from dbo.ordemVenda";
+		String sqlGetAll = "Select * from dbo.ordemVendas";
 		List<OrdemVenda> ordens = new ArrayList<>();
 		PreparedStatement stmtCli = null;
 		
@@ -184,10 +187,11 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 			
 				 OrdemVenda newOV = new OrdemVenda();
 				 
-				 newOV.setCodVenda(rs.getLong("idOrdemVenda"));
+				 newOV.setIdOrdemVenda(rs.getLong("idOrdemVenda"));
 				 newOV.setCpfCnpjCliente(rs.getString("CpfCnpjCliente"));
 				 newOV.setValorTotal(rs.getFloat("valorTotal"));
 				 newOV.setObservacao("observacao");
+				 newOV.setData(rs.getDate("dataVenda"));
 				
 				 ordens.add(newOV);
 				 
