@@ -557,7 +557,7 @@ public class FXMLController implements Initializable {
 	@FXML
 	private TableColumn<Estoque, String> column_documentoEstoque;
 	@FXML
-	private TableColumn<Estoque, Long> column_idProdutoEstoque;
+	private TableColumn<Estoque, Number> column_idProdutoEstoque;
 	@FXML
 	private TableColumn<Estoque, String> column_NomeProdEstoque;
 	@FXML
@@ -611,7 +611,7 @@ public class FXMLController implements Initializable {
 		column_DataLancamentoEstoque.setCellValueFactory(new PropertyValueFactory<>("DataLancamento"));
 		column_documentoEstoque.setCellValueFactory(new PropertyValueFactory<>("Documento"));
 		column_idProdutoEstoque.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-		//column_NomeProdEstoque.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+		column_NomeProdEstoque.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
 		column_custoUniEstoque.setCellValueFactory(new PropertyValueFactory<>("custoUnitario"));
 		column_quantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
 
@@ -623,7 +623,14 @@ public class FXMLController implements Initializable {
 
 		EstoqueDAO lancamentos = new EstoqueDAO();
 
-		return FXCollections.observableArrayList(lancamentos.getAll());
+		ObservableList<Estoque> teste;
+		
+		
+		teste = FXCollections.observableArrayList(lancamentos.getAll());
+		
+		System.out.println(teste.get(0).getNomeProduto());
+		
+		return teste;
 	}
 
 	@FXML

@@ -11,16 +11,19 @@ public class OrdemVenda {
 
 	private Date data;
 	private long codVenda;
+	private String cpfCnpjCliente;
+	private String observacao;
 	public List<ListaAgregada> produtos;
 	public List<ListaAgregada> estoque;
 	private float valorTotal;
+	
+
 	private Estoque lancamento = new Estoque();
 	private EstoqueDAO estoqueDao = new EstoqueDAO(lancamento);
 
-	@SuppressWarnings("deprecation")
+
 	public OrdemVenda() {
-		//data = new Date(0, 0, 0);
-		data = data.valueOf(LocalDate.now());
+		data = Date.valueOf(LocalDate.now());
 		codVenda = 0;
 		produtos = new ArrayList<ListaAgregada>();
 		estoque = new ArrayList<ListaAgregada>();
@@ -67,13 +70,17 @@ public class OrdemVenda {
 		return this.valorTotal;
 	}
 
-	public void setValorTotal() {
+	public void setValorTotalALTERAR() {
 
 		for(ListaAgregada list : produtos) {
 			this.valorTotal = this.valorTotal + list.getPrecoVenda();
 		}	
 	}
-
+	
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+	
 	public long getCodVenda() {
 		return codVenda;
 	}
@@ -110,6 +117,22 @@ public class OrdemVenda {
 		lancamento.setQuantidade(5);
 
 		estoqueDao.add();
+	}
+
+	public String getCpfCnpjCliente() {
+		return cpfCnpjCliente;
+	}
+
+	public void setCpfCnpjCliente(String cpfCnpjCliente) {
+		this.cpfCnpjCliente = cpfCnpjCliente;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 }

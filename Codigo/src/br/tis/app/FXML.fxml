@@ -422,8 +422,8 @@
                         <TableColumn fx:id="column_TipoLancamento" prefWidth="138.0" text="TipoLancamento" />
                         <TableColumn fx:id="column_DataLancamentoEstoque" minWidth="0.0" prefWidth="147.0" text="DataLancamento" />
                         <TableColumn fx:id="column_documentoEstoque" prefWidth="123.0" text="Documento" />
-                        <TableColumn fx:id="column_idProdutoEstoque" prefWidth="154.0" text="ID Produto" />
-                        <TableColumn fx:id="column_nomeProdEstoque" prefWidth="186.0" text="Nome do Produto" />
+                        <TableColumn fx:id="column_idProdutoEstoque" prefWidth="154.0" text="idProduto" />
+                        <TableColumn fx:id="column_NomeProdEstoque" prefWidth="186.0" text="nomeProduto" />
                         <TableColumn fx:id="column_custoUniEstoque" prefWidth="133.0" text="Custo Unitário" />
                         <TableColumn fx:id="column_quantidadeEstoque" prefWidth="165.0" text="Quantidade" />
                      </columns>

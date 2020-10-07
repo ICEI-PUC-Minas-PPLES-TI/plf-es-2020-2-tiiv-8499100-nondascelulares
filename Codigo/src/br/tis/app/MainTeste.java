@@ -35,7 +35,7 @@ public class MainTeste {
 		System.out.println(list.toString());
 	}
 	
-	ov.setValorTotal();
+	ov.setValorTotalALTERAR();
 	System.out.println(ov.getValorTotal());
 	
 
