@@ -763,5 +763,20 @@ public class FXMLController implements Initializable {
 		}
 
 	}
+        
+        	public void btnSelecionarProduto(ActionEvent event) throws IOException {
+
+                   if (table_selecaoProdutos.getSelectionModel().getSelectedItem() != null && !quantidadeDesejada_inserir.getText().isEmpty()){
+                       
+                       int qntSelecionada = Integer.parseInt(quantidadeDesejada_inserir.getText());
+                       long idProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem().getIdProduto();
+                       fecharTodosPanel(event);
+                       panelNovaOrdemVenda.setVisible(true);
+                }else {
+			GeraAlerta("Selecione um produto!", "Nenhum produto ou quantidade selecionado!");
+		}
+
+	}
+        
 
 }

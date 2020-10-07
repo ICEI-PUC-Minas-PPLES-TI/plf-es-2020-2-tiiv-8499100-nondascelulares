@@ -580,7 +580,7 @@
               </columns>
             </TableView>
             <Button fx:id="btnVoltar" layoutX="825.0" layoutY="70.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
-            <Button fx:id="btnSelecionarProduto" layoutX="825.0" layoutY="593.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #002855;" text="Selecionar produto" textFill="WHITE">
+            <Button fx:id="btnSelecionarProduto" layoutX="825.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnSelecionarProduto" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #002855;" text="Selecionar produto" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
