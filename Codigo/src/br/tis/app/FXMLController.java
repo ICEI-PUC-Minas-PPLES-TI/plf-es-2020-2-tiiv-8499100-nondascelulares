@@ -36,6 +36,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -70,6 +71,7 @@ public class FXMLController implements Initializable {
 		panelLancamentoEstoque.setVisible(false);
 		panelConsultaEstoque.setVisible(false);
 		panelIncluirProduto.setVisible(false);
+                panelNovaOrdemServico.setVisible(false);
 
 	}
 
@@ -599,7 +601,100 @@ public class FXMLController implements Initializable {
 	// ---------------------------------------------------------------------
 
 	// ----------------- FIM MÉTODOS ORDEM DE VENDA ----------
+        
+        
+        // ----------------- ORDEM DE SERVIÇO ----------------------------------
+        
+        @FXML
+	public AnchorPane panelNovaOrdemServico;
+	@FXML
+	public JFXButton btnIncluirClienteOrdemServico;
+	@FXML
+	public Button btnSalvarOrdemServico;
+	@FXML
+	public Button btnCancelarOrdemServico;
 
+       // ---------------- ATRIBUTOS DA ORDEM DE SERVICO ------------------------
+        
+        @FXML
+	public TextField campoMarca;
+        @FXML
+	public TextField campoModelo;
+        @FXML
+	public TextField campoNumserie;
+        @FXML
+	public TextField data_ordemservico;
+        @FXML
+	public TextField campoOutros;
+        @FXML
+	public TextField campoDefeitos;
+        @FXML
+	public TextField valorOrcamento;
+        @FXML
+	public TextField cliente_ordemServico;
+        @FXML
+	public RadioButton opcoes_semchip;
+        @FXML
+	public RadioButton opcoes_semcartao;
+        @FXML
+	public RadioButton opcoes_sembateria;
+        @FXML
+	public RadioButton opcoes_semtampa;
+        @FXML
+	public RadioButton opcoes_desbloqueio;
+        @FXML
+	public RadioButton opcoes_trocabateria;
+        @FXML
+	public RadioButton opcoes_desoxidacao;
+        @FXML
+	public RadioButton opcoes_atualizacao;
+        @FXML
+	public RadioButton opcoes_limpeza;
+        @FXML
+	public RadioButton opcoes_slotchip;
+        @FXML
+	public RadioButton opcoes_conectorcarga;
+        @FXML
+	public RadioButton opcoes_trocatouch;
+        
+        
+        @FXML
+	public void menuOrdemServicoVisible(MouseEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+
+		}
+	}
+
+	@FXML
+	public void menuOrdemServicoVisibleOnClick(ActionEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Produto.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		}
+	}
+        
+        @FXML
+	public void panelNovaOrdemServicoVisible(ActionEvent event) {
+		if (panelNovaOrdemServico.isVisible() == true) {
+			panelNovaOrdemServico.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelNovaOrdemServico.setVisible(true);
+
+		}
+	}
+        
 	// --------------------- ESTOQUE --------------------------
 
 	@FXML
