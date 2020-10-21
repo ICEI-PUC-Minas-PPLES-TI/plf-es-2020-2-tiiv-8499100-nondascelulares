@@ -35,6 +35,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -633,29 +634,35 @@ public class FXMLController implements Initializable {
         @FXML
 	public TextField cliente_ordemServico;
         @FXML
-	public RadioButton opcoes_semchip;
+	public TextField codOrdemServico;
         @FXML
-	public RadioButton opcoes_semcartao;
+	public CheckBox opcoes_semchip;
         @FXML
-	public RadioButton opcoes_sembateria;
+	public CheckBox opcoes_semcartao;
         @FXML
-	public RadioButton opcoes_semtampa;
+	public CheckBox opcoes_sembateria;
         @FXML
-	public RadioButton opcoes_desbloqueio;
+	public CheckBox opcoes_semtampa;
         @FXML
-	public RadioButton opcoes_trocabateria;
+	public CheckBox opcoes_desbloqueio;
         @FXML
-	public RadioButton opcoes_desoxidacao;
+	public CheckBox opcoes_trocabateria;
         @FXML
-	public RadioButton opcoes_atualizacao;
+	public CheckBox opcoes_desoxidacao;
         @FXML
-	public RadioButton opcoes_limpeza;
+	public CheckBox opcoes_atualizacao;
         @FXML
-	public RadioButton opcoes_slotchip;
+	public CheckBox opcoes_limpeza;
         @FXML
-	public RadioButton opcoes_conectorcarga;
+	public CheckBox opcoes_slotchip;
         @FXML
-	public RadioButton opcoes_trocatouch;
+	public CheckBox opcoes_conectorcarga;
+        @FXML
+	public CheckBox opcoes_trocatouch;
+        @FXML
+	public RadioButton status_naLoja;
+        @FXML
+	public RadioButton status_entregue;
         
         
         @FXML

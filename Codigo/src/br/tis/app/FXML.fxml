@@ -4,6 +4,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -461,7 +462,7 @@
       </AnchorPane>
       <AnchorPane fx:id="panelNovaOrdemServico" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
          <children>
-            <Label layoutX="33.0" layoutY="32.0" text="Nova Ordem de Serviço">
+            <Label layoutX="26.0" layoutY="40.0" text="Nova Ordem de Serviço">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -477,11 +478,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <RadioButton fx:id="opcoes_semchip" layoutX="124.0" layoutY="277.0" mnemonicParsing="false" text="Sem chip">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
             <TextField fx:id="campoMarca" layoutX="106.0" layoutY="129.0" />
             <Label layoutX="322.0" layoutY="131.0" text="Modelo:">
                <font>
@@ -496,63 +492,8 @@
             </Label>
             <TextField fx:id="campoNumserie" layoutX="749.0" layoutY="129.0" />
             <Separator layoutX="33.0" layoutY="213.0" prefHeight="0.0" prefWidth="1129.0" />
-            <RadioButton fx:id="opcoes_semcartao" layoutX="124.0" layoutY="311.0" mnemonicParsing="false" text="Sem cartão de memória">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_sembateria" layoutX="124.0" layoutY="349.0" mnemonicParsing="false" text="Sem bateria">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_semtampa" layoutX="124.0" layoutY="385.0" mnemonicParsing="false" text="Sem tampa traseira">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <Separator layoutX="400.0" layoutY="211.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="5.0" />
-            <RadioButton fx:id="opcoes_desbloqueio" layoutX="490.0" layoutY="277.0" mnemonicParsing="false" text="Desbloqueio">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_trocabateria" layoutX="490.0" layoutY="316.0" mnemonicParsing="false" text="Troca de bateria">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_desoxidacao" layoutX="490.0" layoutY="352.0" mnemonicParsing="false" text="Desoxidação">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_atualizacao" layoutX="490.0" layoutY="386.0" mnemonicParsing="false" text="Atualização">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <Separator layoutX="770.0" layoutY="211.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
-            <RadioButton fx:id="opcoes_limpeza" layoutX="823.0" layoutY="277.0" mnemonicParsing="false" text="Limpeza">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_slotchip" layoutX="823.0" layoutY="311.0" mnemonicParsing="false" text="Slot de chip">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_conectorcarga" layoutX="823.0" layoutY="347.0" mnemonicParsing="false" text="Conector de carga">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opcoes_trocatouch" layoutX="824.0" layoutY="384.0" mnemonicParsing="false" text="Troca de touch">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
+            <Separator layoutX="299.0" layoutY="212.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="5.0" />
+            <Separator layoutX="592.0" layoutY="216.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
             <Separator layoutX="33.0" layoutY="555.0" prefHeight="3.0" prefWidth="850.0" />
             <Label layoutX="43.0" layoutY="476.0" text="Outros:">
                <font>
@@ -579,16 +520,98 @@
             </Label>
             <TextField fx:id="cliente_ordemServico" editable="false" layoutX="113.0" layoutY="582.0" prefHeight="31.0" prefWidth="221.0" />
             <JFXButton fx:id="btnIncluirClienteOrdemServico" layoutX="361.0" layoutY="582.0" prefHeight="21.0" prefWidth="114.0" style="-fx-background-color: #002855;" text="Incluir cliente" textFill="WHITE" />
-            <Button fx:id="btnSalvarOrdemServico" layoutX="377.0" layoutY="665.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
+            <Button fx:id="btnSalvarOrdemServico" layoutX="481.0" layoutY="665.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancelarOrdemServico" layoutX="612.0" layoutY="665.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
+            <Button fx:id="btnCancelarOrdemServico" layoutX="658.0" layoutY="665.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
+            <CheckBox fx:id="opcoes_semchip" layoutX="48.0" layoutY="267.0" mnemonicParsing="false" text="Sem chip">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_semcartao" layoutX="48.0" layoutY="308.0" mnemonicParsing="false" text="Sem cartão de memória">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_sembateria" layoutX="48.0" layoutY="349.0" mnemonicParsing="false" text="Sem bateria">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_semtampa" layoutX="48.0" layoutY="386.0" mnemonicParsing="false" text="Sem tampa traseira">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_desbloqueio" layoutX="349.0" layoutY="260.0" mnemonicParsing="false" text="Desbloqueio">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_trocabateria" layoutX="349.0" layoutY="304.0" mnemonicParsing="false" text="Troca de bateria">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_desoxidacao" layoutX="350.0" layoutY="345.0" mnemonicParsing="false" text="Desoxidação">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_atualizacao" layoutX="350.0" layoutY="383.0" mnemonicParsing="false" text="Atualização">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_limpeza" layoutX="649.0" layoutY="264.0" mnemonicParsing="false" text="Limpeza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_slotchip" layoutX="649.0" layoutY="303.0" mnemonicParsing="false" text="Slot de chip">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_conectorcarga" layoutX="650.0" layoutY="344.0" mnemonicParsing="false" text="Conector de carga">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_trocatouch" layoutX="651.0" layoutY="379.0" mnemonicParsing="false" text="Troca de touch">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="936.0" layoutY="236.0" prefHeight="21.0" prefWidth="187.0" text="Status do aparelho:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="status_naLoja" layoutX="937.0" layoutY="284.0" mnemonicParsing="false" text="Na loja ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="status_entregue" layoutX="938.0" layoutY="322.0" mnemonicParsing="false" text="Entregue">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="929.0" layoutY="62.0" text="Código:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codOrdemServico" editable="false" layoutX="1011.0" layoutY="60.0" prefHeight="31.0" prefWidth="143.0" />
+            <Separator layoutX="904.0" layoutY="212.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
