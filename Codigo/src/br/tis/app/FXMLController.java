@@ -11,6 +11,7 @@ import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
 import br.tis.entidades.Estoque;
 import br.tis.entidades.ListaAgregada;
+import br.tis.entidades.OrdemServico;
 import br.tis.entidades.OrdemVenda;
 import br.tis.entidades.Produto;
 import br.tis.entidades.TipoLancamento;
@@ -73,6 +74,8 @@ public class FXMLController implements Initializable {
 		panelConsultaEstoque.setVisible(false);
 		panelIncluirProduto.setVisible(false);
                 panelNovaOrdemServico.setVisible(false);
+                panelBuscarOrdemServico.setVisible(false);
+                panelCustoMedio.setVisible(false);
 
 	}
 
@@ -608,12 +611,23 @@ public class FXMLController implements Initializable {
         
         @FXML
 	public AnchorPane panelNovaOrdemServico;
+        @FXML
+	public AnchorPane panelBuscarOrdemServico;
+        @FXML
+	public JFXButton btnNovaOrdemServico;
 	@FXML
 	public JFXButton btnIncluirClienteOrdemServico;
 	@FXML
 	public Button btnSalvarOrdemServico;
 	@FXML
 	public Button btnCancelarOrdemServico;
+        @FXML
+	public JFXButton btnBuscarOrdemServico;
+        @FXML
+	public Button btnVisualizarOrdemServico;
+        @FXML
+	public Button btnExcluirOrdemServico;
+        
 
        // ---------------- ATRIBUTOS DA ORDEM DE SERVICO ------------------------
         
@@ -664,6 +678,18 @@ public class FXMLController implements Initializable {
         @FXML
 	public RadioButton status_entregue;
         
+        // -------------------- TABLE DA CONSULTA -----------------
+        @FXML
+	private TableView<OrdemServico> table_OrdemServico;
+	@FXML
+	private TableColumn<OrdemServico, Long> column_idOrdemServico;
+	@FXML
+	private TableColumn<OrdemServico, String> column_nomeOrdemServico;
+	@FXML
+	private TableColumn<OrdemServico, String> column_modeloOrdemServico;
+	@FXML
+	private TableColumn<OrdemServico, Double> column_valortotalOrdemServico;
+        
         
         @FXML
 	public void menuOrdemServicoVisible(MouseEvent event) {
@@ -701,6 +727,20 @@ public class FXMLController implements Initializable {
 
 		}
 	}
+        @FXML
+	public void panelBuscaOrdemServicoVisible(ActionEvent event) {
+		if (panelBuscarOrdemServico.isVisible() == true) {
+			panelBuscarOrdemServico.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelBuscarOrdemServico.setVisible(true);
+
+		}
+	}
+   
+      
+        
         
 	// --------------------- ESTOQUE --------------------------
 
@@ -708,6 +748,8 @@ public class FXMLController implements Initializable {
 	public AnchorPane panelLancamentoEstoque;
 	@FXML
 	public AnchorPane panelConsultaEstoque;
+        @FXML
+	public AnchorPane panelCustoMedio;
 	@FXML
 	public AnchorPane dropDown_Estoque;
 	@FXML
@@ -718,6 +760,8 @@ public class FXMLController implements Initializable {
 	public JFXButton btnConsultaEstoque;
 	@FXML
 	public Button btnIncluirProd_estoque;
+        @FXML
+	public JFXButton btnCustoMedio;
 
 	// ----------- ATRIBUTOS DO ESTOQUE ----------------
 	@FXML
@@ -746,7 +790,20 @@ public class FXMLController implements Initializable {
 	private TableColumn<Estoque, Date> column_DataLancamentoEstoque;
 	@FXML
 	private TableColumn<Estoque, Integer> column_quantidadeEstoque;
-
+        
+        
+       // ----------- TABLE CUSTO MÉDIO--------------
+        @FXML
+	private TableView<Estoque> table_custoMedio;
+	@FXML
+	private TableColumn<Estoque, Number> column_idCM;
+	@FXML
+	private TableColumn<Estoque, String> column_produtoCM;
+	@FXML
+	private TableColumn<Estoque, Double> column_custoMedio;
+	@FXML
+	private TableColumn<Estoque, Number> column_qtDispCM;
+        
 	@FXML
 	private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
 
@@ -858,7 +915,16 @@ public class FXMLController implements Initializable {
 			panelConsultaEstoque.setVisible(true);
 		}
 	}
-
+        
+        public void panelCustoMedioVisible(ActionEvent event) throws IOException {
+		if (panelCustoMedio.isVisible() == true) {
+			panelCustoMedio.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelCustoMedio.setVisible(true);
+		}
+	}
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 

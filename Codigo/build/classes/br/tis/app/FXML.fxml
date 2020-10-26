@@ -355,109 +355,28 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panelLancamentoEstoque" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
+      <AnchorPane fx:id="panelIncluirProduto" layoutX="89.0" layoutY="83.0" prefHeight="710.0" prefWidth="1161.0" visible="false">
          <children>
-            <AnchorPane layoutX="22.0" layoutY="14.0" prefHeight="78.0" prefWidth="439.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="29.0" prefHeight="35.0" prefWidth="284.0" text="Lançamento no Estoque">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="26.0" layoutY="102.0" prefHeight="597.0" prefWidth="1140.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Documento:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="documento_estoque" layoutX="14.0" layoutY="53.0" prefHeight="31.0" prefWidth="167.0" promptText="0000" />
-                  <Label layoutX="218.0" layoutY="14.0" text="ID do produto:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="421.0" layoutY="14.0" text="Preço de Custo (UN):">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="precoCusto_estoque" layoutX="421.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
-                  <Label layoutX="685.0" layoutY="14.0" text="Quantidade:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="quantidade_estoque" layoutX="648.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
-                  <Button fx:id="btnIncluirProd_estoque" layoutX="362.0" layoutY="148.0" mnemonicParsing="false" onAction="#cadastrarEstoque" style="-fx-background-color: #002855;" text="Incluir Produto" textFill="WHITE" />
-                  <ComboBox id="comboBoxIdProdutos" fx:id="comboBoxIdProdutos" layoutX="218.0" layoutY="53.0" prefWidth="150.0" />
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="panelConsultaEstoque" layoutX="72.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="737.0" prefWidth="1195.0" visible="false">
-         <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="67.0" prefWidth="501.0">
-               <children>
-                  <Label layoutX="14.0" layoutY="16.0" text="Consulta de Estoque">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="31.0" layoutY="91.0" prefHeight="606.0" prefWidth="1129.0">
-               <children>
-                  <TableView fx:id="table_ConsultaEstoque" layoutX="72.0" layoutY="69.0" prefHeight="427.0" prefWidth="986.0">
-                     <columns>
-                        <TableColumn fx:id="column_TipoLancamento" prefWidth="138.0" text="TipoLancamento" />
-                        <TableColumn fx:id="column_DataLancamentoEstoque" minWidth="0.0" prefWidth="147.0" text="DataLancamento" />
-                        <TableColumn fx:id="column_documentoEstoque" prefWidth="123.0" text="Documento" />
-                        <TableColumn fx:id="column_idProdutoEstoque" prefWidth="154.0" text="idProduto" />
-                        <TableColumn fx:id="column_NomeProdEstoque" prefWidth="186.0" text="nomeProduto" />
-                        <TableColumn fx:id="column_custoUniEstoque" prefWidth="133.0" text="Custo Unitário" />
-                        <TableColumn fx:id="column_quantidadeEstoque" prefWidth="165.0" text="Quantidade" />
-                     </columns>
-                  </TableView>
-                  <Button fx:id="btnExcluirProduto" layoutX="341.0" layoutY="531.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Produto" textFill="#f6f8f8" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="722.0" layoutY="531.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutY="14.0" prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #6A040F; -fx-border-radius: 5em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisibleOnClick" onMouseEntered="#menuClienteVisible" prefHeight="31.0" prefWidth="51.0" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" />
-               </graphic>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="60.0" onAction="#menuProdutoVisibleOnClick" onMouseEntered="#menuProdutoVisible" prefHeight="39.0" prefWidth="60.0" text=" " AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="60.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuOrdemVendaVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" text=" " AnchorPane.leftAnchor="10.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" onMouseClicked="#menuProdutoVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" size="30" />
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuEstoque" layoutX="6.0" layoutY="164.0" onAction="#menuEstoqueVisibleOnClick" onMouseEntered="#menuEstoqueVisible" prefHeight="31.0" prefWidth="51.0" text="  " AnchorPane.leftAnchor="6.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="30" />
-               </graphic>
-            </JFXButton>
+            <TableView fx:id="table_selecaoProdutos" layoutX="127.0" layoutY="136.0" prefHeight="434.0" prefWidth="872.0">
+              <columns>
+                <TableColumn fx:id="column_idProdListaAgregada" prefWidth="166.0" text="ID Produto" />
+                <TableColumn fx:id="column_nomeProdListaAgregada" prefWidth="402.0" text="Nome - Produto" />
+                  <TableColumn fx:id="column_qtdDispListaAgregada" prefWidth="172.0" text="Quantidade Disponível" />
+                  <TableColumn fx:id="column_precoVendaListaAgregada" prefWidth="130.0" text="Preço de Venda" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnVoltar" layoutX="825.0" layoutY="70.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
+            <Button fx:id="btnSelecionarProduto" layoutX="825.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnSelecionarProduto" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #002855;" text="Selecionar produto" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="127.0" layoutY="600.0" text="Quantidade desejada:">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="quantidadeDesejada_inserir" layoutX="346.0" layoutY="598.0" prefHeight="31.0" prefWidth="104.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelNovaOrdemServico" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
@@ -610,8 +529,163 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField editable="false" layoutX="1011.0" layoutY="60.0" prefHeight="31.0" prefWidth="143.0" />
+            <TextField fx:id="codOrdemServico" editable="false" layoutX="1011.0" layoutY="60.0" prefHeight="31.0" prefWidth="143.0" />
             <Separator layoutX="904.0" layoutY="212.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelBuscarOrdemServico" layoutX="77.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
+         <children>
+            <AnchorPane layoutX="25.0" layoutY="7.0" prefHeight="67.0" prefWidth="439.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="23.0" text="Consulta das Ordens de Serviço">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Separator layoutX="37.0" layoutY="74.0" prefHeight="3.0" prefWidth="361.0" />
+            <TableView fx:id="table_OrdemServico" layoutX="158.0" layoutY="163.0" prefHeight="434.0" prefWidth="885.0">
+              <columns>
+                <TableColumn fx:id="column_idOrdemServico" prefWidth="96.0" text="ID - Ordem" />
+                <TableColumn fx:id="column_nomeOrdemServico" prefWidth="396.0" text="Nome - Cliente" />
+                  <TableColumn fx:id="column_modeloOrdemServico" prefWidth="273.0" text="Modelo - Aparelho" />
+                  <TableColumn fx:id="column_valortotalOrdemServico" prefWidth="119.0" text="Valor total" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnVisualizarOrdemServico" layoutX="426.0" layoutY="649.0" mnemonicParsing="false" onAction="#cadastrarOrdemVenda" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Visualizar" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnExcluirOrdemServico" layoutX="648.0" layoutY="650.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Excluir" textFill="#fcf8f8" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelConsultaEstoque" layoutX="72.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="737.0" prefWidth="1195.0" visible="false">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="67.0" prefWidth="501.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="16.0" text="Consulta de Estoque">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="31.0" layoutY="91.0" prefHeight="606.0" prefWidth="1129.0">
+               <children>
+                  <TableView fx:id="table_ConsultaEstoque" layoutX="72.0" layoutY="69.0" prefHeight="427.0" prefWidth="986.0">
+                     <columns>
+                        <TableColumn fx:id="column_TipoLancamento" prefWidth="138.0" text="TipoLancamento" />
+                        <TableColumn fx:id="column_DataLancamentoEstoque" minWidth="0.0" prefWidth="147.0" text="DataLancamento" />
+                        <TableColumn fx:id="column_documentoEstoque" prefWidth="123.0" text="Documento" />
+                        <TableColumn fx:id="column_idProdutoEstoque" prefWidth="154.0" text="idProduto" />
+                        <TableColumn fx:id="column_NomeProdEstoque" prefWidth="186.0" text="nomeProduto" />
+                        <TableColumn fx:id="column_custoUniEstoque" prefWidth="133.0" text="Custo Unitário" />
+                        <TableColumn fx:id="column_quantidadeEstoque" prefWidth="165.0" text="Quantidade" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnExcluirProduto" layoutX="341.0" layoutY="531.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Produto" textFill="#f6f8f8" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="722.0" layoutY="531.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelCustoMedio" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="55.0" prefWidth="439.0">
+               <children>
+                  <Label layoutX="33.0" layoutY="10.0" text="Cálculo de custo médio">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="26.0" layoutY="54.0" prefHeight="3.0" prefWidth="284.0" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="table_custoMedio" layoutX="134.0" layoutY="151.0" prefHeight="474.0" prefWidth="934.0">
+              <columns>
+                <TableColumn fx:id="column_idCM" prefWidth="106.0" text="ID Produto" />
+                <TableColumn fx:id="column_produtoCM" prefWidth="415.0" text="Produto" />
+                  <TableColumn fx:id="column_custoMedio" prefWidth="227.0" text="Custo Médio" />
+                  <TableColumn fx:id="column_qtDispCM" prefWidth="184.0" text="Quantidade Disponível" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="14.0" prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #6A040F; -fx-border-radius: 5em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisibleOnClick" onMouseEntered="#menuClienteVisible" prefHeight="31.0" prefWidth="51.0" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" />
+               </graphic>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="60.0" onAction="#menuProdutoVisibleOnClick" onMouseEntered="#menuProdutoVisible" prefHeight="39.0" prefWidth="60.0" text=" " AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="60.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuOrdemVendaVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" text=" " AnchorPane.leftAnchor="10.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" onMouseClicked="#menuProdutoVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" size="30" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMenuEstoque" layoutX="6.0" layoutY="164.0" onAction="#menuEstoqueVisibleOnClick" onMouseEntered="#menuEstoqueVisible" prefHeight="31.0" prefWidth="51.0" text="  " AnchorPane.leftAnchor="6.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="30" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelLancamentoEstoque" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
+         <children>
+            <AnchorPane layoutX="22.0" layoutY="14.0" prefHeight="78.0" prefWidth="439.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="29.0" prefHeight="35.0" prefWidth="284.0" text="Lançamento no Estoque">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="26.0" layoutY="102.0" prefHeight="597.0" prefWidth="1140.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Documento:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="documento_estoque" layoutX="14.0" layoutY="53.0" prefHeight="31.0" prefWidth="167.0" promptText="0000" />
+                  <Label layoutX="218.0" layoutY="14.0" text="ID do produto:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="421.0" layoutY="14.0" text="Preço de Custo (UN):">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="precoCusto_estoque" layoutX="421.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
+                  <Label layoutX="685.0" layoutY="14.0" text="Quantidade:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="quantidade_estoque" layoutX="648.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
+                  <Button fx:id="btnIncluirProd_estoque" layoutX="362.0" layoutY="148.0" mnemonicParsing="false" onAction="#cadastrarEstoque" style="-fx-background-color: #002855;" text="Incluir Produto" textFill="WHITE" />
+                  <ComboBox id="comboBoxIdProdutos" fx:id="comboBoxIdProdutos" layoutX="218.0" layoutY="53.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
@@ -685,7 +759,7 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnBuscarOrdemVenda" layoutX="12.0" layoutY="155.0" onAction="#panelBuscarOrdemVendaVisible" prefHeight="39.0" prefWidth="188.0" text=" Buscar ordem venda" textFill="WHITE" AnchorPane.leftAnchor="5.0">
+            <JFXButton fx:id="btnBuscarOrdemVenda" layoutX="-4.0" layoutY="151.0" onAction="#panelBuscarOrdemVendaVisible" prefHeight="39.0" prefWidth="221.0" text=" Buscar Ordem de Venda" textFill="WHITE" AnchorPane.leftAnchor="-4.0">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
                </graphic>
@@ -696,6 +770,14 @@
             <JFXButton fx:id="btnNovaOrdemServico" layoutX="26.0" layoutY="108.0" onAction="#panelNovaOrdemServicoVisible" prefHeight="39.0" prefWidth="167.0" text="  Ordem de Serviço" textFill="WHITE" AnchorPane.leftAnchor="5.0">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBuscarOrdemServico" layoutX="4.0" layoutY="195.0" onAction="#panelBuscaOrdemServicoVisible" prefHeight="39.0" prefWidth="212.0" text=" Buscar Ordem de Serviço" textFill="WHITE" AnchorPane.leftAnchor="4.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
                </graphic>
                <font>
                   <Font size="15.0" />
@@ -713,15 +795,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btnLancamentoEstoque" layoutX="2.0" layoutY="62.0" onAction="#panelEstoqueVisible" prefHeight="39.0" prefWidth="203.0" text=" Lançamento" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="18" />
-               </graphic>
+            <JFXButton fx:id="btnLancamentoEstoque" layoutX="2.0" layoutY="62.0" onAction="#panelEstoqueVisible" prefHeight="39.0" prefWidth="203.0" text="    Lançamento" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnConsultaEstoque" layoutX="-1.0" layoutY="97.0" onAction="#panelConsultaEstoqueVisible" prefHeight="39.0" prefWidth="212.0" text="  Consulta " textFill="WHITE" AnchorPane.leftAnchor="-1.0">
+            <JFXButton fx:id="btnConsultaEstoque" layoutX="3.0" layoutY="99.0" onAction="#panelConsultaEstoqueVisible" prefHeight="39.0" prefWidth="212.0" text="  Consulta " textFill="WHITE" AnchorPane.leftAnchor="3.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnCustoMedio" layoutY="136.0" onAction="#panelCustoMedioVisible" prefHeight="39.0" prefWidth="212.0" text=" Custo Médio" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -729,34 +813,12 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
                </graphic>
             </JFXButton>
+            <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="51.0" layoutY="122.0" size="18" />
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="51.0" layoutY="85.0" size="18" text="" />
          </children>
          <padding>
             <Insets top="15.0" />
          </padding>
-      </AnchorPane>
-      <AnchorPane fx:id="panelIncluirProduto" layoutX="89.0" layoutY="83.0" prefHeight="710.0" prefWidth="1161.0" visible="false">
-         <children>
-            <TableView fx:id="table_selecaoProdutos" layoutX="127.0" layoutY="136.0" prefHeight="434.0" prefWidth="872.0">
-              <columns>
-                <TableColumn fx:id="column_idProdListaAgregada" prefWidth="166.0" text="ID Produto" />
-                <TableColumn fx:id="column_nomeProdListaAgregada" prefWidth="402.0" text="Nome - Produto" />
-                  <TableColumn fx:id="column_qtdDispListaAgregada" prefWidth="172.0" text="Quantidade Disponível" />
-                  <TableColumn fx:id="column_precoVendaListaAgregada" prefWidth="130.0" text="Preço de Venda" />
-              </columns>
-            </TableView>
-            <Button fx:id="btnVoltar" layoutX="825.0" layoutY="70.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
-            <Button fx:id="btnSelecionarProduto" layoutX="825.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnSelecionarProduto" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #002855;" text="Selecionar produto" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Label layoutX="127.0" layoutY="600.0" text="Quantidade desejada:">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Label>
-            <TextField fx:id="quantidadeDesejada_inserir" layoutX="346.0" layoutY="598.0" prefHeight="31.0" prefWidth="104.0" />
-         </children>
       </AnchorPane>
    </children>
 </AnchorPane>
