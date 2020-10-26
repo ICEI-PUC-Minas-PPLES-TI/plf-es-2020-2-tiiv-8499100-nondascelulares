@@ -820,5 +820,158 @@
             <Insets top="15.0" />
          </padding>
       </AnchorPane>
+      <AnchorPane fx:id="panelVisualizacaoOrdemServico" layoutX="72.0" layoutY="61.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
+         <children>
+            <Label layoutX="953.0" layoutY="161.0" text="Data:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="data_ordemservico1" editable="false" layoutX="1012.0" layoutY="159.0" prefHeight="31.0" prefWidth="143.0" />
+            <Label layoutX="33.0" layoutY="161.0" text="Marca:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoMarca1" editable="false" layoutX="106.0" layoutY="159.0" />
+            <Label layoutX="322.0" layoutY="161.0" text="Modelo:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoModelo1" editable="false" layoutX="411.0" layoutY="159.0" />
+            <Label layoutX="612.0" layoutY="161.0" text="Num de série:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoNumserie1" editable="false" layoutX="749.0" layoutY="159.0" />
+            <Separator layoutX="33.0" layoutY="243.0" prefHeight="0.0" prefWidth="1129.0" />
+            <Separator layoutX="299.0" layoutY="242.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="5.0" />
+            <Separator layoutX="592.0" layoutY="246.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
+            <Separator layoutX="33.0" layoutY="585.0" prefHeight="3.0" prefWidth="850.0" />
+            <Label layoutX="43.0" layoutY="506.0" text="Outros:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoOutros1" editable="false" layoutX="124.0" layoutY="504.0" prefHeight="31.0" prefWidth="268.0" />
+            <Label layoutX="430.0" layoutY="506.0" text="Defeito(s) apresentado(s):">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoDefeitos1" editable="false" layoutX="683.0" layoutY="504.0" prefHeight="31.0" prefWidth="403.0" />
+            <TextField fx:id="valorOrcamento1" editable="false" layoutX="1070.0" layoutY="566.0" prefHeight="31.0" prefWidth="85.0" />
+            <Label layoutX="907.0" layoutY="568.0" text="R$ do Orçamento:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="40.0" text="Cliente:">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cliente_ordemServico1" editable="false" layoutX="137.0" layoutY="42.0" prefHeight="31.0" prefWidth="329.0" />
+            <Button fx:id="btnSalvarVisualizacaoOrdem" layoutX="413.0" layoutY="658.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnFecharOrdemServico" layoutX="641.0" layoutY="658.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Fechar" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="opcoes_semchip1" layoutX="48.0" layoutY="297.0" mnemonicParsing="false" text="Sem chip">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_semcartao1" layoutX="48.0" layoutY="338.0" mnemonicParsing="false" text="Sem cartão de memória">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_sembateria1" layoutX="48.0" layoutY="379.0" mnemonicParsing="false" text="Sem bateria">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_semtampa1" layoutX="48.0" layoutY="416.0" mnemonicParsing="false" text="Sem tampa traseira">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_desbloqueio1" layoutX="349.0" layoutY="290.0" mnemonicParsing="false" text="Desbloqueio">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_trocabateria1" layoutX="349.0" layoutY="334.0" mnemonicParsing="false" text="Troca de bateria">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_desoxidacao1" layoutX="350.0" layoutY="375.0" mnemonicParsing="false" text="Desoxidação">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_atualizacao1" layoutX="350.0" layoutY="413.0" mnemonicParsing="false" text="Atualização">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_limpeza1" layoutX="649.0" layoutY="294.0" mnemonicParsing="false" text="Limpeza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_slotchip1" layoutX="649.0" layoutY="333.0" mnemonicParsing="false" text="Slot de chip">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_conectorcarga1" layoutX="650.0" layoutY="374.0" mnemonicParsing="false" pickOnBounds="false" text="Conector de carga">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="opcoes_trocatouch1" layoutX="651.0" layoutY="409.0" mnemonicParsing="false" text="Troca de touch">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="936.0" layoutY="266.0" prefHeight="21.0" prefWidth="187.0" text="Status do aparelho:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="status_naLoja1" layoutX="937.0" layoutY="314.0" mnemonicParsing="false" text="Na loja ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="status_entregue1" layoutX="938.0" layoutY="352.0" mnemonicParsing="false" text="Entregue">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="930.0" layoutY="44.0" text="Código:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codOrdemServico1" editable="false" layoutX="1012.0" layoutY="42.0" prefHeight="31.0" prefWidth="143.0" />
+            <Separator layoutX="904.0" layoutY="242.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
+            <Button fx:id="btnAlterarStatus" layoutX="937.0" layoutY="418.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="136.0" style="-fx-background-color: #002855;" text="Alterar status" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

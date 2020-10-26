@@ -614,6 +614,8 @@ public class FXMLController implements Initializable {
         @FXML
 	public AnchorPane panelBuscarOrdemServico;
         @FXML
+	public AnchorPane panelVisualizacaoOrdemServico;
+        @FXML
 	public JFXButton btnNovaOrdemServico;
 	@FXML
 	public JFXButton btnIncluirClienteOrdemServico;
@@ -627,6 +629,13 @@ public class FXMLController implements Initializable {
 	public Button btnVisualizarOrdemServico;
         @FXML
 	public Button btnExcluirOrdemServico;
+        @FXML
+	public Button btnAlterarStatus;
+        @FXML
+	public Button btnSalvarVisualizacaoOrdem;
+        @FXML
+	public Button btnFecharOrdemServico;
+        
         
 
        // ---------------- ATRIBUTOS DA ORDEM DE SERVICO ------------------------
@@ -677,6 +686,56 @@ public class FXMLController implements Initializable {
 	public RadioButton status_naLoja;
         @FXML
 	public RadioButton status_entregue;
+               
+        //---------------ATRIBUTOS DA TELA DE VISUALIZAÇÃO--------
+        
+         @FXML
+	public TextField campoMarca1;
+        @FXML
+	public TextField campoModelo1;
+        @FXML
+	public TextField campoNumserie1;
+        @FXML
+	public TextField data_ordemservico1;
+        @FXML
+	public TextField campoOutros1;
+        @FXML
+	public TextField campoDefeitos1;
+        @FXML
+	public TextField valorOrcamento1;
+        @FXML
+	public TextField cliente_ordemServico1;
+        @FXML
+	public TextField codOrdemServico1;
+        @FXML
+	public CheckBox opcoes_semchip1;
+        @FXML
+	public CheckBox opcoes_semcartao1;
+        @FXML
+	public CheckBox opcoes_sembateria1;
+        @FXML
+	public CheckBox opcoes_semtampa1;
+        @FXML
+	public CheckBox opcoes_desbloqueio1;
+        @FXML
+	public CheckBox opcoes_trocabateria1;
+        @FXML
+	public CheckBox opcoes_desoxidacao1;
+        @FXML
+	public CheckBox opcoes_atualizacao1;
+        @FXML
+	public CheckBox opcoes_limpeza1;
+        @FXML
+	public CheckBox opcoes_slotchip1;
+        @FXML
+	public CheckBox opcoes_conectorcarga1;
+        @FXML
+	public CheckBox opcoes_trocatouch1;
+        @FXML
+	public RadioButton status_naLoja1;
+        @FXML
+	public RadioButton status_entregue1;
+        
         
         // -------------------- TABLE DA CONSULTA -----------------
         @FXML
@@ -925,6 +984,7 @@ public class FXMLController implements Initializable {
 			panelCustoMedio.setVisible(true);
 		}
 	}
+        
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
