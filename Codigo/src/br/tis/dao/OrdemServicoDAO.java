@@ -30,6 +30,10 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		this.ordemServico = ordemServico;
 	}
 
+    public OrdemServicoDAO(OrdemVenda ordem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 	@Override
 	public boolean add() {
 		

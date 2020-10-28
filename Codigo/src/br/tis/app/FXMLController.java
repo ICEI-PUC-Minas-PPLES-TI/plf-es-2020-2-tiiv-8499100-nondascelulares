@@ -844,7 +844,37 @@ public class FXMLController implements Initializable {
 
 		}
 	}
-   
+        
+        // --- Table Consutar Ordem de venda ---
+        private ObservableList<OrdemServico> OrdemServicoDAO() {
+
+		OrdemServicoDAO OrdDao = new OrdemServicoDAO();
+
+		return FXCollections.observableArrayList(OrdDao.getAll());
+	}
+                
+        public void carregarOrdemServiçoTabela (ActionEvent event) throws IOException {
+            column_idOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+            column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+            column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+            column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+            
+        }
+        
+        	public void excluirOrdemServiço(ActionEvent event) throws IOException {
+		if (table_OrdemServico.getSelectionModel().getSelectedItem() != null) {
+			int idOrdemServiçoExcluir;
+			idOrdemServiçoExcluir =  (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
+			OrdemServicoDAO OrdDao = new OrdemServicoDAO();
+			OrdDao.remove(idOrdemServiçoExcluir);
+			GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
+			panelBuscarProdutoVisible(event);
+			panelBuscarProdutoVisible(event);
+		} else {
+			GeraAlerta("Selecione um Produto!", "Nenhum Produto selecionado!");
+		}
+
+	}
       
         
         
