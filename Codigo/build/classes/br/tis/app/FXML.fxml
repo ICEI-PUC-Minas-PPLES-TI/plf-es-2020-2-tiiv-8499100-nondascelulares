@@ -439,7 +439,7 @@
             </Label>
             <TextField fx:id="cliente_ordemServico" editable="false" layoutX="113.0" layoutY="582.0" prefHeight="31.0" prefWidth="221.0" />
             <JFXButton fx:id="btnIncluirClienteOrdemServico" layoutX="361.0" layoutY="582.0" prefHeight="21.0" prefWidth="114.0" style="-fx-background-color: #002855;" text="Incluir cliente" textFill="WHITE" />
-            <Button fx:id="btnSalvarOrdemServico" layoutX="481.0" layoutY="665.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
+            <Button fx:id="btnSalvarOrdemServico" layoutX="481.0" layoutY="665.0" mnemonicParsing="false" onAction="#cadastrarOrdemServico" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
