@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXComboBox;
 
 import br.tis.dao.ClienteDAO;
 import br.tis.dao.EstoqueDAO;
+import br.tis.dao.OrdemServicoDAO;
 import br.tis.dao.OrdemVendaDAO;
 import br.tis.dao.ProdutoDAO;
 import br.tis.entidades.Cliente;
@@ -687,6 +688,47 @@ public class FXMLController implements Initializable {
         @FXML
 	public RadioButton status_entregue;
                
+        
+    	@FXML
+    	public void cadastrarOrdemServico(ActionEvent event) throws IOException {
+
+    		OrdemServico os = new OrdemServico();
+    		
+    		os.setIdOrdemServico(Long.valueOf(codOrdemServico.getText()));
+    		os.setData(Date.valueOf(data_ordemservico.getText()));
+    		os.setMarca(campoMarca.getText());
+    		os.setModelo(campoModelo.getText());
+    		os.setNumSerie(campoNumserie.getText());
+    		os.setStatus(btnAlterarStatus.getText());
+    		os.setSemChip(Boolean.valueOf(opcoes_semchip.getText()));
+    		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.getText()));
+    		os.setSemBateria(Boolean.valueOf(opcoes_sembateria.getText()));
+    		os.setSemTampaTraseira(Boolean.valueOf(opcoes_semtampa.getText()));
+    		os.setDesbloqueio(Boolean.valueOf(opcoes_desbloqueio.getText()));
+    		os.setTrocaBateria(Boolean.valueOf(opcoes_trocabateria.getText()));
+    		os.setDesoxidacao(Boolean.valueOf(opcoes_desoxidacao.getText()));
+    		os.setAtualizacao(Boolean.valueOf(opcoes_atualizacao.getText()));
+    		os.setLimpeza(Boolean.valueOf(opcoes_limpeza.getText()));
+    		os.setSlotChip(Boolean.valueOf(opcoes_slotchip.getText()));
+    		os.setConectorCarga(Boolean.valueOf(opcoes_conectorcarga.getText()));
+    		os.setTrocaTouch(Boolean.valueOf(opcoes_trocatouch.getText()));
+    		os.setValorTotal(Double.parseDouble(valorOrcamento.getText()));
+    		os.setIdCliente(cliente_ordemServico.getText());
+    		os.setDefeitos(campoDefeitos.getText());
+    		os.setObservacao(campoOutros.getText());
+    		
+    		OrdemServicoDAO ordemServico = new OrdemServicoDAO(os);
+    		ordemServico.add();		
+
+    		GeraAlerta("Sucesso", "Ordem Servico Efetuado com sucesso!");
+
+    	}
+        
+        
+        
+        
+        
+        
         //---------------ATRIBUTOS DA TELA DE VISUALIZAÇÃO--------
         
          @FXML
@@ -782,6 +824,11 @@ public class FXMLController implements Initializable {
 			dropDown_Ordens.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			OrdemServico os = new OrdemServico();
+			long numOS = os.geraNumOrdemServico();
+			codOrdemServico.setText(String.valueOf(numOS));
+			data_ordemservico.setText(String.valueOf(LocalDate.now()));
+		
 			panelNovaOrdemServico.setVisible(true);
 
 		}

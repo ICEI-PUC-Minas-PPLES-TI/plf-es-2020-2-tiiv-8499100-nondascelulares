@@ -7,7 +7,7 @@ import java.util.List;
 
 import br.tis.dao.ClienteDAO;
 import br.tis.dao.EstoqueDAO;
-import br.tis.dao.OrdemVendaDAO;
+import br.tis.dao.OrdemServicoDAO;
 import br.tis.entidades.Cliente;
 import br.tis.entidades.Estoque;
 import br.tis.entidades.ListaAgregada;
@@ -46,7 +46,7 @@ public class MainTeste {
 			ordem.setLancamentosSaida(lancamentosSaida);
 			
 			
-		OrdemVendaDAO OV = new OrdemVendaDAO(ordem);
+		OrdemServicoDAO OV = new OrdemServicoDAO(ordem);
 		OV.add();
 	
 		EstoqueDAO estoque = new EstoqueDAO();
