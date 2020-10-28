@@ -93,6 +93,8 @@ public class Cliente  {
 		System.out.println(this.nome + " " + this.cpfCnpj + " " + this.email + " " + this.telefone);
 	}
 
+	
+	@Override
 	public String toString() {
 		return ("Nome: " + this.nome + " - CPF: " + this.cpfCnpj);
 	}

@@ -718,7 +718,7 @@ public class FXMLController implements Initializable {
     		
     		os.setValorTotal(Double.parseDouble(valorOrcamento.getText()));
     		
-    		os.setIdCliente(cliente_ordemServico.getText());
+    		os.setIdCliente(comboBoxIdClientes.getValue().getNome());
     		os.setDefeitos(campoDefeitos.getText());
     		os.setObservacao(campoOutros.getText());
     		
@@ -796,7 +796,25 @@ public class FXMLController implements Initializable {
 	@FXML
 	private TableColumn<OrdemServico, Double> column_valortotalOrdemServico;
         
-        
+	@FXML
+	private ComboBox<Cliente> comboBoxIdClientes = new JFXComboBox<Cliente>();
+
+	@FXML
+	public void carregarListaClientes(ActionEvent event) {
+
+		ClienteDAO agregado = new ClienteDAO();
+
+		ObservableList<Cliente> obsListaAgregada;
+
+		obsListaAgregada = FXCollections.observableArrayList(agregado.getAll());
+
+		comboBoxIdClientes.setItems(obsListaAgregada);
+
+	}    
+	
+	
+	
+	
         @FXML
 	public void menuOrdemServicoVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -833,7 +851,7 @@ public class FXMLController implements Initializable {
 			long numOS = os.geraNumOrdemServico();
 			codOrdemServico.setText(String.valueOf(numOS));
 			data_ordemservico.setText(String.valueOf(LocalDate.now()));
-		
+			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
 
 		}
@@ -850,6 +868,8 @@ public class FXMLController implements Initializable {
 
 		}
 	}
+        
+        
         
         // --- Table Consutar Ordem de venda ---
         private ObservableList<OrdemServico> listaOrdemServico() {

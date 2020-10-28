@@ -437,8 +437,6 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="cliente_ordemServico" editable="false" layoutX="113.0" layoutY="582.0" prefHeight="31.0" prefWidth="221.0" />
-            <JFXButton fx:id="btnIncluirClienteOrdemServico" layoutX="361.0" layoutY="582.0" prefHeight="21.0" prefWidth="114.0" style="-fx-background-color: #002855;" text="Incluir cliente" textFill="WHITE" />
             <Button fx:id="btnSalvarOrdemServico" layoutX="481.0" layoutY="665.0" mnemonicParsing="false" onAction="#cadastrarOrdemServico" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -531,6 +529,7 @@
             </Label>
             <TextField fx:id="codOrdemServico" editable="false" layoutX="1011.0" layoutY="60.0" prefHeight="31.0" prefWidth="143.0" />
             <Separator layoutX="904.0" layoutY="212.0" orientation="VERTICAL" prefHeight="230.0" prefWidth="6.0" />
+            <ComboBox fx:id="comboBoxIdClientes" layoutX="125.0" layoutY="582.0" prefHeight="31.0" prefWidth="343.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelBuscarOrdemServico" layoutX="77.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
