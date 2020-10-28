@@ -39,7 +39,7 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		
 		boolean result = false; 
 		
-		String sqlAdd = "insert into ordemServicos (idOrdemServico, data, marca, modelo, numSerie, status, semChip, semCartaoMemoria, semBateria, semTampaTraseira, desbloqueio, trocaBateria, desoxidacao, atualizacao, limpeza, slotChip, conectorCarga, trocaTouch, valorTotal, idCliente, defeitos, observacao) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sqlAdd = "insert into ordemServico (idOrdemServico, data, marca, modelo, numSerie, status, semChip, semCartaoMemoria, semBateria, semTampaTraseira, desbloqueio, trocaBateria, desoxidacao, atualizacao, limpeza, slotChip, conectorCarga, trocaTouch, valorTotal, idCliente, defeitos, observacao) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement stmtOs = null;
 		
@@ -53,22 +53,24 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 			stmtOs.setString(3, ordemServico.getMarca());
 			stmtOs.setString(4, ordemServico.getModelo());
 			stmtOs.setString(5, ordemServico.getNumSerie());
-			stmtOs.setString(6, ordemServico.getStatus());
+			stmtOs.setString(6, ordemServico.getStatus());	
 			stmtOs.setBoolean(7, ordemServico.isSemChip());
-			stmtOs.setBoolean(8, ordemServico.isSemBateria());
-			stmtOs.setBoolean(9, ordemServico.isSemTampaTraseira());
-			stmtOs.setBoolean(10, ordemServico.isDesbloqueio());
-			stmtOs.setBoolean(11, ordemServico.isTrocaBateria());
-			stmtOs.setBoolean(12, ordemServico.isDesoxidacao());
-			stmtOs.setBoolean(13, ordemServico.isAtualizacao());
-			stmtOs.setBoolean(14, ordemServico.isLimpeza());
-			stmtOs.setBoolean(15, ordemServico.isSlotChip());
-			stmtOs.setBoolean(16, ordemServico.isConectorCarga());
-			stmtOs.setBoolean(17, ordemServico.isTrocaTouch());
-			stmtOs.setDouble(18, ordemServico.getValorTotal());
-			stmtOs.setString(19, ordemServico.getIdCliente());
-			stmtOs.setString(20, ordemServico.getDefeitos());
-			stmtOs.setString(21, ordemServico.getObservacao());
+			stmtOs.setBoolean(8, ordemServico.isSemCartaoMemoria());
+			stmtOs.setBoolean(9, ordemServico.isSemBateria());
+			stmtOs.setBoolean(10, ordemServico.isSemTampaTraseira());
+			stmtOs.setBoolean(11, ordemServico.isDesbloqueio());
+			stmtOs.setBoolean(12, ordemServico.isTrocaBateria());
+			stmtOs.setBoolean(13, ordemServico.isDesoxidacao());
+			stmtOs.setBoolean(14, ordemServico.isAtualizacao());
+			stmtOs.setBoolean(15, ordemServico.isLimpeza());
+			stmtOs.setBoolean(16, ordemServico.isSlotChip());
+			stmtOs.setBoolean(17, ordemServico.isConectorCarga());
+			stmtOs.setBoolean(18, ordemServico.isTrocaTouch());
+			
+			stmtOs.setDouble(19, ordemServico.getValorTotal());
+			stmtOs.setString(20, ordemServico.getIdCliente());
+			stmtOs.setString(21, ordemServico.getDefeitos());
+			stmtOs.setString(22, ordemServico.getObservacao());
 						
 			stmtOs.execute();
 

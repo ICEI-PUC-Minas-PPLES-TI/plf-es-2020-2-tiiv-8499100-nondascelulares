@@ -692,6 +692,8 @@ public class FXMLController implements Initializable {
     	@FXML
     	public void cadastrarOrdemServico(ActionEvent event) throws IOException {
 
+    	
+    		
     		OrdemServico os = new OrdemServico();
     		
     		os.setIdOrdemServico(Long.valueOf(codOrdemServico.getText()));
@@ -700,19 +702,22 @@ public class FXMLController implements Initializable {
     		os.setModelo(campoModelo.getText());
     		os.setNumSerie(campoNumserie.getText());
     		os.setStatus(btnAlterarStatus.getText());
-    		os.setSemChip(Boolean.valueOf(opcoes_semchip.getText()));
-    		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.getText()));
-    		os.setSemBateria(Boolean.valueOf(opcoes_sembateria.getText()));
-    		os.setSemTampaTraseira(Boolean.valueOf(opcoes_semtampa.getText()));
-    		os.setDesbloqueio(Boolean.valueOf(opcoes_desbloqueio.getText()));
-    		os.setTrocaBateria(Boolean.valueOf(opcoes_trocabateria.getText()));
-    		os.setDesoxidacao(Boolean.valueOf(opcoes_desoxidacao.getText()));
-    		os.setAtualizacao(Boolean.valueOf(opcoes_atualizacao.getText()));
-    		os.setLimpeza(Boolean.valueOf(opcoes_limpeza.getText()));
-    		os.setSlotChip(Boolean.valueOf(opcoes_slotchip.getText()));
-    		os.setConectorCarga(Boolean.valueOf(opcoes_conectorcarga.getText()));
-    		os.setTrocaTouch(Boolean.valueOf(opcoes_trocatouch.getText()));
+    		
+    		os.setSemChip(Boolean.valueOf(opcoes_semchip.isSelected()));
+    		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.isSelected()));
+    		os.setSemBateria(Boolean.valueOf(opcoes_sembateria.isSelected()));
+    		os.setSemTampaTraseira(Boolean.valueOf(opcoes_semtampa.isSelected()));
+    		os.setDesbloqueio(Boolean.valueOf(opcoes_desbloqueio.isSelected()));
+    		os.setTrocaBateria(Boolean.valueOf(opcoes_trocabateria.isSelected()));
+    		os.setDesoxidacao(Boolean.valueOf(opcoes_desoxidacao.isSelected()));
+    		os.setAtualizacao(Boolean.valueOf(opcoes_atualizacao.isSelected()));
+    		os.setLimpeza(Boolean.valueOf(opcoes_limpeza.isSelected()));
+    		os.setSlotChip(Boolean.valueOf(opcoes_slotchip.isSelected()));
+    		os.setConectorCarga(Boolean.valueOf(opcoes_conectorcarga.isSelected()));
+    		os.setTrocaTouch(Boolean.valueOf(opcoes_trocatouch.isSelected()));
+    		
     		os.setValorTotal(Double.parseDouble(valorOrcamento.getText()));
+    		
     		os.setIdCliente(cliente_ordemServico.getText());
     		os.setDefeitos(campoDefeitos.getText());
     		os.setObservacao(campoOutros.getText());
