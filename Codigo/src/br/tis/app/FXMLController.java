@@ -846,7 +846,7 @@ public class FXMLController implements Initializable {
 	}
         
         // --- Table Consutar Ordem de venda ---
-        private ObservableList<OrdemServico> OrdemServicoDAO() {
+        private ObservableList<OrdemServico> listaOrdemServico() {
 
 		OrdemServicoDAO OrdDao = new OrdemServicoDAO();
 
@@ -858,6 +858,8 @@ public class FXMLController implements Initializable {
             column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
             column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
             column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+            
+            table_OrdemServico.setItems(listaOrdemServico());
             
         }
         
