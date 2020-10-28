@@ -839,13 +839,14 @@ public class FXMLController implements Initializable {
 		}
 	}
         @FXML
-	public void panelBuscaOrdemServicoVisible(ActionEvent event) {
+	public void panelBuscaOrdemServicoVisible(ActionEvent event) throws IOException {
 		if (panelBuscarOrdemServico.isVisible() == true) {
 			panelBuscarOrdemServico.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
 			panelBuscarOrdemServico.setVisible(true);
+			carregarOrdemServicoTabela(event);
 
 		}
 	}
@@ -858,22 +859,22 @@ public class FXMLController implements Initializable {
 		return FXCollections.observableArrayList(OrdDao.getAll());
 	}
                 
-        public void carregarOrdemServiçoTabela (ActionEvent event) throws IOException {
-            column_idOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-            column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-            column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
-            column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+        public void carregarOrdemServicoTabela (ActionEvent event) throws IOException {
+            column_idOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idOrdemServico"));
+            column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+            column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+            column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
             
             table_OrdemServico.setItems(listaOrdemServico());
             
         }
         
-        	public void excluirOrdemServiço(ActionEvent event) throws IOException {
+        	public void excluirOrdemServico(ActionEvent event) throws IOException {
 		if (table_OrdemServico.getSelectionModel().getSelectedItem() != null) {
-			int idOrdemServiçoExcluir;
-			idOrdemServiçoExcluir =  (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
+			int idOrdemServicoExcluir;
+			idOrdemServicoExcluir =  (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
 			OrdemServicoDAO OrdDao = new OrdemServicoDAO();
-			OrdDao.remove(idOrdemServiçoExcluir);
+			OrdDao.remove(idOrdemServicoExcluir);
 			GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
 			panelBuscarProdutoVisible(event);
 			panelBuscarProdutoVisible(event);

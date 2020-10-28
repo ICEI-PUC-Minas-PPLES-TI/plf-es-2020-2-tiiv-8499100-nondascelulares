@@ -261,7 +261,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panelNovaOrdemVenda" layoutX="66.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="712.0" prefWidth="1176.0">
+      <AnchorPane fx:id="panelNovaOrdemVenda" layoutX="66.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="712.0" prefWidth="1176.0" visible="false">
          <children>
             <AnchorPane layoutX="35.0" layoutY="17.0" prefHeight="78.0" prefWidth="477.0">
                <children>
