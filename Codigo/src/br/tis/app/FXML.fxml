@@ -620,29 +620,35 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="14.0" prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #6A040F; -fx-border-radius: 5em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="panelEntradaBaixa" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="710.0" prefWidth="1195.0" visible="false">
          <children>
-            <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisibleOnClick" onMouseEntered="#menuClienteVisible" prefHeight="31.0" prefWidth="51.0" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" />
-               </graphic>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="60.0" onAction="#menuProdutoVisibleOnClick" onMouseEntered="#menuProdutoVisible" prefHeight="39.0" prefWidth="60.0" text=" " AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="60.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuOrdemVendaVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" text=" " AnchorPane.leftAnchor="10.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" onMouseClicked="#menuProdutoVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" size="30" />
-               </graphic></JFXButton>
-            <JFXButton fx:id="btnMenuEstoque" layoutX="6.0" layoutY="164.0" onAction="#menuEstoqueVisibleOnClick" onMouseEntered="#menuEstoqueVisible" prefHeight="31.0" prefWidth="51.0" text="  " AnchorPane.leftAnchor="6.0">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="30" />
-               </graphic>
-            </JFXButton>
+            <AnchorPane layoutX="24.0" layoutY="14.0" prefHeight="55.0" prefWidth="412.0">
+               <children>
+                  <Label layoutX="28.0" layoutY="10.0" text="Entrada de Baixa">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="23.0" layoutY="44.0" prefHeight="3.0" prefWidth="212.0" />
+               </children>
+            </AnchorPane>
+            <ComboBox fx:id="entradaBaixa_produto" layoutX="54.0" layoutY="141.0" prefHeight="31.0" prefWidth="244.0" />
+            <Label layoutX="54.0" layoutY="103.0" prefHeight="27.0" prefWidth="85.0" text="Produto:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="360.0" layoutY="106.0" text="Motivo:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="entradaBaixa_motivo" layoutX="360.0" layoutY="141.0" prefHeight="25.0" prefWidth="240.0" />
+            <Button fx:id="btnSalvarBaixa" layoutX="683.0" layoutY="135.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Dar baixa" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelLancamentoEstoque" layoutX="77.0" layoutY="62.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
@@ -685,6 +691,31 @@
                   <ComboBox id="comboBoxIdProdutos" fx:id="comboBoxIdProdutos" layoutX="218.0" layoutY="53.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="14.0" prefHeight="400.0" prefWidth="54.0" style="-fx-background-color: #6A040F; -fx-border-radius: 5em;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="btnMenuCliente" layoutX="1.0" layoutY="14.0" onAction="#menuClienteVisibleOnClick" onMouseEntered="#menuClienteVisible" prefHeight="31.0" prefWidth="51.0" ripplerFill="#ffffffed" text=" " AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" text="" />
+               </graphic>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="btnMenuProduto" layoutX="3.0" layoutY="60.0" onAction="#menuProdutoVisibleOnClick" onMouseEntered="#menuProdutoVisible" prefHeight="39.0" prefWidth="60.0" text=" " AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="60.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BAG" size="30" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMenuOrdens" layoutX="3.0" layoutY="110.0" onAction="#menuOrdemVendaVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" text=" " AnchorPane.leftAnchor="10.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" onMouseClicked="#menuProdutoVisibleOnClick" onMouseEntered="#menuOrdemVendaVisible" size="30" />
+               </graphic></JFXButton>
+            <JFXButton fx:id="btnMenuEstoque" layoutX="6.0" layoutY="164.0" onAction="#menuEstoqueVisibleOnClick" onMouseEntered="#menuEstoqueVisible" prefHeight="31.0" prefWidth="51.0" text="  " AnchorPane.leftAnchor="6.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="30" />
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="dropDown_Cliente" layoutX="54.0" prefHeight="800.0" prefWidth="212.0" style="-fx-background-color: #9D0208;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="0.0">
@@ -814,6 +845,14 @@
             </JFXButton>
             <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="51.0" layoutY="122.0" size="18" />
             <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="51.0" layoutY="85.0" size="18" text="" />
+            <JFXButton fx:id="btnEntradaBaixa" layoutX="-1.0" layoutY="175.0" onAction="#panelEntradaBaixaVisible" prefHeight="43.0" prefWidth="212.0" text="  Entrada de Baixa" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
+               </graphic>
+            </JFXButton>
          </children>
          <padding>
             <Insets top="15.0" />
