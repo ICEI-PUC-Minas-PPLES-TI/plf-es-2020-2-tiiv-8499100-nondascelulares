@@ -37,7 +37,7 @@ public class Estoque {
 	public void setQuantidade(int quantidade) {
 	
 		//No cado da Ordem de venda a quantidade deve ser sempre negativa
-		this.quantidade = Math.abs(quantidade)*-1;
+		this.quantidade = quantidade;
 	}
 
 	public Date getDataLancamento() {

@@ -516,7 +516,7 @@ public class FXMLController implements Initializable {
 			est.setIdproduto(agre.getIdProduto());
 
 			est.setNomeProduto(agre.getNomeProduto());
-			est.setQuantidade(agre.getQuantidadeDisp());
+			est.setQuantidade(Math.abs(agre.getQuantidadeDisp())*-1);
 			est.setDocumento(String.valueOf(ov.getIdOrdemVenda()));
 			lancamentos.add(est);
 		}
@@ -996,6 +996,7 @@ public class FXMLController implements Initializable {
 
 		lancamento.setCustoUnitario(Double.parseDouble(precoCusto_estoque.getText()));
 		lancamento.setQuantidade(Integer.parseInt(quantidade_estoque.getText()));
+		System.out.println(Integer.parseInt(quantidade_estoque.getText()));
 		lancamento.setDocumento(documento_estoque.getText());
 
 		EstoqueDAO estoque = new EstoqueDAO(lancamento);
