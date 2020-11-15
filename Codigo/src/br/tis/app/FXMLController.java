@@ -77,6 +77,7 @@ public class FXMLController implements Initializable {
                 panelNovaOrdemServico.setVisible(false);
                 panelBuscarOrdemServico.setVisible(false);
                 panelCustoMedio.setVisible(false);
+                panelEntradaBaixa.setVisible(false);
 
 	}
 
@@ -1202,6 +1203,54 @@ public class FXMLController implements Initializable {
 			GeraAlerta("Selecione um produto!", "Nenhum produto ou quantidade selecionado!");
 		}
 
+	}
+        
+        //----------------- TELA ENTRADA DE BAIXA -----------------------------
+        @FXML
+	public AnchorPane panelEntradaBaixa;
+        @FXML
+	public JFXButton btnEntradaBaixa;
+        
+       //----------------- ATRIBUTOS ENTRADA DE BAIXA -----------------------------
+        @FXML
+	public Button btnSalvarBaixa;
+        @FXML
+	public TextField entradaBaixa_motivo;
+        @FXML
+	public ComboBox entradaBaixa_produto;
+
+        @FXML
+	public void menuEntradaVisible(MouseEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+			dropDown_Ordens.setVisible(false);
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Produto.setVisible(false);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		}
+	}
+
+	@FXML
+	public void menuEntradaVisibleOnClick(ActionEvent event) {
+		if (dropDown_Ordens.isVisible() == true) {
+		} else {
+			dropDown_Ordens.setVisible(true);
+			dropDown_Produto.setVisible(false);
+			dropDown_Cliente.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		}
+	}
+	@FXML
+	public void panelEntradaBaixaVisible(ActionEvent event) {
+		if (panelEntradaBaixa.isVisible() == true) {
+			panelEntradaBaixa.setVisible(false);
+			dropDown_Estoque.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelEntradaBaixa.setVisible(true);
+
+		}
 	}
 
 }
