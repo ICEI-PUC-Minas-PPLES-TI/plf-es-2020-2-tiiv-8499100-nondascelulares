@@ -288,7 +288,7 @@ public class EstoqueDAO {
 
 	public List<ListaAgregada> getEstoqueAgregado() {
 
-		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda' FROM [dbo].[estoque] AS C join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda";
+		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda', Q.precoMedio AS 'precoMedio'FROM [dbo].[estoque] AS C join (SELECT idProduto, AVG(custoUnitario) AS 'precoMedio' from DBO.estoque where tipoLancamento = 'ENTRADA' GROUP BY idProduto)  AS Q on Q.idProduto = C.idProduto join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda, Q.precoMedio";
 		List<ListaAgregada> estoqueAgregado = new ArrayList<>();
 		PreparedStatement stmtLanc = null;
 
@@ -304,8 +304,9 @@ public class EstoqueDAO {
 
 				resumoEstoque.setIdProduto(rs.getLong("idProduto"));
 				resumoEstoque.setNomeProduto(rs.getString("nomeProduto"));
-				resumoEstoque.setPrecoVenda(rs.getInt("precoVenda"));
+				resumoEstoque.setPrecoVenda(rs.getFloat("precoVenda"));
 				resumoEstoque.setQuantidadeDisp(rs.getInt("quantidadeDisp"));
+				resumoEstoque.setPrecoMedio(rs.getDouble("precoMedio"));
 
 				estoqueAgregado.add(resumoEstoque);
 

@@ -38,6 +38,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -632,7 +633,7 @@ public class FXMLController implements Initializable {
         @FXML
 	public Button btnExcluirOrdemServico;
         @FXML
-	public Button btnAlterarStatus;
+	public ChoiceBox<String> ordemServico_ChoiceStatus = new ChoiceBox<>(); 
         @FXML
 	public Button btnSalvarVisualizacaoOrdem;
         @FXML
@@ -702,7 +703,7 @@ public class FXMLController implements Initializable {
     		os.setMarca(campoMarca.getText());
     		os.setModelo(campoModelo.getText());
     		os.setNumSerie(campoNumserie.getText());
-    		os.setStatus(btnAlterarStatus.getText());
+    		os.setStatus((String) ordemServico_ChoiceStatus.getValue());
     		
     		os.setSemChip(Boolean.valueOf(opcoes_semchip.isSelected()));
     		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.isSelected()));
@@ -854,6 +855,8 @@ public class FXMLController implements Initializable {
 			data_ordemservico.setText(String.valueOf(LocalDate.now()));
 			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA");
+			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 
 		}
 	}
@@ -959,21 +962,34 @@ public class FXMLController implements Initializable {
         
        // ----------- TABLE CUSTO MÉDIO--------------
         @FXML
-	private TableView<Estoque> table_custoMedio;
+	private TableView<ListaAgregada> table_custoMedio;
 	@FXML
-	private TableColumn<Estoque, Number> column_idCM;
+	private TableColumn<ListaAgregada, Number> column_idCM;
 	@FXML
-	private TableColumn<Estoque, String> column_produtoCM;
+	private TableColumn<ListaAgregada, String> column_produtoCM;
 	@FXML
-	private TableColumn<Estoque, Double> column_custoMedio;
+	private TableColumn<ListaAgregada, Double> column_custoMedio;
 	@FXML
-	private TableColumn<Estoque, Number> column_qtDispCM;
+	private TableColumn<ListaAgregada, Number> column_qtDispCM;
         
+
+	@FXML
+	public void carregarProdutosCM(ActionEvent event) throws IOException {
+
+		column_idCM.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		column_produtoCM.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+		column_qtDispCM.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisp"));
+		column_custoMedio.setCellValueFactory(new PropertyValueFactory<>("precoMedio"));
+		table_custoMedio.setItems(ListaAgregadaOV());
+	}
+	
+
+	
 	@FXML
 	private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
 
 	@FXML
-	public void carregarLista(ActionEvent event) {
+	public void carregarListaEstoque(ActionEvent event) {
 
 		EstoqueDAO agregado = new EstoqueDAO();
 
@@ -1067,7 +1083,7 @@ public class FXMLController implements Initializable {
 		} else {
 			fecharTodosPanel(event);
 			panelLancamentoEstoque.setVisible(true);
-			carregarLista(event);
+			carregarListaEstoque(event);
 		}
 	}
 
@@ -1089,6 +1105,7 @@ public class FXMLController implements Initializable {
 		} else {
 			fecharTodosPanel(event);
 			panelCustoMedio.setVisible(true);
+			carregarProdutosCM(event);
 		}
 	}
         
@@ -1216,8 +1233,45 @@ public class FXMLController implements Initializable {
 	public Button btnSalvarBaixa;
         @FXML
 	public TextField entradaBaixa_motivo;
-        @FXML
-	public ComboBox entradaBaixa_produto;
+        
+    public TextField entradaBaixa_qnt;
+       
+    	@FXML
+    	private ComboBox<ListaAgregada> entradaBaixa_produto = new JFXComboBox<ListaAgregada>();
+
+    	@FXML
+    	public void carregarEntradaBaixa(ActionEvent event) {
+
+    		EstoqueDAO agregado = new EstoqueDAO();
+
+    		ObservableList<ListaAgregada> obsListaAgregada;
+
+    		obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
+
+    		entradaBaixa_produto.setItems(obsListaAgregada);
+
+    	}    
+        
+    	@FXML
+    	public void BaixaEstoque(ActionEvent event) throws IOException {
+
+    		Estoque lancamento = new Estoque();
+    		lancamento.setTipoLancamento(TipoLancamento.SAIDA);
+    		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
+    		lancamento.setIdproduto(entradaBaixa_produto.getValue().getIdProduto());
+
+    		lancamento.setNomeProduto(entradaBaixa_produto.getValue().getNomeProduto());
+
+    		lancamento.setCustoUnitario(0);
+    		lancamento.setQuantidade(Math.abs(Integer.parseInt(entradaBaixa_qnt.getText()))*-1);
+    		lancamento.setDocumento("Baixa de Estoque: " + entradaBaixa_motivo.getText());
+
+    		EstoqueDAO estoque = new EstoqueDAO(lancamento);
+    		estoque.add();
+
+    		GeraAlerta("Sucesso", "Lancamento Efetuado com sucesso!");
+
+    	}
 
         @FXML
 	public void menuEntradaVisible(MouseEvent event) {
@@ -1249,6 +1303,7 @@ public class FXMLController implements Initializable {
 		} else {
 			fecharTodosPanel(event);
 			panelEntradaBaixa.setVisible(true);
+			carregarEntradaBaixa(event);
 
 		}
 	}

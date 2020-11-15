@@ -7,8 +7,15 @@ public class ListaAgregada {
 	private int quantidadeDisp;
 	private float precoVenda;
 	private double total;
+	private double precoMedio;
 	
 	
+	public double getPrecoMedio() {
+		return precoMedio;
+	}
+	public void setPrecoMedio(double precoMedio) {
+		this.precoMedio = precoMedio;
+	}
 	public long getIdProduto() {
 		return idProduto;
 	}
