@@ -75,10 +75,10 @@ public class FXMLController implements Initializable {
 		panelLancamentoEstoque.setVisible(false);
 		panelConsultaEstoque.setVisible(false);
 		panelIncluirProduto.setVisible(false);
-                panelNovaOrdemServico.setVisible(false);
-                panelBuscarOrdemServico.setVisible(false);
-                panelCustoMedio.setVisible(false);
-                panelEntradaBaixa.setVisible(false);
+		panelNovaOrdemServico.setVisible(false);
+		panelBuscarOrdemServico.setVisible(false);
+		panelCustoMedio.setVisible(false);
+		panelEntradaBaixa.setVisible(false);
 
 	}
 
@@ -510,31 +510,30 @@ public class FXMLController implements Initializable {
 		ov.setData(Date.valueOf(LocalDate.now()));
 		ov.setObservacao(observacao_ordemVenda.getText());
 		ov.setValorTotal(Float.valueOf(valorTotalOrdemVenda.getText()));
-		
+
 		for (ListaAgregada agre : listaProSelecionado) {
-			
+
 			est.setTipoLancamento(TipoLancamento.SAIDA);
 			est.setDataLancamento(ov.getData());
 			est.setIdproduto(agre.getIdProduto());
 
 			est.setNomeProduto(agre.getNomeProduto());
-			est.setQuantidade(Math.abs(agre.getQuantidadeDisp())*-1);
+			est.setQuantidade(Math.abs(agre.getQuantidadeDisp()) * -1);
 			est.setDocumento(String.valueOf(ov.getIdOrdemVenda()));
 			lancamentos.add(est);
 		}
-		
-		
+
 		OrdemVendaDAO ordemV = new OrdemVendaDAO(ov);
 		ordemV.add();
-		
+
 		EstoqueDAO estoque = new EstoqueDAO();
-		
+
 		estoque.addAll(lancamentos);
 
 		GeraAlerta("Sucesso", "Lançamento Efetuado com sucesso!");
 
 	}
-	
+
 	@FXML
 	public void carregarProdutosOV(ActionEvent event) throws IOException {
 
@@ -550,8 +549,7 @@ public class FXMLController implements Initializable {
 	private ObservableList<ListaAgregada> ListProdutosOV() {
 		return FXCollections.observableArrayList(listaProSelecionado);
 	}
-	
-	
+
 	@FXML
 	public void menuOrdemVendaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
@@ -588,8 +586,7 @@ public class FXMLController implements Initializable {
 			OrdemVenda ov = new OrdemVenda();
 			long numOV = ov.geraNumOrdemVenda();
 			codigoOrdemVenda.setText(String.valueOf(numOV));
-			
-			
+
 			panelNovaOrdemVenda.setVisible(true);
 		}
 	}
@@ -608,17 +605,16 @@ public class FXMLController implements Initializable {
 	// ---------------------------------------------------------------------
 
 	// ----------------- FIM MÉTODOS ORDEM DE VENDA ----------
-        
-        
-        // ----------------- ORDEM DE SERVIÇO ----------------------------------
-        
-        @FXML
+
+	// ----------------- ORDEM DE SERVIÇO ----------------------------------
+
+	@FXML
 	public AnchorPane panelNovaOrdemServico;
-        @FXML
+	@FXML
 	public AnchorPane panelBuscarOrdemServico;
-        @FXML
+	@FXML
 	public AnchorPane panelVisualizacaoOrdemServico;
-        @FXML
+	@FXML
 	public JFXButton btnNovaOrdemServico;
 	@FXML
 	public JFXButton btnIncluirClienteOrdemServico;
@@ -626,168 +622,108 @@ public class FXMLController implements Initializable {
 	public Button btnSalvarOrdemServico;
 	@FXML
 	public Button btnCancelarOrdemServico;
-        @FXML
+	@FXML
 	public JFXButton btnBuscarOrdemServico;
-        @FXML
+	@FXML
 	public Button btnVisualizarOrdemServico;
-        @FXML
+	@FXML
 	public Button btnExcluirOrdemServico;
-        @FXML
-	public ChoiceBox<String> ordemServico_ChoiceStatus = new ChoiceBox<>(); 
-        @FXML
+	@FXML
+	public ChoiceBox<String> ordemServico_ChoiceStatus = new ChoiceBox<>();
+	@FXML
 	public Button btnSalvarVisualizacaoOrdem;
-        @FXML
+	@FXML
 	public Button btnFecharOrdemServico;
-        
-        
 
-       // ---------------- ATRIBUTOS DA ORDEM DE SERVICO ------------------------
-        
-        @FXML
+	// ---------------- ATRIBUTOS DA ORDEM DE SERVICO ------------------------
+
+	@FXML
 	public TextField campoMarca;
-        @FXML
+	@FXML
 	public TextField campoModelo;
-        @FXML
+	@FXML
 	public TextField campoNumserie;
-        @FXML
+	@FXML
 	public TextField data_ordemservico;
-        @FXML
+	@FXML
 	public TextField campoOutros;
-        @FXML
+	@FXML
 	public TextField campoDefeitos;
-        @FXML
+	@FXML
 	public TextField valorOrcamento;
-        @FXML
+	@FXML
 	public TextField cliente_ordemServico;
-        @FXML
+	@FXML
 	public TextField codOrdemServico;
-        @FXML
+	@FXML
 	public CheckBox opcoes_semchip;
-        @FXML
+	@FXML
 	public CheckBox opcoes_semcartao;
-        @FXML
+	@FXML
 	public CheckBox opcoes_sembateria;
-        @FXML
+	@FXML
 	public CheckBox opcoes_semtampa;
-        @FXML
+	@FXML
 	public CheckBox opcoes_desbloqueio;
-        @FXML
+	@FXML
 	public CheckBox opcoes_trocabateria;
-        @FXML
+	@FXML
 	public CheckBox opcoes_desoxidacao;
-        @FXML
+	@FXML
 	public CheckBox opcoes_atualizacao;
-        @FXML
+	@FXML
 	public CheckBox opcoes_limpeza;
-        @FXML
+	@FXML
 	public CheckBox opcoes_slotchip;
-        @FXML
+	@FXML
 	public CheckBox opcoes_conectorcarga;
-        @FXML
+	@FXML
 	public CheckBox opcoes_trocatouch;
-        @FXML
+	@FXML
 	public RadioButton status_naLoja;
-        @FXML
+	@FXML
 	public RadioButton status_entregue;
-               
-        
-    	@FXML
-    	public void cadastrarOrdemServico(ActionEvent event) throws IOException {
 
-    	
-    		
-    		OrdemServico os = new OrdemServico();
-    		
-    		os.setIdOrdemServico(Long.valueOf(codOrdemServico.getText()));
-    		os.setData(Date.valueOf(data_ordemservico.getText()));
-    		os.setMarca(campoMarca.getText());
-    		os.setModelo(campoModelo.getText());
-    		os.setNumSerie(campoNumserie.getText());
-    		os.setStatus((String) ordemServico_ChoiceStatus.getValue());
-    		
-    		os.setSemChip(Boolean.valueOf(opcoes_semchip.isSelected()));
-    		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.isSelected()));
-    		os.setSemBateria(Boolean.valueOf(opcoes_sembateria.isSelected()));
-    		os.setSemTampaTraseira(Boolean.valueOf(opcoes_semtampa.isSelected()));
-    		os.setDesbloqueio(Boolean.valueOf(opcoes_desbloqueio.isSelected()));
-    		os.setTrocaBateria(Boolean.valueOf(opcoes_trocabateria.isSelected()));
-    		os.setDesoxidacao(Boolean.valueOf(opcoes_desoxidacao.isSelected()));
-    		os.setAtualizacao(Boolean.valueOf(opcoes_atualizacao.isSelected()));
-    		os.setLimpeza(Boolean.valueOf(opcoes_limpeza.isSelected()));
-    		os.setSlotChip(Boolean.valueOf(opcoes_slotchip.isSelected()));
-    		os.setConectorCarga(Boolean.valueOf(opcoes_conectorcarga.isSelected()));
-    		os.setTrocaTouch(Boolean.valueOf(opcoes_trocatouch.isSelected()));
-    		
-    		os.setValorTotal(Double.parseDouble(valorOrcamento.getText()));
-    		
-    		os.setIdCliente(comboBoxIdClientes.getValue().getNome());
-    		os.setDefeitos(campoDefeitos.getText());
-    		os.setObservacao(campoOutros.getText());
-    		
-    		OrdemServicoDAO ordemServico = new OrdemServicoDAO(os);
-    		ordemServico.add();		
+	@FXML
+	public void cadastrarOrdemServico(ActionEvent event) throws IOException {
 
-    		GeraAlerta("Sucesso", "Ordem Servico Efetuado com sucesso!");
+		OrdemServico os = new OrdemServico();
 
-    	}
-        
-        
-        
-        
-        
-        
-        //---------------ATRIBUTOS DA TELA DE VISUALIZAÇÃO--------
-        
-         @FXML
-	public TextField campoMarca1;
-        @FXML
-	public TextField campoModelo1;
-        @FXML
-	public TextField campoNumserie1;
-        @FXML
-	public TextField data_ordemservico1;
-        @FXML
-	public TextField campoOutros1;
-        @FXML
-	public TextField campoDefeitos1;
-        @FXML
-	public TextField valorOrcamento1;
-        @FXML
-	public TextField cliente_ordemServico1;
-        @FXML
-	public TextField codOrdemServico1;
-        @FXML
-	public CheckBox opcoes_semchip1;
-        @FXML
-	public CheckBox opcoes_semcartao1;
-        @FXML
-	public CheckBox opcoes_sembateria1;
-        @FXML
-	public CheckBox opcoes_semtampa1;
-        @FXML
-	public CheckBox opcoes_desbloqueio1;
-        @FXML
-	public CheckBox opcoes_trocabateria1;
-        @FXML
-	public CheckBox opcoes_desoxidacao1;
-        @FXML
-	public CheckBox opcoes_atualizacao1;
-        @FXML
-	public CheckBox opcoes_limpeza1;
-        @FXML
-	public CheckBox opcoes_slotchip1;
-        @FXML
-	public CheckBox opcoes_conectorcarga1;
-        @FXML
-	public CheckBox opcoes_trocatouch1;
-        @FXML
-	public RadioButton status_naLoja1;
-        @FXML
-	public RadioButton status_entregue1;
-        
-        
-        // -------------------- TABLE DA CONSULTA -----------------
-        @FXML
+		os.setIdOrdemServico(Long.valueOf(codOrdemServico.getText()));
+		os.setData(Date.valueOf(data_ordemservico.getText()));
+		os.setMarca(campoMarca.getText());
+		os.setModelo(campoModelo.getText());
+		os.setNumSerie(campoNumserie.getText());
+		os.setStatus((String) ordemServico_ChoiceStatus.getValue());
+
+		os.setSemChip(Boolean.valueOf(opcoes_semchip.isSelected()));
+		os.setSemCartaoMemoria(Boolean.valueOf(opcoes_semcartao.isSelected()));
+		os.setSemBateria(Boolean.valueOf(opcoes_sembateria.isSelected()));
+		os.setSemTampaTraseira(Boolean.valueOf(opcoes_semtampa.isSelected()));
+		os.setDesbloqueio(Boolean.valueOf(opcoes_desbloqueio.isSelected()));
+		os.setTrocaBateria(Boolean.valueOf(opcoes_trocabateria.isSelected()));
+		os.setDesoxidacao(Boolean.valueOf(opcoes_desoxidacao.isSelected()));
+		os.setAtualizacao(Boolean.valueOf(opcoes_atualizacao.isSelected()));
+		os.setLimpeza(Boolean.valueOf(opcoes_limpeza.isSelected()));
+		os.setSlotChip(Boolean.valueOf(opcoes_slotchip.isSelected()));
+		os.setConectorCarga(Boolean.valueOf(opcoes_conectorcarga.isSelected()));
+		os.setTrocaTouch(Boolean.valueOf(opcoes_trocatouch.isSelected()));
+
+		os.setValorTotal(Double.parseDouble(valorOrcamento.getText()));
+
+		os.setIdCliente(comboBoxIdClientes.getValue().getNome());
+		os.setDefeitos(campoDefeitos.getText());
+		os.setObservacao(campoOutros.getText());
+
+		OrdemServicoDAO ordemServico = new OrdemServicoDAO(os);
+		ordemServico.add();
+
+		GeraAlerta("Sucesso", "Ordem Servico Efetuado com sucesso!");
+
+	}
+
+	// -------------------- TABLE DA CONSULTA -----------------
+	@FXML
 	private TableView<OrdemServico> table_OrdemServico;
 	@FXML
 	private TableColumn<OrdemServico, Long> column_idOrdemServico;
@@ -797,9 +733,12 @@ public class FXMLController implements Initializable {
 	private TableColumn<OrdemServico, String> column_modeloOrdemServico;
 	@FXML
 	private TableColumn<OrdemServico, Double> column_valortotalOrdemServico;
-        
+
 	@FXML
 	private ComboBox<Cliente> comboBoxIdClientes = new JFXComboBox<Cliente>();
+	
+	@FXML
+	private Button btnEditarOrdemServico;
 
 	@FXML
 	public void carregarListaClientes(ActionEvent event) {
@@ -812,12 +751,9 @@ public class FXMLController implements Initializable {
 
 		comboBoxIdClientes.setItems(obsListaAgregada);
 
-	}    
-	
-	
-	
-	
-        @FXML
+	}
+
+	@FXML
 	public void menuOrdemServicoVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
 			dropDown_Ordens.setVisible(false);
@@ -841,8 +777,8 @@ public class FXMLController implements Initializable {
 			dropDown_Estoque.setVisible(false);
 		}
 	}
-        
-        @FXML
+
+	@FXML
 	public void panelNovaOrdemServicoVisible(ActionEvent event) {
 		if (panelNovaOrdemServico.isVisible() == true) {
 			panelNovaOrdemServico.setVisible(false);
@@ -855,12 +791,15 @@ public class FXMLController implements Initializable {
 			data_ordemservico.setText(String.valueOf(LocalDate.now()));
 			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Or�amento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
+			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 
 		}
 	}
-        @FXML
+
+	@FXML
 	public void panelBuscaOrdemServicoVisible(ActionEvent event) throws IOException {
 		if (panelBuscarOrdemServico.isVisible() == true) {
 			panelBuscarOrdemServico.setVisible(false);
@@ -872,31 +811,115 @@ public class FXMLController implements Initializable {
 
 		}
 	}
-        
-        
-        
-        // --- Table Consutar Ordem de venda ---
-        private ObservableList<OrdemServico> listaOrdemServico() {
+
+	// --- Table Consutar Ordem de venda ---
+	private ObservableList<OrdemServico> listaOrdemServico() {
 
 		OrdemServicoDAO OrdDao = new OrdemServicoDAO();
 
 		return FXCollections.observableArrayList(OrdDao.getAll());
 	}
-                
-        public void carregarOrdemServicoTabela (ActionEvent event) throws IOException {
-            column_idOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idOrdemServico"));
-            column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
-            column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-            column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
-            
-            table_OrdemServico.setItems(listaOrdemServico());
-            
-        }
-        
-        	public void excluirOrdemServico(ActionEvent event) throws IOException {
+
+	public void carregarOrdemServicoTabela(ActionEvent event) throws IOException {
+		column_idOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idOrdemServico"));
+		column_nomeOrdemServico.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+		column_modeloOrdemServico.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+		column_valortotalOrdemServico.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
+
+		table_OrdemServico.setItems(listaOrdemServico());
+
+	}
+
+	
+	
+	
+	public void EditarOrdemServico(ActionEvent event) throws IOException {
+		
+		OrdemServicoDAO OrdDao = new OrdemServicoDAO();
+		
+		
+		OrdDao.update(ordemServico_ChoiceStatus.getValue(), Double.valueOf(valorOrcamento.getText()), 
+				campoDefeitos.getText(), campoOutros.getText(), Long.valueOf(codOrdemServico.getText()));
+		
+		GeraAlerta("Alterado", "OS alterada com sucesso!");
+		
+		
+	}
+	
+	public void mostrarOrdemServico(ActionEvent event) throws IOException {
+		if (table_OrdemServico.getSelectionModel().getSelectedItem() != null) {
+
+			long idOrdemServico = (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
+			OrdemServicoDAO OrdDao = new OrdemServicoDAO();
+			OrdemServico os = new OrdemServico();
+
+			os = OrdDao.getOS(idOrdemServico);
+
+			panelOrdemServicoVisible(event);
+
+			campoMarca.setText(os.getMarca());
+			campoModelo.setText(os.getModelo());
+			campoNumserie.setText(os.getNumSerie());
+			data_ordemservico.setText(String.valueOf(os.getData()));
+			campoOutros.setText(os.getObservacao());
+			campoDefeitos.setText(os.getDefeitos());
+			valorOrcamento.setText(String.valueOf(os.getValorTotal()));
+
+			//Fazer o bot�o de salvar sumir e o de editar aparecer
+			comboBoxIdClientes.setVisible(false);
+			cliente_ordemServico.setVisible(true);
+			
+			btnEditarOrdemServico.setVisible(true);
+			btnSalvarOrdemServico.setVisible(false);
+			
+			// Fazer o combo Box sumir e aparecer isso.
+			cliente_ordemServico.setText(os.getIdCliente());
+			
+			
+			codOrdemServico.setText(String.valueOf(os.getIdOrdemServico()));
+
+				opcoes_semchip.setSelected(os.isSemChip());
+				opcoes_semcartao.setSelected(os.isSemCartaoMemoria());
+				opcoes_sembateria.setSelected(os.isSemBateria());
+				opcoes_semtampa.setSelected(os.isSemTampaTraseira());
+				opcoes_desbloqueio.setSelected(os.isDesbloqueio());
+				opcoes_trocabateria.setSelected(os.isTrocaBateria());
+				opcoes_desoxidacao.setSelected(os.isDesoxidacao());
+				opcoes_atualizacao.setSelected(os.isAtualizacao());
+				opcoes_limpeza.setSelected(os.isLimpeza());
+				opcoes_slotchip.setSelected(os.isSlotChip());
+				opcoes_conectorcarga.setSelected(os.isConectorCarga());
+				opcoes_trocatouch.setSelected(os.isTrocaTouch());
+
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Or�amento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
+			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
+			
+			ordemServico_ChoiceStatus.getSelectionModel().select(os.getStatus());
+
+			
+		} else {	
+			GeraAlerta("Selecione uma ordem de servico!", "Nenhum OS selecionada!");
+		}
+
+	}
+
+	@FXML
+	public void panelOrdemServicoVisible(ActionEvent event) {
+		if (panelNovaOrdemServico.isVisible() == true) {
+			panelNovaOrdemServico.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelNovaOrdemServico.setVisible(true);
+		}
+	}
+
+	public void excluirOrdemServico(ActionEvent event) throws IOException {
 		if (table_OrdemServico.getSelectionModel().getSelectedItem() != null) {
 			int idOrdemServicoExcluir;
-			idOrdemServicoExcluir =  (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
+			idOrdemServicoExcluir = (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
 			OrdemServicoDAO OrdDao = new OrdemServicoDAO();
 			OrdDao.remove(idOrdemServicoExcluir);
 			GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
@@ -907,16 +930,14 @@ public class FXMLController implements Initializable {
 		}
 
 	}
-      
-        
-        
+
 	// --------------------- ESTOQUE --------------------------
 
 	@FXML
 	public AnchorPane panelLancamentoEstoque;
 	@FXML
 	public AnchorPane panelConsultaEstoque;
-        @FXML
+	@FXML
 	public AnchorPane panelCustoMedio;
 	@FXML
 	public AnchorPane dropDown_Estoque;
@@ -928,7 +949,7 @@ public class FXMLController implements Initializable {
 	public JFXButton btnConsultaEstoque;
 	@FXML
 	public Button btnIncluirProd_estoque;
-        @FXML
+	@FXML
 	public JFXButton btnCustoMedio;
 
 	// ----------- ATRIBUTOS DO ESTOQUE ----------------
@@ -958,10 +979,9 @@ public class FXMLController implements Initializable {
 	private TableColumn<Estoque, Date> column_DataLancamentoEstoque;
 	@FXML
 	private TableColumn<Estoque, Integer> column_quantidadeEstoque;
-        
-        
-       // ----------- TABLE CUSTO MÉDIO--------------
-        @FXML
+
+	// ----------- TABLE CUSTO MÉDIO--------------
+	@FXML
 	private TableView<ListaAgregada> table_custoMedio;
 	@FXML
 	private TableColumn<ListaAgregada, Number> column_idCM;
@@ -971,7 +991,6 @@ public class FXMLController implements Initializable {
 	private TableColumn<ListaAgregada, Double> column_custoMedio;
 	@FXML
 	private TableColumn<ListaAgregada, Number> column_qtDispCM;
-        
 
 	@FXML
 	public void carregarProdutosCM(ActionEvent event) throws IOException {
@@ -982,9 +1001,7 @@ public class FXMLController implements Initializable {
 		column_custoMedio.setCellValueFactory(new PropertyValueFactory<>("precoMedio"));
 		table_custoMedio.setItems(ListaAgregadaOV());
 	}
-	
 
-	
 	@FXML
 	private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
 
@@ -1097,8 +1114,8 @@ public class FXMLController implements Initializable {
 			panelConsultaEstoque.setVisible(true);
 		}
 	}
-        
-        public void panelCustoMedioVisible(ActionEvent event) throws IOException {
+
+	public void panelCustoMedioVisible(ActionEvent event) throws IOException {
 		if (panelCustoMedio.isVisible() == true) {
 			panelCustoMedio.setVisible(false);
 			dropDown_Estoque.setVisible(false);
@@ -1108,7 +1125,7 @@ public class FXMLController implements Initializable {
 			carregarProdutosCM(event);
 		}
 	}
-        
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
@@ -1118,8 +1135,6 @@ public class FXMLController implements Initializable {
 
 	@FXML
 	private TextField quantidadeDesejada_inserir;
-	
-	
 
 	// ---- TABLE DA EXIBIÇÃO DOS PRODUTOS A SEREM INSERIDOS ----
 
@@ -1179,7 +1194,6 @@ public class FXMLController implements Initializable {
 
 	}
 
-
 	public void btnSelecionarProduto(ActionEvent event) throws IOException {
 
 		ListaAgregada list = new ListaAgregada();
@@ -1192,7 +1206,7 @@ public class FXMLController implements Initializable {
 			String nomeProdutoSelecionado = table_selecaoProdutos.getSelectionModel().getSelectedItem()
 					.getNomeProduto();
 			float valorProduto = table_selecaoProdutos.getSelectionModel().getSelectedItem().getPrecoVenda();
-			
+
 			list.setIdProduto(idProdutoSelecionado);
 			list.setQuantidadeDisp(qntSelecionada);
 			list.setNomeProduto(nomeProdutoSelecionado);
@@ -1203,16 +1217,16 @@ public class FXMLController implements Initializable {
 			fecharTodosPanel(event);
 
 			carregarProdutosOV(event);
-			
+
 			panelNovaOrdemVenda.setVisible(true);
-			
-			double total = 0; 
-			
-			for (ListaAgregada tot : listaProSelecionado ) {
-				
+
+			double total = 0;
+
+			for (ListaAgregada tot : listaProSelecionado) {
+
 				total += tot.getTotal();
 			}
-			
+
 			valorTotalOrdemVenda.setText(String.valueOf(total));
 
 		} else {
@@ -1221,59 +1235,59 @@ public class FXMLController implements Initializable {
 		}
 
 	}
-        
-        //----------------- TELA ENTRADA DE BAIXA -----------------------------
-        @FXML
+
+	// ----------------- TELA ENTRADA DE BAIXA -----------------------------
+	@FXML
 	public AnchorPane panelEntradaBaixa;
-        @FXML
+	@FXML
 	public JFXButton btnEntradaBaixa;
-        
-       //----------------- ATRIBUTOS ENTRADA DE BAIXA -----------------------------
-        @FXML
+
+	// ----------------- ATRIBUTOS ENTRADA DE BAIXA -----------------------------
+	@FXML
 	public Button btnSalvarBaixa;
-        @FXML
+	@FXML
 	public TextField entradaBaixa_motivo;
-        
-    public TextField entradaBaixa_qnt;
-       
-    	@FXML
-    	private ComboBox<ListaAgregada> entradaBaixa_produto = new JFXComboBox<ListaAgregada>();
 
-    	@FXML
-    	public void carregarEntradaBaixa(ActionEvent event) {
+	public TextField entradaBaixa_qnt;
 
-    		EstoqueDAO agregado = new EstoqueDAO();
+	@FXML
+	private ComboBox<ListaAgregada> entradaBaixa_produto = new JFXComboBox<ListaAgregada>();
 
-    		ObservableList<ListaAgregada> obsListaAgregada;
+	@FXML
+	public void carregarEntradaBaixa(ActionEvent event) {
 
-    		obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
+		EstoqueDAO agregado = new EstoqueDAO();
 
-    		entradaBaixa_produto.setItems(obsListaAgregada);
+		ObservableList<ListaAgregada> obsListaAgregada;
 
-    	}    
-        
-    	@FXML
-    	public void BaixaEstoque(ActionEvent event) throws IOException {
+		obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
 
-    		Estoque lancamento = new Estoque();
-    		lancamento.setTipoLancamento(TipoLancamento.SAIDA);
-    		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
-    		lancamento.setIdproduto(entradaBaixa_produto.getValue().getIdProduto());
+		entradaBaixa_produto.setItems(obsListaAgregada);
 
-    		lancamento.setNomeProduto(entradaBaixa_produto.getValue().getNomeProduto());
+	}
 
-    		lancamento.setCustoUnitario(0);
-    		lancamento.setQuantidade(Math.abs(Integer.parseInt(entradaBaixa_qnt.getText()))*-1);
-    		lancamento.setDocumento("Baixa de Estoque: " + entradaBaixa_motivo.getText());
+	@FXML
+	public void BaixaEstoque(ActionEvent event) throws IOException {
 
-    		EstoqueDAO estoque = new EstoqueDAO(lancamento);
-    		estoque.add();
+		Estoque lancamento = new Estoque();
+		lancamento.setTipoLancamento(TipoLancamento.SAIDA);
+		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
+		lancamento.setIdproduto(entradaBaixa_produto.getValue().getIdProduto());
 
-    		GeraAlerta("Sucesso", "Lancamento Efetuado com sucesso!");
+		lancamento.setNomeProduto(entradaBaixa_produto.getValue().getNomeProduto());
 
-    	}
+		lancamento.setCustoUnitario(0);
+		lancamento.setQuantidade(Math.abs(Integer.parseInt(entradaBaixa_qnt.getText())) * -1);
+		lancamento.setDocumento("Baixa de Estoque: " + entradaBaixa_motivo.getText());
 
-        @FXML
+		EstoqueDAO estoque = new EstoqueDAO(lancamento);
+		estoque.add();
+
+		GeraAlerta("Sucesso", "Lancamento Efetuado com sucesso!");
+
+	}
+
+	@FXML
 	public void menuEntradaVisible(MouseEvent event) {
 		if (dropDown_Ordens.isVisible() == true) {
 			dropDown_Ordens.setVisible(false);
@@ -1295,6 +1309,7 @@ public class FXMLController implements Initializable {
 			dropDown_Estoque.setVisible(false);
 		}
 	}
+
 	@FXML
 	public void panelEntradaBaixaVisible(ActionEvent event) {
 		if (panelEntradaBaixa.isVisible() == true) {

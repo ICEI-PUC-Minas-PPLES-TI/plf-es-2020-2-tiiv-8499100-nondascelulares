@@ -13,7 +13,7 @@ import br.tis.entidades.OrdemVenda;
 import javafx.scene.control.Alert;
 import javafx.stage.StageStyle;
 
-public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
+public class OrdemServicoDAO {
 
 	private final Connection connection;
 	long inicio, fim;
@@ -34,7 +34,7 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-	@Override
+
 	public boolean add() {
 		
 		boolean result = false; 
@@ -100,12 +100,12 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		
 	}
 
-	@Override
-	public boolean update() {
+
+	public boolean update(String status, double valorTotal, String defeitos, String observacao, long idOrdemServico) {
 		
 		boolean result = false; 
 		
-	String sqlUpdate = "Update ordemServico SET (marca = ?, modelo = ?, numSerie = ?, status = ?, semChip = ?, semCartaoMemoria = ?, semBateria = ?, semTampaTraseira = ?, desbloqueio = ?, trocaBateria = ?, desoxidacao = ?, atualizacao = ?, limpeza = ?, slotChip = ?, conectorCarga = ?, trocaTouch = ?, valorTotal = ?, idCliente = ?, defeitos = ?, observacao = ?  ) where idOrdemServico = ?";
+	String sqlUpdate = "Update ordemServico SET status = ?, valorTotal = ?, defeitos = ?, observacao = ?  where idOrdemServico = ?";
 		
 		PreparedStatement stmtOs = null;
 		
@@ -114,30 +114,15 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		    stmtOs = connection.prepareStatement(sqlUpdate);
 			
 	
-			stmtOs.setString(1, ordemServico.getMarca());
-			stmtOs.setString(2, ordemServico.getModelo());
-			stmtOs.setString(3, ordemServico.getNumSerie());
-			stmtOs.setString(4, ordemServico.getStatus());
-			stmtOs.setBoolean(5, ordemServico.isSemChip());
-			stmtOs.setBoolean(6, ordemServico.isSemBateria());
-			stmtOs.setBoolean(7, ordemServico.isSemTampaTraseira());
-			stmtOs.setBoolean(8, ordemServico.isDesbloqueio());
-			stmtOs.setBoolean(9, ordemServico.isTrocaBateria());
-			stmtOs.setBoolean(10, ordemServico.isDesoxidacao());
-			stmtOs.setBoolean(11, ordemServico.isAtualizacao());
-			stmtOs.setBoolean(12, ordemServico.isLimpeza());
-			stmtOs.setBoolean(13, ordemServico.isSlotChip());
-			stmtOs.setBoolean(14, ordemServico.isConectorCarga());
-			stmtOs.setBoolean(15, ordemServico.isTrocaTouch());
-			stmtOs.setDouble(16, ordemServico.getValorTotal());
-			stmtOs.setString(17, ordemServico.getIdCliente());
-			stmtOs.setString(18, ordemServico.getDefeitos());
-			stmtOs.setString(19, ordemServico.getObservacao());
+			stmtOs.setString(1, status);
+			stmtOs.setDouble(2, valorTotal);
+			stmtOs.setString(3, defeitos);
+			stmtOs.setString(4, observacao);
 			
-		    stmtOs.setLong(20,ordemServico.getIdOrdemServico());
+		    stmtOs.setLong(5,idOrdemServico);
 			
 			
-			int updateCount = stmtOs.executeUpdate(sqlUpdate);
+			int updateCount = stmtOs.executeUpdate();
 
 			if(updateCount == 0)
 				throw new SQLException("Falha ao atualizar o Ordem de servico");
@@ -167,7 +152,7 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		
 	}
 
-	@Override
+
 	public boolean remove(Integer chave) {
 		
 	boolean result = false; 
@@ -211,7 +196,80 @@ public class OrdemServicoDAO implements DAO<OrdemServico,Integer>{
 		return result;
 	}
 	
-	@Override
+
+	public OrdemServico getOS(long idOrdemServico) {
+		
+		String sqlGetAll = "Select * from dbo.ordemServico where idOrdemServico = ? ";
+		OrdemServico newOS = new OrdemServico();
+		PreparedStatement stmtCli = null;
+		
+		
+		try {
+			
+			stmtCli = connection.prepareStatement(sqlGetAll);
+	
+			stmtCli.setLong(1, idOrdemServico);
+			
+			ResultSet rs = stmtCli.executeQuery();
+			
+			 while(rs.next()) {
+			
+				 newOS.setIdOrdemServico(rs.getLong("idOrdemServico"));
+				 newOS.setData(rs.getDate("data"));
+				 newOS.setMarca(rs.getString("marca"));
+				 newOS.setModelo(rs.getString("modelo"));
+				 newOS.setNumSerie(rs.getString("numSerie"));
+				 newOS.setStatus(rs.getString("status"));
+				 newOS.setSemChip(rs.getBoolean("semChip"));
+				 newOS.setSemCartaoMemoria(rs.getBoolean("semCartaoMemoria"));
+				 newOS.setSemBateria(rs.getBoolean("semBateria"));
+				 newOS.setSemTampaTraseira(rs.getBoolean("semTampaTraseira"));
+				 newOS.setDesbloqueio(rs.getBoolean("desbloqueio"));
+				 newOS.setTrocaBateria(rs.getBoolean("trocaBateria"));
+				 newOS.setDesoxidacao(rs.getBoolean("desoxidacao"));
+				 newOS.setAtualizacao(rs.getBoolean("atualizacao"));
+				 newOS.setLimpeza(rs.getBoolean("limpeza"));
+				 newOS.setSlotChip(rs.getBoolean("slotChip"));
+				 newOS.setConectorCarga(rs.getBoolean("conectorCarga"));
+				 newOS.setTrocaTouch(rs.getBoolean("trocaTouch"));
+				 newOS.setValorTotal(rs.getDouble("valorTotal"));
+				 newOS.setIdCliente(rs.getString("idCliente"));
+				 newOS.setDefeitos(rs.getString("defeitos"));
+				 newOS.setObservacao(rs.getString("observacao"));
+				 			 
+			 }
+			
+		} catch(SQLException e) {
+		
+			
+			e.printStackTrace();
+			
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("Falha ao buscar a lista de Ordens de Servico");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+			
+		}finally {
+			
+			if (stmtCli != null)
+				try {
+					stmtCli.close();
+					
+				} catch (SQLException logOrIgnore) {
+					
+				}
+		}
+		return newOS;
+		
+
+	}
+	
+	
+	
+	
+	
 	public List<OrdemServico> getAll() {
 		
 		String sqlGetAll = "Select * from dbo.ordemServico";
