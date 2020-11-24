@@ -587,12 +587,7 @@
                         <TableColumn fx:id="column_quantidadeEstoque" prefWidth="165.0" text="Quantidade" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btnExcluirProduto" layoutX="341.0" layoutY="531.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Produto" textFill="#f6f8f8" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="722.0" layoutY="531.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+                  <Button layoutX="482.0" layoutY="539.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Fechar" textFill="#f8f7f7">
                      <font>
                         <Font size="18.0" />
                      </font>
