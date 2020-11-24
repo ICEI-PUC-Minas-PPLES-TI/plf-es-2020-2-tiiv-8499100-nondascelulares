@@ -27,6 +27,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.transformation.FilteredList;
 
 import javafx.fxml.FXML;
@@ -79,6 +80,7 @@ public class FXMLController implements Initializable {
 		panelBuscarOrdemServico.setVisible(false);
 		panelCustoMedio.setVisible(false);
 		panelEntradaBaixa.setVisible(false);
+                panelDetalhamentoProduto.setVisible(false);
 
 	}
 
@@ -499,6 +501,19 @@ public class FXMLController implements Initializable {
 		table_BuscarOrdemVenda.setItems(listaOrdemVenda());
 
 	}
+        
+        public void excluirItemtableOrdemVenda(ActionEvent event) throws IOException {
+            if (table_OrdemVenda.getSelectionModel().getSelectedItem() != null) {
+                ListaAgregada idProdutoSelecionadoExcluir = table_OrdemVenda.getSelectionModel().getSelectedItem();
+                listaProSelecionado.remove(idProdutoSelecionadoExcluir);
+                
+                GeraAlerta("Excluido com sucesso!", "item excluida com sucesso!");
+                carregarProdutosOV(event);
+                
+            }
+            else 
+                GeraAlerta("Selecione um item!", "Nenhuma item selecionado!");
+        }
 
 	private ObservableList<OrdemVenda> listaOrdemVenda() {
 
@@ -509,7 +524,7 @@ public class FXMLController implements Initializable {
 	
 	
 	@FXML
-	public void excluirOrdemVenda(ActionEvent event) throws IOException {
+	public void excluirOrdemVenda(ActionEvent event) throws IOException, InterruptedException {
 		if (table_BuscarOrdemVenda.getSelectionModel().getSelectedItem() != null) {
 			
 			Integer idOVExcluir = (int) table_BuscarOrdemVenda.getSelectionModel().getSelectedItem().getIdOrdemVenda();
@@ -519,12 +534,15 @@ public class FXMLController implements Initializable {
 			
 			ov.remove(idOVExcluir);
 			lancamentos.remove(String.valueOf(idOVExcluir));
-			
+                        
 			GeraAlerta("Excluido com sucesso!", "Ordem de venda excluida com sucesso!");
+                        tableBuscaOrdemVenda(event);
+
 			
 		} else {
 			GeraAlerta("Selecione uma Ordem de Venda!", "Nenhuma Ordem de venda selecionada!");
 		}
+                
 
 	}
 	
@@ -661,25 +679,62 @@ public class FXMLController implements Initializable {
         
         // --------------------TABLE DETALHAMENTO ------------------------------
         @FXML
-	private TableView<OrdemVenda> table_detalhamento;
+	private TableView<Estoque> table_detalhamento;
 	@FXML
-	private TableColumn<OrdemVenda, Long> column_idProdDet;
+	private TableColumn<Estoque, Long> column_idProdDet;
 	@FXML
-	private TableColumn<OrdemVenda, String> column_NomeProdDet;
+	private TableColumn<Estoque, String> column_NomeProdDet;
 	@FXML
-	private TableColumn<OrdemVenda, Integer> column_qtdDet;
+	private TableColumn<Estoque, Integer> column_qtdDet;
 	@FXML
-	private TableColumn<OrdemVenda, Double> column_PrecoVendaDet;
+	private TableColumn<Estoque, Double> column_PrecoVendaDet;
                 
         @FXML
 	public void panelDetalhamentoProdutoVisible(ActionEvent event) {
+            
+            
 		if (panelDetalhamentoProduto.isVisible() == true) {
 			panelDetalhamentoProduto.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
 			panelDetalhamentoProduto.setVisible(true);
+                        
 		}
+	}
+        
+        public OrdemVenda ordVenda;
+        
+        public void btnDetalhamentoProduto(ActionEvent event) throws IOException {
+            
+            
+            if (table_BuscarOrdemVenda.getSelectionModel().getSelectedItem() != null) {
+            ordVenda = table_BuscarOrdemVenda.getSelectionModel().getSelectedItem();    
+            codDetalhamentoOV.setText(String.valueOf(ordVenda.getIdOrdemVenda()));
+            valorTotalDetalhamento.setText(String.valueOf(ordVenda.getValorTotal()));
+            dataDetalhamentoOV.setText(ordVenda.getData().toString());
+            
+            column_idProdDet.setCellValueFactory(new PropertyValueFactory<>("idproduto"));
+            column_NomeProdDet.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
+            column_qtdDet.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+            column_PrecoVendaDet.setCellValueFactory(new PropertyValueFactory<>("precoVendaUnitario"));
+            table_detalhamento.setItems(ListaDetalhamento());
+   
+            
+            panelDetalhamentoProdutoVisible(event);
+            
+            }
+            else
+                GeraAlerta("Nenhum Produto Selecionado", "Nenhum Produto foi Selecionado!");
+            
+        }
+        
+        private ObservableList<Estoque> ListaDetalhamento() {
+            
+                EstoqueDAO estDao = new EstoqueDAO();
+                ordVenda.getIdOrdemVenda();
+
+		return FXCollections.observableArrayList(estDao.getLancamentos(String.valueOf(ordVenda.getIdOrdemVenda())));
 	}
 
 
@@ -898,7 +953,8 @@ public class FXMLController implements Initializable {
 		}
 	}
 
-	// --- Table Consutar Ordem de venda ---
+        
+	// --- Table Consutar Ordem de Servico ---
 	private ObservableList<OrdemServico> listaOrdemServico() {
 
 		OrdemServicoDAO OrdDao = new OrdemServicoDAO();
@@ -1321,6 +1377,13 @@ public class FXMLController implements Initializable {
 		}
 
 	}
+        
+        public void btnVoltarSelecionarProduto(ActionEvent event) throws IOException {
+            
+            fecharTodosPanel(event);
+            panelNovaOrdemVenda.setVisible(true); 
+        }
+        
 
 	// ----------------- TELA ENTRADA DE BAIXA -----------------------------
 	@FXML

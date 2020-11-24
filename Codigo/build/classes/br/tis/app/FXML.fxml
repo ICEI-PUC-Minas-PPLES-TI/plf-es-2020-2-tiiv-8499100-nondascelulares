@@ -295,7 +295,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnExcluirProdutoOrdemVenda" layoutX="385.0" layoutY="566.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Excluir produto" textFill="#fcf8f8" />
+                  <Button fx:id="btnExcluirProdutoOrdemVenda" layoutX="385.0" layoutY="566.0" mnemonicParsing="false" onAction="#excluirItemtableOrdemVenda" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #7d8597;" text="Excluir produto" textFill="#fcf8f8" />
                   <Button fx:id="btnSalvarOrdemVenda" layoutX="571.0" layoutY="566.0" mnemonicParsing="false" onAction="#cadastrarOrdemVenda" prefHeight="43.0" prefWidth="143.0" style="-fx-background-color: #55a630;" text="Salvar " textFill="WHITE">
                      <font>
                         <Font size="16.0" />
@@ -354,7 +354,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnDetalhesOV" layoutX="299.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnIncluirProduto" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: #002855;" text="Detalhes" textFill="WHITE">
+            <Button fx:id="btnDetalhesOV" layoutX="299.0" layoutY="634.0" mnemonicParsing="false" onAction="#btnDetalhamentoProduto" prefHeight="43.0" prefWidth="162.0" style="-fx-background-color: #002855;" text="Detalhes" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -371,7 +371,7 @@
                   <TableColumn fx:id="column_precoVendaListaAgregada" prefWidth="130.0" text="Preço de Venda" />
               </columns>
             </TableView>
-            <Button fx:id="btnVoltar" layoutX="825.0" layoutY="70.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
+            <Button fx:id="btnVoltar" layoutX="825.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnVoltarSelecionarProduto" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
             <Button fx:id="btnSelecionarProduto" layoutX="825.0" layoutY="593.0" mnemonicParsing="false" onAction="#btnSelecionarProduto" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #002855;" text="Selecionar produto" textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -1039,15 +1039,15 @@
                   <TableColumn fx:id="column_qtdDet" prefWidth="167.0" text="Quantidade" />
               </columns>
             </TableView>
-            <Button fx:id="btnVoltarDetalhamento" layoutX="501.0" layoutY="642.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
-            <TextField fx:id="codDetalhamentoOV" editable="false" layoutX="588.0" layoutY="37.0" />
+            <Button fx:id="btnVoltarDetalhamento" layoutX="501.0" layoutY="642.0" mnemonicParsing="false" onAction="#fecharTodosPanel" prefHeight="43.0" prefWidth="174.0" style="-fx-background-color: #7d8597;" text="Voltar" textFill="#fcf8f8" />
+            <TextField fx:id="codDetalhamentoOV" editable="false" layoutX="588.0" layoutY="41.0" />
             <Label layoutX="928.0" layoutY="39.0" text="Data:">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <TextField fx:id="dataDetalhamentoOV" layoutX="990.0" layoutY="37.0" prefHeight="31.0" prefWidth="160.0" />
-            <TextField fx:id="valorTotalDetalhamento" layoutX="952.0" layoutY="548.0" prefHeight="31.0" prefWidth="114.0" />
+            <TextField fx:id="valorTotalDetalhamento" editable="false" layoutX="952.0" layoutY="548.0" prefHeight="31.0" prefWidth="114.0" />
             <Label layoutX="865.0" layoutY="553.0" text="Valor total:" />
          </children>
       </AnchorPane>
