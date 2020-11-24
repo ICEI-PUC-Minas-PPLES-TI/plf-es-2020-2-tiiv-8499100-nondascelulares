@@ -163,7 +163,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 	@Override
 	public List<Produto> getAll() {
 
-		String sqlGetAll = "Select * from dbo.produtos";
+		String sqlGetAll = "Select * from dbo.produtos order by idProduto";
 		List<Produto> produtos = new ArrayList<>();
 		PreparedStatement stmtCli = null;
 

@@ -8,22 +8,19 @@ import java.util.Random;
 
 public class OrdemVenda {
 
-	private Date dataVenda;
+	private Date data;
 	private long idOrdemVenda;
 	private String cpfCnpjCliente;
 	private String observacao;
 	private float valorTotal;
 	private List<Estoque> lancamentosSaida;
 
-	public OrdemVenda() {
-	}
-
 	public Date getData() {
-		return dataVenda;
+		return data;
 	}
 
 	public void setData(Date data) {
-		this.dataVenda = data;
+		this.data = data;
 	}
 
 	public float getValorTotal() {

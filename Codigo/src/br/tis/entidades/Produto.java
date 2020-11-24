@@ -25,11 +25,6 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	@Override
-	public String toString() {
-		return " Cod " + " " + idProduto +" Nome: " + nome + " ";
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -46,4 +41,9 @@ public class Produto {
 		this.precoVenda = precoVenda;
 	}
 
+	@Override 
+	public String toString() {
+		return getIdProduto() + " - " + getNome();
+	}
+	
 }//class

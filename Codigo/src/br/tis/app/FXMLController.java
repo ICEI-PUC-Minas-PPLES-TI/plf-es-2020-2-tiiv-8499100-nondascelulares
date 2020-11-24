@@ -219,8 +219,6 @@ public class FXMLController implements Initializable {
 	private TableColumn<Cliente, String> column_Bairro;
 	@FXML
 	private TableColumn<Cliente, String> column_Cidade;
-	@FXML
-	private TableColumn<Cliente, String> column_Estado;
 
 	@FXML
 	private TableView<Cliente> table_Cliente;
@@ -236,7 +234,6 @@ public class FXMLController implements Initializable {
 		column_Numero.setCellValueFactory(new PropertyValueFactory<>("numero"));
 		column_Bairro.setCellValueFactory(new PropertyValueFactory<>("bairro"));
 		column_Cidade.setCellValueFactory(new PropertyValueFactory<>("cidade"));
-		column_Estado.setCellValueFactory(new PropertyValueFactory<>("estado"));
 
 		table_Cliente.setItems(listaDeClientes());
 
@@ -483,12 +480,54 @@ public class FXMLController implements Initializable {
 	@FXML
 	private TableView<OrdemVenda> table_BuscarOrdemVenda;
 	@FXML
-	private TableColumn<OrdemVenda, Long> column_CpfCnpjCliente;
+	private TableColumn<OrdemVenda, Date> column_dataVenda;
 	@FXML
 	private TableColumn<OrdemVenda, Long> column_ValorTotalOV;
 	@FXML
+	private TableColumn<OrdemVenda, Long> column_IdOrdemVenda;
+	@FXML
 	private TableColumn<OrdemVenda, String> column_observacao;
 
+	@FXML
+	public void tableBuscaOrdemVenda(ActionEvent event) throws IOException {
+
+		column_IdOrdemVenda.setCellValueFactory(new PropertyValueFactory<>("idOrdemVenda"));
+		column_dataVenda.setCellValueFactory(new PropertyValueFactory<>("data"));
+		column_ValorTotalOV.setCellValueFactory(new PropertyValueFactory<>("valorTotal"));
+		column_observacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+		table_BuscarOrdemVenda.setItems(listaOrdemVenda());
+
+	}
+
+	private ObservableList<OrdemVenda> listaOrdemVenda() {
+
+		OrdemVendaDAO ov = new OrdemVendaDAO();
+		
+		return FXCollections.observableArrayList(ov.getAll());
+	}
+	
+	
+	@FXML
+	public void excluirOrdemVenda(ActionEvent event) throws IOException {
+		if (table_BuscarOrdemVenda.getSelectionModel().getSelectedItem() != null) {
+			
+			Integer idOVExcluir = (int) table_BuscarOrdemVenda.getSelectionModel().getSelectedItem().getIdOrdemVenda();
+
+			OrdemVendaDAO ov = new OrdemVendaDAO();
+			EstoqueDAO lancamentos = new EstoqueDAO();
+			
+			ov.remove(idOVExcluir);
+			lancamentos.remove(String.valueOf(idOVExcluir));
+			
+			GeraAlerta("Excluido com sucesso!", "Ordem de venda excluida com sucesso!");
+		} else {
+			GeraAlerta("Selecione uma Ordem de Venda!", "Nenhuma Ordem de venda selecionada!");
+		}
+
+	}
+	
+	
 	// -------------- ATRIBUTOS DA ORDEM DE VENDA --------------------
 
 	@FXML
@@ -592,13 +631,15 @@ public class FXMLController implements Initializable {
 	}
 
 	@FXML
-	public void panelBuscarOrdemVendaVisible(ActionEvent event) {
+	public void panelBuscarOrdemVendaVisible(ActionEvent event) throws IOException {
 		if (panelBuscarOrdemVenda.isVisible() == true) {
 			panelBuscarOrdemVenda.setVisible(false);
 			dropDown_Ordens.setVisible(false);
 		} else {
 			fecharTodosPanel(event);
+			
 			panelBuscarOrdemVenda.setVisible(true);
+			tableBuscaOrdemVenda(event);
 		}
 	}
 
@@ -689,6 +730,8 @@ public class FXMLController implements Initializable {
 
 		OrdemServico os = new OrdemServico();
 
+	
+		
 		os.setIdOrdemServico(Long.valueOf(codOrdemServico.getText()));
 		os.setData(Date.valueOf(data_ordemservico.getText()));
 		os.setMarca(campoMarca.getText());
@@ -795,6 +838,11 @@ public class FXMLController implements Initializable {
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
+			comboBoxIdClientes.setVisible(true);
+			cliente_ordemServico.setVisible(false);
+			
+			btnEditarOrdemServico.setVisible(false);
+			btnSalvarOrdemServico.setVisible(true);
 
 		}
 	}
@@ -970,7 +1018,7 @@ public class FXMLController implements Initializable {
 	@FXML
 	private TableColumn<Estoque, String> column_documentoEstoque;
 	@FXML
-	private TableColumn<Estoque, Number> column_idProdutoEstoque;
+	private TableColumn<Estoque, Long> column_idProdutoEstoque;
 	@FXML
 	private TableColumn<Estoque, String> column_NomeProdEstoque;
 	@FXML
@@ -1003,16 +1051,16 @@ public class FXMLController implements Initializable {
 	}
 
 	@FXML
-	private ComboBox<ListaAgregada> comboBoxIdProdutos = new JFXComboBox<ListaAgregada>();
+	private ComboBox<Produto> comboBoxIdProdutos = new JFXComboBox<Produto>();
 
 	@FXML
 	public void carregarListaEstoque(ActionEvent event) {
 
-		EstoqueDAO agregado = new EstoqueDAO();
+		ProdutoDAO pro = new ProdutoDAO();
+		
+		ObservableList<Produto> obsListaAgregada;
 
-		ObservableList<ListaAgregada> obsListaAgregada;
-
-		obsListaAgregada = FXCollections.observableArrayList(agregado.getEstoqueAgregado());
+		obsListaAgregada = FXCollections.observableArrayList(pro.getAll());
 
 		comboBoxIdProdutos.setItems(obsListaAgregada);
 
@@ -1026,7 +1074,7 @@ public class FXMLController implements Initializable {
 		lancamento.setDataLancamento(Date.valueOf(LocalDate.now()));
 		lancamento.setIdproduto(comboBoxIdProdutos.getValue().getIdProduto());
 
-		lancamento.setNomeProduto(comboBoxIdProdutos.getValue().getNomeProduto());
+		lancamento.setNomeProduto(comboBoxIdProdutos.getValue().getNome());
 
 		lancamento.setCustoUnitario(Double.parseDouble(precoCusto_estoque.getText()));
 		lancamento.setQuantidade(Integer.parseInt(quantidade_estoque.getText()));
@@ -1036,7 +1084,7 @@ public class FXMLController implements Initializable {
 		EstoqueDAO estoque = new EstoqueDAO(lancamento);
 		estoque.add();
 
-		GeraAlerta("Sucesso", "LanÃ§amento Efetuado com sucesso!");
+		GeraAlerta("Sucesso", "Lançamento efetuado com sucesso!");
 
 	}
 
@@ -1046,7 +1094,7 @@ public class FXMLController implements Initializable {
 		column_TipoLancamento.setCellValueFactory(new PropertyValueFactory<>("TipoLancamento"));
 		column_DataLancamentoEstoque.setCellValueFactory(new PropertyValueFactory<>("DataLancamento"));
 		column_documentoEstoque.setCellValueFactory(new PropertyValueFactory<>("Documento"));
-		column_idProdutoEstoque.setCellValueFactory(new PropertyValueFactory<>("idProduto"));
+		column_idProdutoEstoque.setCellValueFactory(new PropertyValueFactory<>("idproduto"));
 		column_NomeProdEstoque.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
 		column_custoUniEstoque.setCellValueFactory(new PropertyValueFactory<>("custoUnitario"));
 		column_quantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));

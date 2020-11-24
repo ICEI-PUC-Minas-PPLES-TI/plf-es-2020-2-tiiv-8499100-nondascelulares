@@ -172,7 +172,7 @@ public class OrdemVendaDAO implements DAO<OrdemVenda,Integer>{
 	@Override
 	public List<OrdemVenda> getAll() {
 		
-		String sqlGetAll = "Select * from dbo.ordemVendas";
+		String sqlGetAll = "Select * from dbo.ordemVendas order by idOrdemVenda";
 		List<OrdemVenda> ordens = new ArrayList<>();
 		PreparedStatement stmtCli = null;
 		

@@ -73,10 +73,10 @@ public class EstoqueDAO {
 
 	}
 
-	public boolean remove(long idEstoque) {
+	public boolean remove(String documento) {
 		boolean result = false;
 
-		String sqlDelete = "DELETE from dbo.estoque where idEstoque = ?";
+		String sqlDelete = "DELETE from dbo.estoque where documento = ?";
 
 		PreparedStatement stmtLanc = null;
 
@@ -84,7 +84,7 @@ public class EstoqueDAO {
 
 			stmtLanc = connection.prepareStatement(sqlDelete);
 
-			stmtLanc.setLong(1, idEstoque);
+			stmtLanc.setString(1, documento);
 
 			if (stmtLanc.executeUpdate() == 0)
 				throw new SQLException("Falha ao excluir o Lancamento");

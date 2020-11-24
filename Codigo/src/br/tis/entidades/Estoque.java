@@ -7,7 +7,7 @@ public class Estoque {
 	private long idEstoque;
 	private TipoLancamento tipoLancamento;
 	private Date dataLancamento;
-	private long idproduto;
+	private long idProduto;
 	private String nomeProduto;
 	private double custoUnitario;
 	private double precoVendaUnitario;
@@ -73,11 +73,11 @@ public class Estoque {
 	}
 
 	public long getIdproduto() {
-		return idproduto;
+		return idProduto;
 	}
 
 	public void setIdproduto(long idproduto) {
-		this.idproduto = idproduto;
+		this.idProduto = idproduto;
 	}
 
 	public String getNomeProduto() {

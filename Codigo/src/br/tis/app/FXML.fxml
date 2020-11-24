@@ -197,15 +197,14 @@
          <children>
             <TableView fx:id="table_Cliente" layoutX="14.0" layoutY="99.0" prefHeight="531.0" prefWidth="1161.0">
               <columns>
-                <TableColumn fx:id="column_Nome" prefWidth="232.0" text="Nome" visible="false" />
                 <TableColumn fx:id="column_CpfCnpj" minWidth="0.0" prefWidth="115.0" text="Cpf/Cnpj" />
-                  <TableColumn fx:id="column_Email" prefWidth="173.0" text="E-mail" />
-                  <TableColumn fx:id="column_Telefone" minWidth="0.0" prefWidth="128.0" text="Telefone" />
-                  <TableColumn fx:id="column_Rua" prefWidth="77.0" text="Rua" />
-                  <TableColumn fx:id="column_Numero" minWidth="0.0" prefWidth="108.0" text="Numero" />
-                  <TableColumn fx:id="column_Bairro" prefWidth="104.0" text="Bairro" />
+                  <TableColumn fx:id="column_Nome" prefWidth="164.0" text="Nome" />
+                  <TableColumn fx:id="column_Email" prefWidth="138.0" text="E-mail" />
+                  <TableColumn fx:id="column_Telefone" minWidth="0.0" prefWidth="151.0" text="Telefone" />
+                  <TableColumn fx:id="column_Rua" prefWidth="237.0" text="Rua" />
+                  <TableColumn fx:id="column_Numero" minWidth="0.0" prefWidth="72.0" text="Numero" />
+                  <TableColumn fx:id="column_Bairro" prefWidth="123.0" text="Bairro" />
                   <TableColumn fx:id="column_Cidade" minWidth="0.0" prefWidth="160.0" text="Cidade" />
-                  <TableColumn fx:id="column_Estado" prefWidth="63.0" text="Estado" />
               </columns>
             </TableView>
             <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="67.0" prefWidth="268.0">
@@ -327,12 +326,12 @@
          </children></AnchorPane>
       <AnchorPane fx:id="panelBuscarOrdemVenda" layoutX="62.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="723.0" prefWidth="1185.0" visible="false">
          <children>
-            <TableView fx:id="table_BuscarOrdemVenda" layoutX="100.0" layoutY="132.0" prefHeight="434.0" prefWidth="975.0">
+            <TableView fx:id="table_BuscarOrdemVenda" layoutX="23.0" layoutY="132.0" prefHeight="434.0" prefWidth="1154.0">
                <columns>
+                  <TableColumn fx:id="column_dataVenda" prefWidth="152.0" text="Data Venda" />
                   <TableColumn fx:id="column_IdOrdemVenda" prefWidth="152.0" text="Id" />
-                  <TableColumn fx:id="column_CpfCnpjCliente" minWidth="0.0" prefWidth="239.0" text="CPF/CNPJ - Cliente" />
                   <TableColumn fx:id="column_ValorTotalOV" minWidth="0.0" prefWidth="351.0" resizable="false" text="Valor Total" />
-                  <TableColumn fx:id="column_observacao" prefWidth="232.0" text="Observação" />
+                  <TableColumn fx:id="column_observacao" prefWidth="496.0" text="Observação" />
                </columns>
             </TableView>
             <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="67.0" prefWidth="714.0">
@@ -344,7 +343,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnExcluirOrdemVenda" layoutX="346.0" layoutY="635.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Ordem" textFill="#f6f8f8" wrapText="true">
+            <Button fx:id="btnExcluirOrdemVenda" layoutX="346.0" layoutY="635.0" mnemonicParsing="false" onAction="#excluirOrdemVenda" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Ordem" textFill="#f6f8f8" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
