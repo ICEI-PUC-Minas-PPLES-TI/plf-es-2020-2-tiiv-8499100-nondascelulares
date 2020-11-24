@@ -643,7 +643,44 @@ public class FXMLController implements Initializable {
 		}
 	}
 
-	// ---------------------------------------------------------------------
+	// ---------------DETALHAMENTO DOS PRODUTOS DA ORDEM DE VENDA-----------
+        @FXML
+	public AnchorPane panelDetalhamentoProduto;
+	@FXML
+	public Button btnVoltarDetalhamento;
+        
+        //---------------------------- ATRIBUTOS -------------------------------
+        
+        @FXML
+	public TextField codDetalhamentoOV;
+        @FXML
+	public TextField dataDetalhamentoOV;
+        @FXML
+	public TextField valorTotalDetalhamento;
+        
+        // --------------------TABLE DETALHAMENTO ------------------------------
+        @FXML
+	private TableView<OrdemVenda> table_detalhamento;
+	@FXML
+	private TableColumn<OrdemVenda, Long> column_idProdDet;
+	@FXML
+	private TableColumn<OrdemVenda, String> column_NomeProdDet;
+	@FXML
+	private TableColumn<OrdemVenda, Integer> column_qtdDet;
+	@FXML
+	private TableColumn<OrdemVenda, Double> column_PrecoVendaDet;
+                
+        @FXML
+	public void panelDetalhamentoProdutoVisible(ActionEvent event) {
+		if (panelDetalhamentoProduto.isVisible() == true) {
+			panelDetalhamentoProduto.setVisible(false);
+			dropDown_Ordens.setVisible(false);
+		} else {
+			fecharTodosPanel(event);
+			panelDetalhamentoProduto.setVisible(true);
+		}
+	}
+
 
 	// ----------------- FIM MÃ‰TODOS ORDEM DE VENDA ----------
 
@@ -761,7 +798,7 @@ public class FXMLController implements Initializable {
 		OrdemServicoDAO ordemServico = new OrdemServicoDAO(os);
 		ordemServico.add();
 
-		GeraAlerta("Sucesso", "Ordem Servico Efetuado com sucesso!");
+		GeraAlerta("Sucesso", "Ordem ServiÃ§o cadastrada com sucesso!");
 
 	}
 
@@ -835,7 +872,7 @@ public class FXMLController implements Initializable {
 			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orï¿½amento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			comboBoxIdClientes.setVisible(true);
@@ -889,7 +926,7 @@ public class FXMLController implements Initializable {
 		OrdDao.update(ordemServico_ChoiceStatus.getValue(), Double.valueOf(valorOrcamento.getText()), 
 				campoDefeitos.getText(), campoOutros.getText(), Long.valueOf(codOrdemServico.getText()));
 		
-		GeraAlerta("Alterado", "OS alterada com sucesso!");
+		GeraAlerta("Alterado", "Ordem de ServiÃ§o alterada com sucesso!");
 		
 		
 	}
@@ -913,7 +950,7 @@ public class FXMLController implements Initializable {
 			campoDefeitos.setText(os.getDefeitos());
 			valorOrcamento.setText(String.valueOf(os.getValorTotal()));
 
-			//Fazer o botão de salvar sumir e o de editar aparecer
+			//Fazer o botï¿½o de salvar sumir e o de editar aparecer
 			comboBoxIdClientes.setVisible(false);
 			cliente_ordemServico.setVisible(true);
 			
@@ -940,7 +977,7 @@ public class FXMLController implements Initializable {
 				opcoes_trocatouch.setSelected(os.isTrocaTouch());
 
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orï¿½amento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			
@@ -948,7 +985,7 @@ public class FXMLController implements Initializable {
 
 			
 		} else {	
-			GeraAlerta("Selecione uma ordem de servico!", "Nenhum OS selecionada!");
+			GeraAlerta("Selecione uma ordem de servico!", "Nenhum Ordem de ServiÃ§o selecionada!");
 		}
 
 	}
@@ -1084,7 +1121,7 @@ public class FXMLController implements Initializable {
 		EstoqueDAO estoque = new EstoqueDAO(lancamento);
 		estoque.add();
 
-		GeraAlerta("Sucesso", "Lançamento efetuado com sucesso!");
+		GeraAlerta("Sucesso", "LanÃ§amento efetuado com sucesso!");
 
 	}
 
@@ -1331,7 +1368,7 @@ public class FXMLController implements Initializable {
 		EstoqueDAO estoque = new EstoqueDAO(lancamento);
 		estoque.add();
 
-		GeraAlerta("Sucesso", "Lancamento Efetuado com sucesso!");
+		GeraAlerta("Sucesso", "LanÃ§amento Efetuado com sucesso!");
 
 	}
 
