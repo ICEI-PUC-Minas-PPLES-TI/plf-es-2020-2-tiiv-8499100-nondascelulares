@@ -136,7 +136,7 @@ public class EstoqueDAO {
 				lancamentos.setNomeProduto(rs.getString("nomeProduto"));
 				lancamentos.setCustoUnitario(rs.getDouble("custoUnitario"));
 				lancamentos.setPrecoVendaUnitario(rs.getDouble("precoVendaUnitario"));
-				lancamentos.setQuantidade(rs.getInt("quantidade"));
+				lancamentos.setQuantidade(Math.abs(rs.getInt("quantidade")));
 
 				estoque.add(lancamentos);
 			}

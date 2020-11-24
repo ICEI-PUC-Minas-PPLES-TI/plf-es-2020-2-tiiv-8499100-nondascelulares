@@ -578,6 +578,7 @@ public class FXMLController implements Initializable {
 			est.setNomeProduto(agre.getNomeProduto());
 			est.setQuantidade(Math.abs(agre.getQuantidadeDisp()) * -1);
 			est.setDocumento(String.valueOf(ov.getIdOrdemVenda()));
+			est.setPrecoVendaUnitario(agre.getPrecoVenda());
 			lancamentos.add(est);
 		}
 
@@ -928,7 +929,7 @@ public class FXMLController implements Initializable {
 			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orï¿½amento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			comboBoxIdClientes.setVisible(true);
