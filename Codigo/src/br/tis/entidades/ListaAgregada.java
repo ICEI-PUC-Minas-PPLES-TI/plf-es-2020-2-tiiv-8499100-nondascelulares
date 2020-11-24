@@ -8,8 +8,22 @@ public class ListaAgregada {
 	private float precoVenda;
 	private double total;
 	private double precoMedio;
+	private int quantMinima;
+	private String situacaoQuant;
 	
 	
+	public String getSituacaoQuant() {
+		return situacaoQuant;
+	}
+	public void setSituacaoQuant(String situacaoQuant) {
+		this.situacaoQuant = situacaoQuant;
+	}
+	public int getQuantMinima() {
+		return quantMinima;
+	}
+	public void setQuantMinima(int quantMinima) {
+		this.quantMinima = quantMinima;
+	}
 	public double getPrecoMedio() {
 		return precoMedio;
 	}

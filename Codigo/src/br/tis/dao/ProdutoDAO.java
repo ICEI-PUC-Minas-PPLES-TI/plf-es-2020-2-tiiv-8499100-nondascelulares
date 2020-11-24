@@ -33,7 +33,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 
 		boolean result = false;
 
-		String sqlAdd = "insert into produtos (nome, descricao, precoVenda) values (?, ?, ?)";
+		String sqlAdd = "insert into produtos (nome, descricao, precoVenda, quantMinima) values (?, ?, ?, ?)";
 
 		PreparedStatement stmtProd = null;
 
@@ -44,6 +44,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 			stmtProd.setString(1, produto.getNome());
 			stmtProd.setString(2, produto.getDescricao());
 			stmtProd.setDouble(3, produto.getPrecoVenda());
+			stmtProd.setInt(4, produto.getQuantMinima());
 
 			stmtProd.execute();
 			
@@ -75,7 +76,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 	public boolean update() {
 		boolean result = false;
 
-		String sqlUpdate = "Update produtos SET (nome = ?, descricao = ?, precoVenda = ?) where idProduto = ?";
+		String sqlUpdate = "Update produtos SET (nome = ?, descricao = ?, precoVenda = ?, quantMinima = ?) where idProduto = ?";
 
 		PreparedStatement stmtCli = null;
 
@@ -87,6 +88,8 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 			stmtCli.setString(2, produto.getDescricao());
 			stmtCli.setDouble(3, produto.getPrecoVenda());
 			stmtCli.setLong(4, produto.getIdProduto());
+			stmtCli.setInt(5, produto.getQuantMinima());
+			
 
 			int updateCount = stmtCli.executeUpdate(sqlUpdate);
 
@@ -184,6 +187,7 @@ public class ProdutoDAO implements DAO<Produto, Integer> {
 				newProduto.setNome(rs.getString("nome"));
 				newProduto.setDescricao(rs.getString("descricao"));
 				newProduto.setPrecoVenda(rs.getDouble("precoVenda"));
+				newProduto.setQuantMinima(rs.getInt("quantMinima"));
 
 				produtos.add(newProduto);
 

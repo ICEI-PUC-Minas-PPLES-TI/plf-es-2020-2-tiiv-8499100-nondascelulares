@@ -121,7 +121,7 @@ public class EstoqueDAO {
 			stmtLanc = connection.prepareStatement(sqlGetAll);
 
 			stmtLanc.setString(1, documento);
-			
+
 			ResultSet rs = stmtLanc.executeQuery();
 
 			while (rs.next()) {
@@ -338,7 +338,7 @@ public class EstoqueDAO {
 
 	public List<ListaAgregada> getEstoqueAgregado() {
 
-		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda', Q.precoMedio AS 'precoMedio'FROM [dbo].[estoque] AS C join (SELECT idProduto, AVG(custoUnitario) AS 'precoMedio' from DBO.estoque where tipoLancamento = 'ENTRADA' GROUP BY idProduto)  AS Q on Q.idProduto = C.idProduto join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda, Q.precoMedio";
+		String sqlGetAll = "SELECT C.idProduto, C.nomeProduto, SUM(quantidade) AS 'quantidadeDisp', P.precoVenda AS 'precoVenda', Q.precoMedio AS 'precoMedio', P.quantMinima from [dbo].[estoque] AS C  join (SELECT idProduto, AVG(custoUnitario) AS 'precoMedio' from DBO.estoque where tipoLancamento = 'ENTRADA' GROUP BY idProduto)  AS Q on Q.idProduto = C.idProduto join produtos AS P on C.idProduto = P.idProduto group by  C.nomeProduto, C.idProduto, P.precoVenda, Q.precoMedio, P.quantMinima";
 		List<ListaAgregada> estoqueAgregado = new ArrayList<>();
 		PreparedStatement stmtLanc = null;
 
@@ -357,6 +357,22 @@ public class EstoqueDAO {
 				resumoEstoque.setPrecoVenda(rs.getFloat("precoVenda"));
 				resumoEstoque.setQuantidadeDisp(rs.getInt("quantidadeDisp"));
 				resumoEstoque.setPrecoMedio(rs.getDouble("precoMedio"));
+				resumoEstoque.setQuantMinima(rs.getInt("quantMinima"));
+
+				int quantMinima = resumoEstoque.getQuantMinima();
+				int quantDisponivel = resumoEstoque.getQuantidadeDisp();
+				String situacao = null;
+
+				if (quantDisponivel > quantMinima)
+					situacao = "Nível Normal";
+
+				if (quantDisponivel < quantMinima)
+					situacao = "Nível Baixo - necessário Compra";
+
+				if (quantDisponivel == quantMinima)
+					situacao = "Alerta - Estoque Mínimo";
+
+				resumoEstoque.setSituacaoQuant(situacao);
 
 				estoqueAgregado.add(resumoEstoque);
 
@@ -379,6 +395,7 @@ public class EstoqueDAO {
 				}
 		}
 		return estoqueAgregado;
+
 	}
 
 	public void CloseConnetion() {

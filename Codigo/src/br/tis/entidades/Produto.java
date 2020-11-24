@@ -6,6 +6,7 @@ public class Produto {
 	private String nome;
 	private String descricao;
 	private double precoVenda;
+	private int quantMinima;
 	
 	public Produto(){}
 
@@ -44,6 +45,14 @@ public class Produto {
 	@Override 
 	public String toString() {
 		return getIdProduto() + " - " + getNome();
+	}
+
+	public int getQuantMinima() {
+		return quantMinima;
+	}
+
+	public void setQuantMinima(int quantMinima) {
+		this.quantMinima = quantMinima;
 	}
 	
 }//class

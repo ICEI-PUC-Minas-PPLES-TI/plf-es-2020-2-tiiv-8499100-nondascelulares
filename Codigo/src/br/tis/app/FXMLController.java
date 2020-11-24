@@ -373,6 +373,8 @@ public class FXMLController implements Initializable {
 	@FXML
 	public TextField precoVendaProd;
 	@FXML
+	public TextField quantMinima;
+	@FXML
 	public Button bntIncluirProd;
 
 	@FXML
@@ -382,6 +384,7 @@ public class FXMLController implements Initializable {
 		novoProduto.setNome(cadastroProdutoName.getText());
 		novoProduto.setDescricao(cadastroProdutoDescri.getText());
 		novoProduto.setPrecoVenda(Double.parseDouble(precoVendaProd.getText()));
+		novoProduto.setQuantMinima(Integer.parseInt(quantMinima.getText()));
 
 		prodDAO = new ProdutoDAO(novoProduto);
 
@@ -1134,6 +1137,11 @@ public class FXMLController implements Initializable {
 	private TableColumn<ListaAgregada, Double> column_custoMedio;
 	@FXML
 	private TableColumn<ListaAgregada, Number> column_qtDispCM;
+	@FXML
+	private TableColumn<ListaAgregada, String> column_AlertaEstoque;
+	@FXML
+	private TableColumn<ListaAgregada, Number> column_QuantMinima;
+	
 
 	@FXML
 	public void carregarProdutosCM(ActionEvent event) throws IOException {
@@ -1142,6 +1150,9 @@ public class FXMLController implements Initializable {
 		column_produtoCM.setCellValueFactory(new PropertyValueFactory<>("nomeProduto"));
 		column_qtDispCM.setCellValueFactory(new PropertyValueFactory<>("quantidadeDisp"));
 		column_custoMedio.setCellValueFactory(new PropertyValueFactory<>("precoMedio"));
+		column_AlertaEstoque.setCellValueFactory(new PropertyValueFactory<>("situacaoQuant"));
+		column_QuantMinima.setCellValueFactory(new PropertyValueFactory<>("quantMinima"));
+		
 		table_custoMedio.setItems(ListaAgregadaOV());
 	}
 
