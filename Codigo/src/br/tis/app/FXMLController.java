@@ -27,7 +27,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 import javafx.collections.transformation.FilteredList;
 
 import javafx.fxml.FXML;
@@ -509,9 +508,19 @@ public class FXMLController implements Initializable {
             if (table_OrdemVenda.getSelectionModel().getSelectedItem() != null) {
                 ListaAgregada idProdutoSelecionadoExcluir = table_OrdemVenda.getSelectionModel().getSelectedItem();
                 listaProSelecionado.remove(idProdutoSelecionadoExcluir);
-                
+  
                 GeraAlerta("Excluido com sucesso!", "item excluida com sucesso!");
                 carregarProdutosOV(event);
+                
+            	double total = 0;
+
+    			for (ListaAgregada tot : listaProSelecionado) {
+
+    				total += tot.getTotal();
+    			}
+
+    			valorTotalOrdemVenda.setText(String.valueOf(total));
+                
                 
             }
             else 
@@ -1038,7 +1047,7 @@ public class FXMLController implements Initializable {
 				opcoes_trocatouch.setSelected(os.isTrocaTouch());
 
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Or�amento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orcamento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			
@@ -1046,7 +1055,7 @@ public class FXMLController implements Initializable {
 
 			
 		} else {	
-			GeraAlerta("Selecione uma ordem de servico!", "Nenhum Ordem de Serviço selecionada!");
+			GeraAlerta("Selecione uma ordem de servico!", "Nenhuma Ordem de Servico selecionada!");
 		}
 
 	}
@@ -1068,11 +1077,11 @@ public class FXMLController implements Initializable {
 			idOrdemServicoExcluir = (int) table_OrdemServico.getSelectionModel().getSelectedItem().getIdOrdemServico();
 			OrdemServicoDAO OrdDao = new OrdemServicoDAO();
 			OrdDao.remove(idOrdemServicoExcluir);
-			GeraAlerta("Excluido com sucesso!", "Produto excluido com sucesso!");
-			panelBuscarProdutoVisible(event);
-			panelBuscarProdutoVisible(event);
+			GeraAlerta("Excluido com sucesso!", "Ordem de servico excluida com sucesso!");
+			carregarOrdemServicoTabela(event);
+			
 		} else {
-			GeraAlerta("Selecione um Produto!", "Nenhum Produto selecionado!");
+			GeraAlerta("Selecione uma Ordem de Servico!", "Nenhuma Ordem de Servico selecionada!");
 		}
 
 	}
