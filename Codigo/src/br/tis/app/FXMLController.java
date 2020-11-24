@@ -521,6 +521,7 @@ public class FXMLController implements Initializable {
 			lancamentos.remove(String.valueOf(idOVExcluir));
 			
 			GeraAlerta("Excluido com sucesso!", "Ordem de venda excluida com sucesso!");
+			
 		} else {
 			GeraAlerta("Selecione uma Ordem de Venda!", "Nenhuma Ordem de venda selecionada!");
 		}

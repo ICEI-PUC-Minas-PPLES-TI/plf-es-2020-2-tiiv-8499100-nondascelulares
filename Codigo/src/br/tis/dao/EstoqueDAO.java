@@ -110,6 +110,56 @@ public class EstoqueDAO {
 		return result;
 	}
 
+	public List<Estoque> getLancamentos(String documento) {
+
+		String sqlGetAll = "Select * from dbo.estoque where documento = ?";
+		List<Estoque> estoque = new ArrayList<>();
+		PreparedStatement stmtLanc = null;
+
+		try {
+
+			stmtLanc = connection.prepareStatement(sqlGetAll);
+
+			stmtLanc.setString(1, documento);
+			
+			ResultSet rs = stmtLanc.executeQuery();
+
+			while (rs.next()) {
+
+				Estoque lancamentos = new Estoque();
+
+				lancamentos.setIdEstoque(rs.getLong("idEstoque"));
+				lancamentos.setTipoLancamento(TipoLancamento.valueOf(rs.getString("tipoLancamento")));
+				lancamentos.setDataLancamento(rs.getDate("dataLancamento"));
+				lancamentos.setDocumento(rs.getString("documento"));
+				lancamentos.setIdproduto(rs.getLong("idProduto"));
+				lancamentos.setNomeProduto(rs.getString("nomeProduto"));
+				lancamentos.setCustoUnitario(rs.getDouble("custoUnitario"));
+				lancamentos.setPrecoVendaUnitario(rs.getDouble("precoVendaUnitario"));
+				lancamentos.setQuantidade(rs.getInt("quantidade"));
+
+				estoque.add(lancamentos);
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+			geraAlerta("Falha ao obter o estoque", e.getMessage());
+
+		} finally {
+
+			if (stmtLanc != null)
+				try {
+					stmtLanc.close();
+
+				} catch (SQLException logOrIgnore) {
+
+				}
+		}
+		return estoque;
+	}
+
 	public List<Estoque> getAll() {
 
 		String sqlGetAll = "Select * from dbo.estoque";
