@@ -364,13 +364,13 @@ public class EstoqueDAO {
 				String situacao = null;
 
 				if (quantDisponivel > quantMinima)
-					situacao = "Nível Normal";
+					situacao = "NÃ­vel Normal";
 
 				if (quantDisponivel < quantMinima)
-					situacao = "Nível Baixo - necessário Compra";
+					situacao = "NÃ­vel Baixo - necessÃ¡rio Compra";
 
 				if (quantDisponivel == quantMinima)
-					situacao = "Alerta - Estoque Mínimo";
+					situacao = "Alerta - Estoque MÃ­nimo";
 
 				resumoEstoque.setSituacaoQuant(situacao);
 

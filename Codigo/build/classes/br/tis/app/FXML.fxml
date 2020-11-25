@@ -38,160 +38,153 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="14.0" layoutY="44.0" prefHeight="3.0" prefWidth="257.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="30.0" layoutY="105.0" onDragDetected="#carregarClienteTabela" prefHeight="616.0" prefWidth="714.0" style="-fx-background-color: #FFFF;">
-               <children>
-                  <Label alignment="CENTER" layoutX="23.0" layoutY="30.0" prefWidth="149.0" text="Nome do Cliente:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_nome" alignment="TOP_LEFT" layoutX="26.0" layoutY="63.0" onMouseClicked="#fecharTodosMenus" prefHeight="27.0" prefWidth="559.0" promptText="Digite o nome do Cliente">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="TOP_LEFT" layoutX="29.0" layoutY="123.0" prefHeight="27.0" prefWidth="59.0" text="E-mail:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_Email" alignment="TOP_LEFT" layoutX="28.0" layoutY="156.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="559.0" promptText="Ex: nondascelulares@gmail.com">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="29.0" layoutY="212.0" prefHeight="27.0" prefWidth="96.0" text="CPF/CNPJ:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_Cpf" alignment="TOP_LEFT" layoutX="28.0" layoutY="244.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="354.0" promptText="Descreva o CPF/CNPJ do Cliente">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="TOP_LEFT" layoutX="420.0" layoutY="212.0" prefHeight="27.0" prefWidth="149.0" text="Telefone:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_Telefone" layoutX="419.0" layoutY="244.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="167.0" promptText="(xx) 99999-9999">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="29.0" layoutY="300.0" text="Rua:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCLiente_Rua" layoutX="29.0" layoutY="332.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="419.0" promptText="Ex: Rua Aleixo Paraguassú">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="481.0" layoutY="303.0" text="Nº:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_numRes" layoutX="479.0" layoutY="332.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="105.0" promptText="Ex: 243">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="30.0" layoutY="388.0" text="Bairro:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_Bairro" layoutX="30.0" layoutY="420.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="268.0" promptText="Ex: Centro">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="345.0" layoutY="386.0" text="Cidade:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="cadastroCliente_Cidade" layoutX="345.0" layoutY="421.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="240.0" promptText="Ex: Almenara">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="btnCadastrarCliente" layoutX="145.0" layoutY="506.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Cadastrar" textFill="#f6f8f8" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="392.0" layoutY="506.0" mnemonicParsing="false" onAction="#panelNovoClienteVisible" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
+            <Label alignment="CENTER" layoutX="44.0" layoutY="134.0" prefWidth="149.0" text="Nome do Cliente:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_nome" alignment="TOP_LEFT" layoutX="47.0" layoutY="167.0" onMouseClicked="#fecharTodosMenus" prefHeight="27.0" prefWidth="559.0" promptText="Digite o nome do Cliente">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="TOP_LEFT" layoutX="50.0" layoutY="227.0" prefHeight="27.0" prefWidth="59.0" text="E-mail:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_Email" alignment="TOP_LEFT" layoutX="49.0" layoutY="260.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="559.0" promptText="Ex: nondascelulares@gmail.com">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="50.0" layoutY="316.0" prefHeight="27.0" prefWidth="96.0" text="CPF/CNPJ:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_Cpf" alignment="TOP_LEFT" layoutX="49.0" layoutY="348.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="354.0" promptText="Descreva o CPF/CNPJ do Cliente">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="TOP_LEFT" layoutX="441.0" layoutY="316.0" prefHeight="27.0" prefWidth="149.0" text="Telefone:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_Telefone" layoutX="440.0" layoutY="348.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="167.0" promptText="(xx) 99999-9999">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="50.0" layoutY="404.0" text="Rua:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCLiente_Rua" layoutX="50.0" layoutY="436.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="419.0" promptText="Ex: Rua Aleixo Paraguassú">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="502.0" layoutY="407.0" text="Nº:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_numRes" layoutX="500.0" layoutY="436.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="105.0" promptText="Ex: 243">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="51.0" layoutY="492.0" text="Bairro:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_Bairro" layoutX="51.0" layoutY="524.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="268.0" promptText="Ex: Centro">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="366.0" layoutY="490.0" text="Cidade:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cadastroCliente_Cidade" layoutX="366.0" layoutY="525.0" onMouseClicked="#fecharTodosMenus" prefHeight="39.0" prefWidth="240.0" promptText="Ex: Almenara">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnCadastrarCliente" layoutX="166.0" layoutY="610.0" mnemonicParsing="false" onAction="#cadastrarCliente" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Cadastrar" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="413.0" layoutY="610.0" mnemonicParsing="false" onAction="#panelNovoClienteVisible" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelCadastrarProduto" layoutX="70.0" layoutY="69.0" onMouseClicked="#fecharTodosMenus" onMouseEntered="#fecharTodosMenus" prefHeight="737.0" prefWidth="1195.0" visible="false" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="69.0">
          <children>
-            <AnchorPane layoutX="37.0" layoutY="125.0" prefHeight="542.0" prefWidth="714.0" style="-fx-background-color: #FFFF;">
-               <children>
-                  <Label alignment="CENTER" layoutX="24.0" layoutY="55.0" prefHeight="27.0" prefWidth="167.0" text="Nome do Produto:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField id="cadastroProdutoName" fx:id="cadastroProdutoName" alignment="TOP_LEFT" layoutX="24.0" layoutY="100.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="559.0" promptText="Ex: Fone de ouvido">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="24.0" layoutY="159.0" text="Descrição do Produto:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField id="cadastroProdutoDescri" fx:id="cadastroProdutoDescri" alignment="TOP_LEFT" layoutX="24.0" layoutY="202.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="559.0" promptText="Ex: Saída P2 - JBL">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" layoutX="26.0" layoutY="271.0" text="Preço de venda:">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField id="precoVendaProd" fx:id="precoVendaProd" layoutX="24.0" layoutY="308.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="149.0" promptText="0,00">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Button id="bntIncluirProd" fx:id="bntIncluirProd" layoutX="121.0" layoutY="415.0" mnemonicParsing="false" onAction="#cadastrarProduto" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Incluir" textFill="#f6f8f8" wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Button id="cancelaProd" layoutX="328.0" layoutY="415.0" mnemonicParsing="false" onAction="#panelNovoProdutoVisible" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <TextField id="precoVendaProd" fx:id="quantMinima" layoutX="333.0" layoutY="310.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="149.0" promptText="0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <Label alignment="CENTER" layoutX="314.0" layoutY="271.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade Mínima">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
+            <Label alignment="CENTER" layoutX="61.0" layoutY="149.0" prefHeight="27.0" prefWidth="167.0" text="Nome do Produto:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField id="cadastroProdutoName" fx:id="cadastroProdutoName" alignment="TOP_LEFT" layoutX="61.0" layoutY="194.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="559.0" promptText="Ex: Fone de ouvido">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label layoutX="61.0" layoutY="253.0" text="Descrição do Produto:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField id="cadastroProdutoDescri" fx:id="cadastroProdutoDescri" alignment="TOP_LEFT" layoutX="61.0" layoutY="296.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="559.0" promptText="Ex: Saída P2 - JBL">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="63.0" layoutY="365.0" text="Preço de venda:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField id="precoVendaProd" fx:id="precoVendaProd" layoutX="61.0" layoutY="402.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="149.0" promptText="0,00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Button id="bntIncluirProd" fx:id="bntIncluirProd" layoutX="158.0" layoutY="509.0" mnemonicParsing="false" onAction="#cadastrarProduto" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: #58B358; -fx-border-color: #52AA50;" text="Incluir" textFill="#f6f8f8" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button id="cancelaProd" layoutX="365.0" layoutY="509.0" mnemonicParsing="false" onAction="#panelNovoProdutoVisible" prefHeight="41.0" prefWidth="114.0" style="-fx-background-color: #D24F4D; -fx-border-color: #CE4744;" text="Cancelar" textFill="#f8f7f7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextField id="precoVendaProd" fx:id="quantMinima" layoutX="370.0" layoutY="404.0" onMouseClicked="#fecharTodosMenus" prefHeight="35.0" prefWidth="149.0" promptText="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="351.0" layoutY="365.0" prefHeight="27.0" prefWidth="187.0" text="Quantidade Mínima">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
             <AnchorPane layoutX="37.0" layoutY="30.0" prefHeight="67.0" prefWidth="714.0">
                <children>
                   <Label layoutX="20.0" layoutY="16.0" text="Cadastro de Produtos">
@@ -199,6 +192,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="14.0" layoutY="52.0" prefHeight="3.0" prefWidth="268.0" />
                </children>
             </AnchorPane>
          </children>
@@ -224,6 +218,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="20.0" layoutY="52.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
             <Button fx:id="btnExcluirCliente" layoutX="378.0" layoutY="668.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Cliente" textFill="#f6f8f8" wrapText="true">
@@ -257,6 +252,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="20.0" layoutY="52.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
             <Button fx:id="btnExcluirProduto" layoutX="332.0" layoutY="648.0" mnemonicParsing="false" onAction="#excluirProduto" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #7d8597; -fx-border-color: #3C4145;" text="Excluir Produto" textFill="#f6f8f8" wrapText="true">
@@ -280,6 +276,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutY="32.0" prefHeight="10.0" prefWidth="284.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="24.0" layoutY="69.0" prefHeight="656.0" prefWidth="1129.0">
@@ -543,6 +540,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
+            <Separator layoutX="22.0" layoutY="74.0" prefHeight="3.0" prefWidth="268.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelBuscarOrdemServico" layoutX="77.0" layoutY="62.0" onMouseEntered="#fecharTodosMenus" prefHeight="725.0" prefWidth="1195.0" visible="false">
@@ -582,6 +580,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="14.0" layoutY="52.0" prefHeight="3.0" prefWidth="257.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="31.0" layoutY="91.0" prefHeight="606.0" prefWidth="1129.0">
@@ -676,35 +675,36 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+                  <Separator layoutX="7.0" layoutY="63.0" prefHeight="10.0" prefWidth="297.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="26.0" layoutY="102.0" prefHeight="597.0" prefWidth="1140.0">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" text="Documento:">
+                  <Label layoutX="14.0" layoutY="35.0" text="Documento:">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="documento_estoque" layoutX="14.0" layoutY="53.0" prefHeight="31.0" prefWidth="167.0" promptText="0000" />
-                  <Label layoutX="218.0" layoutY="14.0" text="ID do produto:">
+                  <TextField fx:id="documento_estoque" layoutX="14.0" layoutY="74.0" prefHeight="31.0" prefWidth="167.0" promptText="0000" />
+                  <Label layoutX="218.0" layoutY="35.0" text="ID do produto:">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="421.0" layoutY="14.0" text="Preço de Custo (UN):">
+                  <Label layoutX="421.0" layoutY="35.0" text="Preço de Custo (UN):">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="precoCusto_estoque" layoutX="421.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
-                  <Label layoutX="685.0" layoutY="14.0" text="Quantidade:">
+                  <TextField fx:id="precoCusto_estoque" layoutX="421.0" layoutY="74.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
+                  <Label layoutX="685.0" layoutY="35.0" text="Quantidade:">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="quantidade_estoque" layoutX="648.0" layoutY="53.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
-                  <Button fx:id="btnIncluirProd_estoque" layoutX="362.0" layoutY="148.0" mnemonicParsing="false" onAction="#cadastrarEstoque" style="-fx-background-color: #002855;" text="Incluir Produto" textFill="WHITE" />
-                  <ComboBox id="comboBoxIdProdutos" fx:id="comboBoxIdProdutos" layoutX="218.0" layoutY="53.0" prefWidth="150.0" />
+                  <TextField fx:id="quantidade_estoque" layoutX="648.0" layoutY="74.0" prefHeight="31.0" prefWidth="178.0" promptText="0,00" />
+                  <Button fx:id="btnIncluirProd_estoque" layoutX="362.0" layoutY="169.0" mnemonicParsing="false" onAction="#cadastrarEstoque" style="-fx-background-color: #002855;" text="Incluir Produto" textFill="WHITE" />
+                  <ComboBox id="comboBoxIdProdutos" fx:id="comboBoxIdProdutos" layoutX="218.0" layoutY="74.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </children>

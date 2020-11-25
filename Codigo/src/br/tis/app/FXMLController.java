@@ -941,7 +941,7 @@ public class FXMLController implements Initializable {
 			carregarListaClientes(event);
 			panelNovaOrdemServico.setVisible(true);
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Or�amento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			comboBoxIdClientes.setVisible(true);
@@ -1047,7 +1047,7 @@ public class FXMLController implements Initializable {
 				opcoes_trocatouch.setSelected(os.isTrocaTouch());
 
 			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Aguardando Aceite");
-			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orcamento Aprovado");
+			ordemServico_ChoiceStatus.getItems().add("NA LOJA - Orçamento Aprovado");
 			ordemServico_ChoiceStatus.getItems().add("ENTREGUE");
 			ordemServico_ChoiceStatus.getItems().add("CANCELADA");
 			
@@ -1055,7 +1055,7 @@ public class FXMLController implements Initializable {
 
 			
 		} else {	
-			GeraAlerta("Selecione uma ordem de servico!", "Nenhuma Ordem de Servico selecionada!");
+			GeraAlerta("Selecione uma ordem de serviço!", "Nenhuma Ordem de Serviço selecionada!");
 		}
 
 	}
@@ -1081,7 +1081,7 @@ public class FXMLController implements Initializable {
 			carregarOrdemServicoTabela(event);
 			
 		} else {
-			GeraAlerta("Selecione uma Ordem de Servico!", "Nenhuma Ordem de Servico selecionada!");
+			GeraAlerta("Selecione uma Ordem de Serviço!", "Nenhuma Ordem de Serviço selecionada!");
 		}
 
 	}
